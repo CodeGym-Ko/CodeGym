@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.mapper.UserMapper">
+
+<!-- 아이디 중복 체크. 카운터가 0이면 아이디 사용 가능, 1이면 기존 사용 중인 아이디 -->
+<select id="idCheck" parameterType="string" resultType="int">
+	select count(*) from tbl_member where userid = #{userid}
+</select>
+
+<!-- 로그인 정보 가져 오기 -->
+<select id="login" parameterType="string" resultType="com.board.dto.UserVO">
+	select password,username from tbl_member where userid = #{userid}
+</select>
+
+<!-- 사용자 자동 로그인을 위한 authkey 등록 -->
+<update id="authkeyUpdate" parameterType="com.board.dto.UserVO">
+	update tbl_member set authkey = #{authkey} where userid = #{userid}
+</update>
+
+<!-- 사용자 자동 로그인을 위한 authkey로 사용자 정보 가져 오기  -->
+<select id="userinfoByAuthkey" parameterType="string" resultType="com.board.dto.UserVO">
+	select * from tbl_member where authkey = #{authkey}
+</select>
+
+<!-- 사용자 등록 -->
+<insert id="signup" parameterType="com.board.dto.UserVO">
+	insert into tbl_member (userid,username,password,gender,hobby,job,description,zipcode,address,telno,email,role,org_filename,stored_filename,filesize,regdate) values
+	 (#{userid},#{username},#{password},#{gender},#{hobby},#{job},#{description},#{zipcode},#{address},#{telno},#{email},'USER',#{org_filename},#{stored_filename},#{filesize},sysdate)
+</insert>
+
+<!-- 사용자 정보 보기 -->
+<select id="userinfo" parameterType="string" resultType="com.board.dto.UserVO">
+	select * from tbl_member where userid = #{userid}
+</select>
+
+<!-- 우편번호 행 최대 갯수 계산 -->
+<select id="addrTotalCount" parameterType="string" resultType="int">
+	select count(*) from tbl_addr where road like '%'||#{addSearch}||'%'  
+		or building like '%'||#{addrSearch}||'%'
+</select>
+
+<!-- 우편번호 검색 -->
+<select id="addrSearch" parameterType="HashMap" resultType="com.board.dto.AddressVO">
+	select zipcode, province, road, building, oldaddr from 
+	(select zipcode,province,road,building,oldaddr,row_number() over(order by zipcode) as rnum 
+			from tbl_addr where road like '%'||#{addrSearch}||'%' 
+			or building like '%'||#{addrSearch}||'%'  
+	) where rnum between #{startPoint} and #{endPoint}
+</select>
+	
+</mapper>  
