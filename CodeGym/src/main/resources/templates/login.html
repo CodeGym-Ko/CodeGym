@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script>
+
+	window.onload = async () => {
+		
+		//쿠키 가져 오기
+		const getCookie = (name) => {
+			
+			const cookies = document.cookie.split(`; `).map((el) => el.split('='));
+			  let getItem = [];
+		
+			  for (let i = 0; i < cookies.length; i++) {		    
+			    if (cookies[i][0] === name) {
+			      getItem.push(cookies[i][1]);
+			      break;
+			    }
+			  }
+			  if (getItem.length > 0) {
+					console.log(getItem[0]);
+			    	return decodeURIComponent(getItem[0]);
+			  }		
+		}
+		
+		let userid = getCookie('userid');
+		let password = getCookie('password');
+		let authkey = getCookie('authkey');
+		
+		//userid 기억하기 체크 여부 확인
+		if(userid !== undefined){ //userid 쿠키가 존재하면 
+			document.querySelector('#rememberUserid').checked = true; //userid 체크박스를 체크
+			document.querySelector('#userid').value = userid; //로그인창의 userid 입력란에 userid 쿠키 값 출력 
+		}
+		else document.querySelector('#rememberUserid').checked = false;
+		
+		//패스워드 기억하기 체크 여부 확인
+		if(password !== undefined){ //패스워드 쿠키가 존재하면
+			document.querySelector('#rememberPassword').checked = true; 
+			
+			//Base64로 인코딩 된 password를 디코딩
+			const decrypt = CryptoJS.enc.Base64.parse(password);
+		    const hashData = decrypt.toString(CryptoJS.enc.Utf8);		    
+		    password = hashData;
+			
+			document.querySelector('#password').value = password;//로그인창의 패스워드 입력란에 디코팅 된 패스워드 쿠키 값 출력 
+		}	
+		else document.querySelector('#rememberPassword').checked = false;
+		
+		//자동 로그인 처리
+		if(authkey !== undefined){
+			
+			let formData = new FormData();
+			formData.append("authkey",authkey);
+			await fetch('/user/login?autologin=PASS',{
+				method : 'POST',
+				body : formData
+			}).then((response) => response.json())
+			  .then((data) => {
+				 if(data.message == 'good'){				 
+					 document.location.href='/board/list?page=1';
+				} else {
+					alert("시스템 장애로 자동 로그인이 실패 했습니다.");		 
+				}		  
+		    }).catch((error)=> { console.log("error = " + error);} );
+		}	
+		
+	}
+	
+	//자동로그인 체크 관리
+	const checkRememberMe = () => {
+		
+		if(document.querySelector('#rememberMe').checked){
+			document.querySelector('#rememberUserid').checked = false;
+			document.querySelector('#rememberPassword').checked = false;
+		}
+	}
+	
+	//이메일 체크 관리
+	const checkRememberUserid = () => {
+		
+		if(document.querySelector('#rememberUserid').checked)
+			document.querySelector('#rememberMe').checked = false;
+	}
+	
+	//패스워드 체크 관리
+	const checkRememberPassword = () => {
+		
+		if(document.querySelector('#rememberPassword').checked)
+			document.querySelector('#rememberMe').checked = false;
+	}	
+	
+	//로그인 처리
+	const loginCheck = async () => {
+		
+		let userid = document.querySelector('#userid');
+		let password = document.querySelector('#password');
+		let rememberMe = document.querySelector('#rememberMe');
+		
+		if(userid.value === ''){
+			alert('아이디를 입력하세요.');
+			userid.focus();
+			return false; //false를 안 적으면 함수 실행을 종료
+		}
+		
+	    if(password.value === ''){
+	    	alert('비밀번호를 입력하세요.');
+	    	password.focus();
+	    	return false;
+	    }
+	
+	    //리멤버미 항목 체크 확인하여 자동 로그인 여부를 결정
+		let formData = new FormData();
+		formData.append("userid", userid.value);
+		formData.append("password", password.value);
+
+		await fetch('/user/login?autologin=NEW',{
+			method : 'POST',
+			body : formData
+		}).then((response) => response.json())
+		  .then((data) => {
+			 if(data.message == 'good'){				 
+				 cookieManage(userid.value,password.value,data.authkey);
+				 document.location.href='/board/list?page=1';
+			} else if(data.message === 'ID_NOT_FOUND') {
+				 	msg.innerHTML = '존재하지 않는 아이디입니다.';
+			} else if(data.message === 'PASSWORD_NOT_FOUND') {
+					msg.innerHTML = '잘못된 패스워드입니다.';
+			} else {
+				console.log("message = " + data.message);
+				alert("시스템 장애로 로그인이 실패 했습니다.");		 
+			}		  
+	    }).catch((error)=> { console.log("error = " + error);} );
+	    
+	}
+	
+	//쿠키 관리
+	const cookieManage = (userid,password,authkey) => {
+						
+		if(rememberMe.checked){			
+			document.cookie = 'authkey=' + authkey + ';path=/; expires=Sun, 31 Dec 2023 23:59:59 GMT';
+		} else document.cookie = 'authkey=' + authkey + ';path=/; max-age=0';
+		
+		if(rememberUserid.checked) {
+			document.cookie = 'userid=' + userid + ';path=/; expires=Sun, 31 Dec 2023 23:59:59 GMT';
+		} else document.cookie = 'userid=' + userid + ';path=/; max-age=0';
+		
+		if(rememberPassword.checked) {
+			
+			//Base64(양방향 복호화)로 패스워드 인코딩
+			const key = CryptoJS.enc.Utf8.parse(password);
+		    const base64 = CryptoJS.enc.Base64.stringify(key);
+			password = base64;
+		
+			document.cookie = 'password=' + password + ';path=/; expires=Sun, 31 Dec 2023 23:59:59 GMT';
+		} else document.cookie = 'password=' + password + ';path=/; max-age=0';	
+	} 
+	
+	//엔터키 눌러서 로그인 되도록 하는 기능 제공
+	const press = () =>{
+		if(event.keyCode == 13){loginCheck();}
+		
+	}
+
+</script>
+
+<style>
+body { font-family: "나눔고딕", "맑은고딕" }
+h1 { font-family: "HY견고딕" }
+a:link { color: black; }
+a:visited { color: black; }
+a:hover { color: blue; }
+a:active { color: red; }
+#hypertext { text-decoration-line: none; cursor: hand; }
+#topBanner {
+       margin-top:10px;
+       margin-bottom:10px;
+       max-width: 500px;
+       height: auto;
+       display: block; margin: 0 auto;
+}  
+.login {
+  width:900px;
+  height:auto;
+  padding: 20px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  border:5px solid gray;
+  border-radius: 30px;
+}   
+.userid, .userpasswd {
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid #adadad;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+  margin-top: 20px;
+}
+.bottomText {
+  text-align: center;
+  font-size: 20px;
+}
+.login_btn  {
+  position:relative;
+  left:40%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:80%;
+  height:40px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="main" align="center">
+
+  <div>
+    <img id="topBanner" src ="/images/logo.jpg" title="서울기술교육센터" >
+  </div>
+  
+	<div class="login">
+		<h1>로그인</h1>
+		<form name="loginForm" id="loginForm" class="loginForm" method="post"> 
+
+			<input type="text" name="userid" id="userid" class="userid" placeholder="아이디를 입력하세요.">
+         	<input type="password" id="password" name="password" class="userpasswd" onkeydown="press(this.form)" placeholder="비밀번호를 입력하세요.">
+	        
+       		<p id="msg" style="color:red;text-align:center;"></p> 
+         	<br>
+         	<input type="checkbox" id="rememberUserid" onclick="checkRememberUserid()">아이디 기억
+	        <input type="checkbox" id="rememberPassword" onclick="checkRememberPassword()">패스워드 기억
+	        <input type="checkbox" id="rememberMe" onclick="checkRememberMe()">자동 로그인
+	        <br><br>
+     		<input type="button" id="btn_login" class="login_btn" value="로그인" onclick="loginCheck()"> 
+		</form>
+        <div class="bottomText">사용자가 아니면 ▶<a href="/user/signup">여기</a>를 눌러 등록을 해주세요.<br><br></div>
+	</div>
+ 
+</div>
+
+
+
+
+</body>
+</html>
