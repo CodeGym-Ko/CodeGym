@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="headerFragment">
   <head>
-    <title>Header</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
    	
@@ -42,8 +41,6 @@
 								<a class="dropdown-item" href="#">프리 웨이트</a>
 								<a class="dropdown-item" href="#">머신 웨이트</a>
 								<a class="dropdown-item" href="#">맨몸 운동</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Separated link</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
@@ -53,8 +50,6 @@
 								<a class="dropdown-item" href="#">벌크업</a>
 								<a class="dropdown-item" href="#">다이어트</a>
 								<a class="dropdown-item" href="#">BMI</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Separated link</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
@@ -63,8 +58,6 @@
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="#">자유게시판</a>
 								<a class="dropdown-item" href="#">오운완</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Separated link</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
@@ -73,12 +66,15 @@
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="#">공지사항</a>
 								<a class="dropdown-item" href="#">이벤트</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Separated link</a>
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="btn btn-success" style="color: white;" href="/user/signup">로그인</a>
+
+							<a class="btn btn-success" style="color: white;" href="/user/login">로그인</a>
+						</li>
+						<li class="nav-item">
+							<a class="btn btn-success" style="color: white;" href="/user/signup">회원가입</a>
+
 						</li>
 					</ul>
 				</div>
