@@ -10,4 +10,16 @@ public class BoardController {
 	public void getSignup() {
 	}
 	
+	@GetMapping("/nutritional/bulkup")
+    public void getBulkup() {
+    }
+
+	@GetMapping("/nutritional/diet")
+    public void getDiet() {
+    }
+
+	@GetMapping("/nutritional/bmi")
+    public void getBmi() {
+    }
+
 }
