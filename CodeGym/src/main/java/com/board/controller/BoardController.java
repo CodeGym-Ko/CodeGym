@@ -6,10 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BoardController {
 
-	@GetMapping("/user/signup")
-	public void getSignup() {
-	}
-	
 	@GetMapping("/exercise/freeWeight")
 	public void getExercise() {
 		
