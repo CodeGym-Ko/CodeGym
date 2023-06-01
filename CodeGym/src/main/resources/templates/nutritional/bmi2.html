@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+  
+<!-- 개발 영역 시작 -->
+
+<div>BMI</div>
+
+<!-- bmi 계산기 -->
+<form th:action="@{/calculate}" method="post">
+  <div>
+    <label for="height">신장 (cm):</label>
+    <input type="text" id="height" name="height" required>
+  </div>
+  <div>
+    <label for="weight">체중 (kg):</label>
+    <input type="text" id="weight" name="weight" required>
+  </div>
+   <div>
+    <label for="age">나이 ():</label>
+    <input type="text" id="weight" name="weight" required>
+  </div>
+  <div>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+  </div>
+  <div class="result" id="result"></div>
+</form>
+
+<script>
+    function calculateBMI() {
+		var weightInput = document.getElementById("weight");
+		var heightInput = document.getElementById("height");
+		var resultDiv = document.getElementById("result");
+		
+		var weight = parseFloat(weightInput.value);
+		var height = parseFloat(heightInput.value) / 100; // Convert height to meters
+		
+		if (isNaN(weight) || isNaN(height)) {
+		  resultDiv.innerText = "Please enter valid values for weight and height.";
+		  return;
+		}
+		
+		var bmi = weight / (height * height);
+		resultDiv.innerText = "Your BMI is: " + bmi.toFixed(2);
+    }
+ </script>
+
+
+
+<!-- 개발 영역 끝 -->
+</th:block>
+</html>
