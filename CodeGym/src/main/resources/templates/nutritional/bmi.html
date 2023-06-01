@@ -61,7 +61,7 @@ function calculateBMI() {
     var age = parseInt(ageInput.value);
 
     if (isNaN(weight) || isNaN(height) || isNaN(age)) {
-      resultDiv.innerText = "Please enter valid values for weight, height, and age.";
+      resultDiv.innerText = "값을 모두 입력하세요.";
       return;
     }
 
@@ -74,7 +74,7 @@ function calculateBMI() {
     }
 
     if (selectedGender === "") {
-      resultDiv.innerText = "Please select a gender.";
+      resultDiv.innerText = "성별을 선택하세요.";
       return;
     }
 
