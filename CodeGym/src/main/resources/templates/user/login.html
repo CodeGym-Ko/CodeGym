@@ -2,14 +2,94 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
 <th:block layout:fragment="content">
  <head>
- <title>로그인</title>
+ <title>CodeGym 로그인</title>
+ <style>
+	
+	.login {
+		margin: 150px auto 100px auto;
+		padding: 50px;
+		text-align: center;
+		border: 3px solid;
+		width: 500px;
+		border-radius: 8px 8px 0 0;
+	}
+	.loginForm{
+		border: 0px solid;
+	}
+	.login_btn {
+		position:relative;
+		left:40%;
+		transform: translateX(-50%);
+		margin-bottom: 40px;
+		width:80%;
+		height:40px;
+		background: linear-gradient(125deg,#2fb380,#238660,#81ecec);
+		background-position: left;
+		background-size: 200%;
+		color:white;
+		font-weight: bold;
+		border:none;
+		cursor:pointer;
+		transition: 0.4s;
+		display:inline;
+	}
+	#msg {
+		color:red;
+		margin-top: 10px;
+	}
+ </style>
  </head> 
 <!-- 개발 영역 시작 -->
 
 <div class="login">
 	<h1>로그인</h1>
+
+	<form name="loginForm" id="loginForm" class="loginForm" method="post"> 
+
+		<input type="text" name="userid" id="userid" class="userid" maxlength="20" placeholder="아이디">
+		<input type="password" id="password" name="password" class="userpasswd" maxlength="20" onkeydown="press(this.form)" placeholder="비밀번호">
+		
+		<p id="msg">msg id틀림 ...왜안돼~</p> 
+		<br>
+		<input type="checkbox" id="rememberUserid" onclick="checkRememberUserid()">아이디 기억
+		<input type="checkbox" id="rememberPassword" onclick="checkRememberPassword()">패스워드 기억
+		<input type="checkbox" id="rememberMe" onclick="checkRememberMe()">자동 로그인
+		<br><br>
+		<input type="button" id="btn_login" class="login_btn" value="로그인" onclick="loginCheck()"><hr>
+	</form>
+	<div class="bottomText"><a href="/user/findId">아이디 찾기</a>  |  <a href="/user/tempPw">임시비밀번호 발급</a><br><br></div>
+        <div class="bottomText">사용자가 아니면 👉<a href="/user/signup">여기</a>를 눌러 등록을 해주세요.<br><br></div>
 </div>
 
+
+<!-- <div class="id_pw_wrap">
+	<div class="input_row" id="id_line">
+		<div class="icon_cell" id="id_cell">
+			<span class="icon_id">
+				<span class="blind">아이디</span>
+			</span>
+		</div>
+		<input type="text" id="id" name="id" placeholder="아이디" title="아이디" class="input_text" maxlength="41" value="">
+		<span role="button" class="btn_delete" id="id_clear" style="display: none;">
+			<span class="icon_delete">
+				<span class="blind">삭제</span>
+			</span>
+		</span>
+	</div>
+	<div class="input_row" id="pw_line">
+		<div class="icon_cell" id="pw_cell">
+			<span class="icon_pw">
+				<span class="blind">비밀번호</span>
+			</span>
+		</div>
+		<input type="password" id="pw" name="pw" placeholder="비밀번호" title="비밀번호" class="input_text" maxlength="16">
+		<span role="button" class="btn_delete" id="pw_clear" style="display: block;">
+			<span class="icon_delete">
+				<span class="blind">삭제</span>
+			</span>
+		</span>
+	</div>
+</div> -->
 
 <script>
 	function aa() {
