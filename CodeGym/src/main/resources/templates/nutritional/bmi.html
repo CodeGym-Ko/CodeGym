@@ -47,94 +47,41 @@
 
 
 <script>
-    
-function calculateBMI() {
-    var weightInput = document.getElementById("weight");
-    var heightInput = document.getElementById("height");
-    var genderInputs = document.getElementsByName("gender");
-    var ageInput = document.getElementById("age");
-    var resultDiv = document.getElementById("result");
-    var chartContainer = document.querySelector(".chart-container");
 
-    var weight = parseFloat(weightInput.value);
-    var height = parseFloat(heightInput.value) / 100; // Convert height to meters
-    var age = parseInt(ageInput.value);
-
-    if (isNaN(weight) || isNaN(height) || isNaN(age)) {
-      resultDiv.innerText = "값을 모두 입력하세요.";
-      return;
-    }
-
-    var selectedGender = "";
-    for (var i = 0; i < genderInputs.length; i++) {
-      if (genderInputs[i].checked) {
-        selectedGender = genderInputs[i].value;
-        break;
-      }
-    }
-
-    if (selectedGender === "") {
-      resultDiv.innerText = "성별을 선택하세요.";
-      return;
-    }
-
-    var bmi = weight / (height * height);
-    var bmiCategory = getBMICategory(bmi);
-
-    resultDiv.innerText = "나의 신체질량지수(BMI)" + bmi.toFixed(2);
-    
-    // Create the chart
-    chartContainer.innerHTML = '<canvas id="bmiChart"></canvas>';
-    var ctx = document.getElementById("bmiChart").getContext("2d");
-    var chart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['BMI'],
-        datasets: [{
-          label: 'BMI',
-          data: [bmi],
-          backgroundColor: getBMIColor(bmi),
-          borderColor: '#000',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 40
-          }
-        }
-      }
-    });
-  }
-
-  function getBMICategory(bmi) {
-    if (bmi < 18.5) {
-      return 'Underweight';
-    } else if (bmi >= 18.5 && bmi < 25) {
-      return 'Normal weight';
-    } else if (bmi >= 25 && bmi < 30) {
-      return 'Overweight';
-    } else {
-      return 'Obese';
-    }
-  }
-
-  function getBMIColor(bmi) {
-    if (bmi < 18.5) {
-      return 'rgba(255, 99, 132, 0.5)'; // Red
-    } else if (bmi >= 18.5 && bmi < 25) {
-      return 'rgba(75, 192, 192, 0.5)'; // Green
-    } else if (bmi >= 25 && bmi < 30) {
-      return 'rgba(255, 206, 86, 0.5)'; // Yellow
-    } else {
-      return 'rgba(153, 102, 255, 0.5)'; // Purple
-    }
-  }
-    
-    
-</script>
+	function calculateBMI() {
+	    var weightInput = document.getElementById("weight");
+	    var heightInput = document.getElementById("height");
+	    var genderInputs = document.getElementsByName("gender");
+	    var ageInput = document.getElementById("age");
+	    var resultDiv = document.getElementById("result");
+	
+	    var weight = parseFloat(weightInput.value);
+	    var height = parseFloat(heightInput.value) / 100; // Convert height to meters
+	    var age = parseInt(ageInput.value);
+	
+	    if (isNaN(weight) || isNaN(height) || isNaN(age)) {
+	      resultDiv.innerText = "값을 모두 입력하세요.";
+	      return;
+	    }
+	
+	    var selectedGender = "";
+	    for (var i = 0; i < genderInputs.length; i++) {
+	      if (genderInputs[i].checked) {
+	        selectedGender = genderInputs[i].value;
+	        break;
+	      }
+	    }
+	
+	    if (selectedGender === "") {
+	      resultDiv.innerText = "성별을 선택하세요.";
+	      return;
+	    }
+	
+	    var bmi = weight / (height * height);
+	    resultDiv.innerText = "나의 (신체질량지수)BMI " + bmi.toFixed(2);
+	  }
+	
+	</script>
 
 
 <!-- 개발 영역 끝 -->
