@@ -173,8 +173,7 @@ body, ul, li, p, a, label, input, div {
 
 /*// Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  /* #templatemo_main_nav .navbar-nav {max-width: 450px;}  네비게이션 바 설정 부분 */
-  #templatemo_main_nav .navbar-nav {max-width: 650px;}
+  #templatemo_main_nav .navbar-nav {max-width: 450px;}
  }
 
 /* Large devices (desktops, 992px and up)*/
