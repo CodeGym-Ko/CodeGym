@@ -22,7 +22,7 @@
          where title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%' or 
          content like '%'||#{keyword}||'%' )
    		where seq between #{startPoint} and #{endPoint}	
-   		      and userid = 'knd'
+   		      and userid = 'root'
 </select>
 
 <!-- 전체 게시물 갯수 계산 -->
