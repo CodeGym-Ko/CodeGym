@@ -26,7 +26,8 @@
     			<input type="text" id="age" name="age" maxlength="6" style="width:104px;ime-mode:disabled;">세(만)
 	   			&nbsp;&nbsp;
 				<button onclick="calculateBMI()">계산</button>
-    			<div class="result" id="result"></div>
+				
+    			<div class="result" id="result"><br></div>
 			</li> 
 		</ul> 
 		<div class="desc desc2">
@@ -78,7 +79,7 @@
 	    }
 	
 	    var bmi = weight / (height * height);
-	    resultDiv.innerText = "나의 (신체질량지수)BMI " + bmi.toFixed(2);
+	    resultDiv.innerText = "나의 (신체질량지수)BMI  " + bmi.toFixed(2);
 	  }
 	
 	</script>
