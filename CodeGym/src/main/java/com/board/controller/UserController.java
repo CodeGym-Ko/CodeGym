@@ -73,20 +73,21 @@ public class UserController {
 			return "{\"message\":\"ID_NOT_FOUND\"}";
 		
 		//아이디가 존재하면 읽어온 userid로 로그인 정보 가져 오기
-		UserVO member = service.userinfo(loginData.getUserid());
+		UserVO user = service.userinfo(loginData.getUserid());
 		
 		//패스워드 확인
-		if(!pwdEncoder.matches(loginData.getPassword(),member.getPassword())) {
+		if(!pwdEncoder.matches(loginData.getPassword(),user.getPassword())) {
 			return "{\"message\":\"PASSWORD_NOT_FOUND\"}";
 		}else { //패스워드가 존재
 			
 		//세션 생성
 		session.setMaxInactiveInterval(3600*7);
-		session.setAttribute("userid", member.getUserid());
-		session.setAttribute("username", member.getUsername());
-		session.setAttribute("role", member.getRole());
-
-		return "{\"message\":\"good\",\"authkey\":\"" + member.getAuthkey() + "\"}";
+		session.setAttribute("userid", user.getUserid());
+		session.setAttribute("username", user.getUsername());
+		session.setAttribute("role", user.getRole());
+		
+		System.out.println("==== 로그인 성공 == DB에서 가져온 userid : "+ user.getUserid());
+		return "{\"message\":\"good\",\"authkey\":\"" + user.getAuthkey() + "\"}";
 		}
 	}
 	
@@ -161,6 +162,15 @@ public class UserController {
 
 			model.addAttribute("list", list);
 			model.addAttribute("pageListView", page.getPageAddress(pageNum, postNum, listCount, totalCount, addrSearch));
+			
+		}
+		
+		//회원정보 보기
+		@GetMapping("/user/userinfo")
+		public void getUserInfo(Model model, HttpSession session) { 
+			
+			String session_userid = (String)session.getAttribute("userid");
+			model.addAttribute("user", service.userinfo(session_userid));
 			
 		}
 		

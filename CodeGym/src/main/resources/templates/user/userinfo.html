@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+ <head>
+ <title>CodeGym 회원정보</title>
+ <style>
+	
+ </style>
+ </head> 
+<!-- 개발 영역 시작 -->
+<style>
+body {
+	text-align: center;
+}
+.bottom_menu { margin-top: 20px; }
+
+.bottom_menu > a:link, .bottom_menu > a:visited {
+			background-color: #FFA500;
+			color: maroon;
+			padding: 15px 25px;
+			text-align: center;	
+			display: inline-block;
+			text-decoration : none; 
+}
+.bottom_menu > a:hover, .bottom_menu > a:active { 
+	background-color: #1E90FF;
+	text-decoration : none; 
+}
+</style>
+
+<script>
+		const userid = '[[${session.userid}]]';
+		if(userid == '') 
+			document.location.href='/user/login';
+	</script>
+	
+	<div class="main">
+		<h1>회원 정보 보기</h1>
+		<br>
+		<div class="boardView">
+			<div class=imgView style="width:80%;height:auto;margin: auto; padding: 20px; border: none;"><img th:src="@{'/profile/' + ${user.stored_filename}}" style="display:block;width:500px;height:auto;margin:auto"></div>
+			<div class="field">아이디 : [[${user.userid}]]</div>
+			<div class="field">이름 : [[${user.username}]]</div>
+			<div class="field">성별 : [[${user.gender}]]</div>
+			<div class="field">직업 : [[${user.job}]]</div>
+			<div class="field">취미 : [[${user.hobby}]]</div>
+			<div class="field">전화번호 : [[${user.telno}]]</div>
+			<div class="field">이메일 : [[${user.email}]]</div>
+			<div class="content">[[${user.description}]]</div>
+		</div>
+	
+		<br>
+	    <div class="" align="center">
+	        &nbsp;&nbsp;
+	        <a class="btn btn-success" href="/board/list?page=1">처음으로</a> &nbsp;&nbsp;
+	        <a class="btn btn-success" href="/user/userInfoModify">기본정보 변경</a> &nbsp;&nbsp;
+	        <a class="btn btn-success" href="/user/userPasswordModify">패스워드 변경</a> &nbsp;&nbsp;
+	        <a class="btn btn-success" href="javascript:userInfoDelete()">회원탈퇴</a> &nbsp;&nbsp;
+	    </div>
+		<br><br>
+	
+	
+	</div>
+<!-- 개발 영역 끝 -->
+</th:block>
+</html>

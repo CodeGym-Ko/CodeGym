@@ -40,7 +40,7 @@
  </style>
  </head> 
 <!-- 개발 영역 시작 -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <div class="login">
 	<h1>로그인</h1>
 
@@ -147,7 +147,8 @@
 			}).then((response) => response.json())
 			  .then((data) => {
 				 if(data.message == 'good'){				 
-					 document.location.href='/board/list?page=1';
+					 //document.location.href='/board/list?page=1';
+					 document.location.href='/';
 				} else {
 					alert("시스템 장애로 자동 로그인이 실패 했습니다.");		 
 				}		  
@@ -210,7 +211,8 @@
 		  .then((data) => {
 			 if(data.message == 'good'){				 
 				 cookieManage(userid.value,password.value,data.authkey);
-				 document.location.href='/board/list?page=1';
+				 //document.location.href='/board/list?page=1';
+				 document.location.href='/';
 			} else if(data.message === 'ID_NOT_FOUND') {
 				 	msg.innerHTML = '존재하지 않는 아이디입니다.';
 			} else if(data.message === 'PASSWORD_NOT_FOUND') {
@@ -222,6 +224,33 @@
 	    }).catch((error)=> { console.log("error = " + error);} );
 	    
 	}
+	
+	//쿠키 관리 --> 쿠키 생성
+	const cookieManage = (userid,password,authkey) => {
+
+		if(rememberUserid.checked) {
+			document.cookie = 'userid=' + userid + ';path=/; expires=Sun, 31 Dec 2023 23:59:59 GMT';
+		} else document.cookie = 'userid=' + userid + ';path=/; max-age=0';
+		
+		if(rememberPassword.checked) {
+			
+			//Base64(양방향 복호화)로 패스워드 인코딩
+			const key = CryptoJS.enc.Utf8.parse(password);
+		    const base64 = CryptoJS.enc.Base64.stringify(key);
+			password = base64;
+		
+			document.cookie = 'password=' + password + ';path=/; expires=Sun, 31 Dec 2023 23:59:59 GMT';
+		} else document.cookie = 'password=' + password + ';path=/; max-age=0';	
+	} 
+	
+	
+	
+	//엔터키 눌러서 로그인 되도록 하는 기능 제공
+	const press = () =>{
+		if(event.keyCode == 13){loginCheck();}
+		
+	}
+	
 </script>
 
 <!-- 개발 영역 끝 -->
