@@ -3,9 +3,96 @@
 <th:block layout:fragment="content">
   
 <!-- 개발 영역 시작 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div>BMI</div>
+<div class="cs_box">
+	<h3>BMI 계산기</h3>
+	<div class="cal"> 
+		<ul>
+			<li class="style3"> 
+				<input type="radio" id="male" name="gender" value="male"> 
+				<label for="male">남자</label> 
+				<input type="radio" id="female" name="gender" value="female"> 
+				<label for="female">여자</label> 
+			</li> 
+			<li class="style4"> 
+				<label for="height">신장 :</label>
+				<input type="text" id="height" name="height" maxlength="6" style="width:104px;ime-mode:disabled;">cm
+				&nbsp;
+				<label for="weight">체중 (kg):</label>
+	   			<input type="text" id="weight" name="weight" maxlength="6" style="width:104px;ime-mode:disabled;">kg
+	   			&nbsp;
+	   			<label for="age">나이 (세):</label>
+    			<input type="text" id="age" name="age" maxlength="6" style="width:104px;ime-mode:disabled;">세(만)
+	   			&nbsp;&nbsp;
+				<button onclick="calculateBMI()">계산</button>
+				
+    			<div class="result" id="result"><br></div>
+			</li> 
+		</ul> 
+		<div class="desc desc2">
+			<div class="obesity" style="display:none;"> 
+				<h3>나의 신체질량지수(BMI) <strong></strong></h3> 
+				<div class="obesity_box" id="obesity_box"> 
+					<div class="obesity_bar"></div> 
+					<div class="obesity_box_inner" style="left:0;"> 
+						<div class="obesity_layer"></div> 
+					</div> <span style="left:0;"></span> 
+				<ul class="lst_about"> </ul>
+				</div> 
+			</div> <p style="display:block;">남/녀, 연령 구분에 따른 신체질량지수 BMI(Body Mass Index)와 비만도를 측정해 보세요.</p> 
+		</div> 
+	</div> 
+</div>
+<p class="info">간단한 계산을 할 수 있는 웹 계산기 입니다.</p>
+
+
+<script>
+
+	function calculateBMI() {
+	    var weightInput = document.getElementById("weight");
+	    var heightInput = document.getElementById("height");
+	    var genderInputs = document.getElementsByName("gender");
+	    var ageInput = document.getElementById("age");
+	    var resultDiv = document.getElementById("result");
+	
+	    var weight = parseFloat(weightInput.value);
+	    var height = parseFloat(heightInput.value) / 100; // Convert height to meters
+	    var age = parseInt(ageInput.value);
+	
+	    if (isNaN(weight) || isNaN(height) || isNaN(age)) {
+	      resultDiv.innerText = "값을 모두 입력하세요.";
+	      return;
+	    }
+	
+	    var selectedGender = "";
+	    for (var i = 0; i < genderInputs.length; i++) {
+	      if (genderInputs[i].checked) {
+	        selectedGender = genderInputs[i].value;
+	        break;
+	      }
+	    }
+	
+	    if (selectedGender === "") {
+	      resultDiv.innerText = "성별을 선택하세요.";
+	      return;
+	    }
+	
+	    var bmi = weight / (height * height);
+	    resultDiv.innerText = "나의 (신체질량지수)BMI  " + bmi.toFixed(2);
+	  }
+	
+	</script>
+
 
 <!-- 개발 영역 끝 -->
+
+
+
+
+
+
+
+
 </th:block>
 </html>

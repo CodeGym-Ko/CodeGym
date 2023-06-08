@@ -4,7 +4,94 @@
   
 <!-- 개발 영역 시작 -->
 
-<div>다이어트</div>
+<title>다이어트 식단 정보</title>
+  <style>
+    /* 전체 페이지 스타일 */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* 헤더 스타일 */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* 카테고리 스타일 */
+    .categories {
+      margin-bottom: 20px;
+    }
+
+    .categories a {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 5px 10px;
+      background-color: #eee;
+      color: #333;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+
+    .categories a:hover {
+      background-color: #ddd;
+    }
+
+    /* 식단 정보 스타일 */
+    .meal-info {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .meal-info h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .meal-info ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+
+    .meal-info li {
+      margin-bottom: 10px;
+    }
+  </style>
+  
+  <header>
+    <h1>다이어트 식단 정보</h1>
+  </header>
+  
+  <div class="categories">
+    <a href="#vegan">비건</a>
+    <a href="#vegetarian">채식주의자</a>
+  </div>
+  
+  <section id="vegan" class="meal-info">
+    <h2>비건 다이어트 식단 정보</h2>
+    <ul>
+      <li>아침: 스프루트 샐러드와 콩 치킨</li>
+      <li>점심: 베이스로 사용할 수 있는 채소와 곡물</li>
+      <li>저녁: 퀴노아와 채소 볶음</li>
+    </ul>
+  </section>
+  
+  <section id="vegetarian" class="meal-info">
+    <h2>채식주의자 다이어트 식단 정보</h2>
+    <ul>
+      <li>아침: 요거트와 과일 그래놀라</li>
+      <li>점심: 채소 스튜와 토프</li>
+      <li>저녁: 허니소이긴 채소 볶음</li>
+    </ul>
+  </section>
 
 <!-- 개발 영역 끝 -->
 </th:block>

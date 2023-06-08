@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+
+	<!-- 개발 영역 시작 -->
+	<title>공지사항 상세보기</title>
+	
+	<link rel="stylesheet" href="/assets/css/board.css?after">
+	
+	<script>
+		
+		const deleteBoard = () => {
+			if (confirm("정말로 삭제하시겠습니까?")) {
+				const seqno = '[[${view.seqno}]]';
+				document.location.href = '/customerCenter/noticeDelete?seqno=' + seqno;
+			}
+		}
+
+	</script>
+
+
+	<div class="main" style="padding: 5%;">
+		<h1>공지사항</h1>
+		<br>
+		<div class="boardView">
+			<div class="field">이름 : [[${view.writer}]]</div>
+			<div class="field">제목 : [[${view.title}]]</div>
+			<div class="field">날짜 : [[${view.regdate}]]</div>
+			<div class="content"><pre th:text="${view.content}"></pre></div>
+	        <th:block th:if="${fileListView != null}">
+	 			<div class="field" th:each="fileView:${fileListView}">파일명 : <a href="@{'/board/filedownload?fileseqno=' + ${fileView.fileseqno}}">[[${fileView.org_filename}]]</a> ( [[${fileView.filesize}]] Byte )</div>
+			</th:block>
+			<th:block th:if="${fileListView == null}">
+				<div class="field">업로드된 파일이 없습니다.</div>
+			</th:block>	
+			<br><br>
+		</div>
+		<br>
+		<div class="bottom_menu">
+			<th:block th:if="${pre_seqno != 0}">
+				&nbsp;&nbsp;<a th:href="@{'/customerCenter/noticeView?seqno=' + ${pre_seqno} + '&page=' + ${page} + '&keyword=' + ${keyword}}">이전글▼</a>&nbsp;&nbsp;
+			</th:block>
+			<a th:href="@{'/customerCenter/notice?page=' + ${page} + '&keyword=' + ${keyword}}">목록보기</a>&nbsp;&nbsp;
+			<th:block th:if="${next_seqno != 0}">
+				<a th:href="@{'/customerCenter/noticeView?seqno=' + ${next_seqno} + '&page=' + ${page} + '&keyword=' + ${keyword}}">다음글▲</a>&nbsp;&nbsp;
+			</th:block>
+			<a href="/customerCenter/noticeWrite">글 작성</a>&nbsp;&nbsp;
+			<th:block th:if="${session.userid == view.userid}">
+				<a th:href="@{'/customerCenter/noticeModify?seqno=' + ${view.seqno} + '&page=' + ${page} + '&keyword=' + ${keyword}}">글 수정</a>&nbsp;&nbsp;
+				<a href="javascript:deleteBoard()">글 삭제</a>
+			</th:block>
+		</div>	
+	</div>
+
+	<script>
+
+	</script>
+
+	<!-- 개발 영역 끝 -->
+</th:block>
+
+</html>

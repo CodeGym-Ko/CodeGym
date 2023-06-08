@@ -26,6 +26,16 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.list(data);
 	}
 	
+	//공지사항
+	@Override
+	public List<BoardVO> notice(int startPoint, int endPoint, String keyword) {
+		Map<String,Object> data = new HashMap<>();
+		data.put("startPoint", startPoint);
+		data.put("endPoint", endPoint);
+		data.put("keyword", keyword);		
+		return mapper.notice(data);
+	}
+	
 	//게시물 전체 갯수 계산
 	@Override
 	public int getTotalCount(String keyword) {
