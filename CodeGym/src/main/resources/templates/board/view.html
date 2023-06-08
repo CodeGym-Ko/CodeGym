@@ -45,6 +45,12 @@
 	
 	// 좋아요 싫어요 함수 시작
 	const likeView = () => {
+		const userid = '[[${session.userid}]]';
+		if(userid == ''){ 
+			alert("로그인 필요");
+			return;
+		}
+			
 		  if (myLikeCheck === "Y" && myDislikeCheck === "N") {
 		    alert("좋아요를 취소합니다.");
 		    let checkCnt = 1; // likeCnt --
@@ -77,6 +83,13 @@
 
 	
 		const disLikeView = () => {
+			
+			const userid = '[[${session.userid}]]';
+			if(userid == ''){ 
+				alert("로그인 필요");
+				return;
+			}
+			
 		    if (myDislikeCheck === "Y" && myLikeCheck === "N") {
 		        alert("싫어요를 취소합니다.");
 		        const checkCnt = 4;
@@ -360,8 +373,8 @@
 				<th:block th:if="${next_seqno != 0 }">
 					<button onclick="next_seqno()">다음글▲</button>
 				</th:block>
-					<button id="btn_write" onclick="document.location.href='/board/write'">글작성</button>
 				<th:block th:if="${session.userid == view.userid }">
+					<button id="btn_write" onclick="document.location.href='/board/write'">글작성</button>
 					<button id="btn_modify" onclick="modify()">수정</button>
 					<button id="btn_delete" onclick="del()">삭제</button>
 				</th:block>

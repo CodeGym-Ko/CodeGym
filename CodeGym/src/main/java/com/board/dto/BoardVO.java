@@ -16,6 +16,6 @@ public class BoardVO {
     private int hitno;
     private int likecnt;
 	private int dislikecnt;
-	private String boardtype;
+	private String boardType;
 	
 }

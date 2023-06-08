@@ -55,7 +55,7 @@
 			<br>
 			<div class="bottom_menu">
 				<a href="/customerCenter/notice?page=1" class="btn btn-dark">처음으로</a>
-				<th:block th:if="${session.userid == 'root'}">
+				<th:block th:if="${session.role == 'MASTER'}">
 					<a href="/customerCenter/noticeWrite" class="btn btn-dark">글쓰기</a>
 				</th:block>
 			</div>

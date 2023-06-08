@@ -70,6 +70,7 @@ public class BoardController {
 		int seqno = service.getSeqnoWithNextval();
 		System.out.println("seqno=="+seqno);
 		board.setSeqno(seqno);
+		board.setBoardType("free");
 		service.write(board);
 		return "{\"message\":\"good\"}";
 
@@ -370,6 +371,7 @@ public class BoardController {
 
 		int seqno = service.getSeqnoWithNextval();
 		board.setSeqno(seqno);
+		board.setBoardType("notice");
 		service.write(board);
 		return "{\"message\":\"good\"}";
 

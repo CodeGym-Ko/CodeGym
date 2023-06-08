@@ -40,7 +40,7 @@
 
 <!-- 게시물 등록 -->
 <insert id="write" parameterType="com.board.dto.BoardVO">
-	insert into tbl_board (seqno,userid,writer,title,content,regdate, boardType) values (#{seqno},#{userid},#{writer},#{title},#{content},sysdate,'free')
+	insert into tbl_board (seqno,userid,writer,title,content,regdate, boardType) values (#{seqno},#{userid},#{writer},#{title},#{content},sysdate,#{boardType})
 </insert>
 
 <!-- 파일 업로드 정보 등록 -->
@@ -138,6 +138,7 @@
 <update id="likeCheckUpdate" parameterType="HashMap">
 	update tbl_like set mylikecheck = #{mylikecheck}, mydislikecheck = #{mydislikecheck},
 		likedate = #{likedate}, dislikedate = #{dislikedate}
+	where userid = #{userid} and seqno = #{seqno}
 </update>
 
 <!-- 댓글 보기 -->
