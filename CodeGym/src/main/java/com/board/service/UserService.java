@@ -31,4 +31,7 @@ public interface UserService {
 	//주소 검색
 	public List<AddressVO> addrSearch(int startPoint, int postNum, String addrSearch);
 	
+	//사용자 정보 수정
+	public void userInfoUpdate(UserVO user);
+	
 }
