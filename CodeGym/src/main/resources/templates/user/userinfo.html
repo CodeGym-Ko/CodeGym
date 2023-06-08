@@ -32,7 +32,13 @@ body {
 		const userid = '[[${session.userid}]]';
 		if(userid == '') 
 			document.location.href='/user/login';
-	</script>
+		
+		function userInfoDelete() {
+			
+			if(confirm("사용자 탈퇴를 하시면 작성하셨던 모든 게시물도 함께 삭제됩니다. \n정말로 사용자 탈퇴 하시겠습니까?") == true)
+			 	{ alert("사용자 정보가 삭제 되었습니다."); document.location.href='/user/userInfoDelete';  } 	
+		}
+</script>
 	
 	<div class="main">
 		<h1>회원 정보 보기</h1>
@@ -46,13 +52,18 @@ body {
 			<div class="field">취미 : [[${user.hobby}]]</div>
 			<div class="field">전화번호 : [[${user.telno}]]</div>
 			<div class="field">이메일 : [[${user.email}]]</div>
-			<div class="content">[[${user.description}]]</div>
+			
+			<div class="field">주소 : | [[${user.zipcode}]] | [[${user.address}]]</div>
+			<!-- regdate가 없어서 안됨(테이블에도 없음) 필요하면 넣고 아님 말고 -->
+			<div class="field">서비스 가입일: ${#dates.format(user.regdate, 'yyyy-MM-dd')}<p>☝테이블에 컬럼이 없음 필요하면 만들고 아님 말고</p></div>
+			
+			<div class="content"> 설명? 자기소개?</div>
+			<textarea class="input_content" id="description" cols="50" rows="10" name="description" readonly>[[${user.description}]]</textarea>
 		</div>
 	
 		<br>
 	    <div class="" align="center">
 	        &nbsp;&nbsp;
-	        <a class="btn btn-success" href="/">처음으로</a> &nbsp;&nbsp;
 	        <a class="btn btn-success" href="/user/userInfoModify">기본정보 변경</a> &nbsp;&nbsp;
 	        <a class="btn btn-success" href="/user/userPasswordModify">패스워드 변경</a> &nbsp;&nbsp;
 	        <a class="btn btn-success" href="javascript:userInfoDelete()">회원탈퇴</a> &nbsp;&nbsp;

@@ -57,5 +57,14 @@
 		filesize=#{filesize} where userid=#{userid}
 </update>
 
+<!-- 회원 탈퇴 -->
+<delete id="userInfoDelete" parameterType="string">
+	delete from tbl_member where userid=#{userid}
+</delete>
+
+<!-- 패스워드 수정 -->
+<update id="passwordUpdate" parameterType="com.board.dto.UserVO">
+	update tbl_user set password=#{password}, lastpwdate=CURRENT_DATE, pwcheck=1 where userid=#{userid}
+</update>
 	
 </mapper>  

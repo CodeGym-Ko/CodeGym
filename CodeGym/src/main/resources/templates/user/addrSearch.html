@@ -5,10 +5,14 @@
 <title>주소 검색</title>
 
 <script>
-function addrCheck(zipcode, addr1, addr2,addr3){
+
+const addrCheck = (zipcode, addr1, addr2, addr3) => {
 	
-	window.opener.document.getElementById("zipcode").value = zipcode;
-	window.opener.document.getElementById("addr1").value = addr1 + addr2 + addr3;
+	if(window.opener.document.getElementById("zipcode")) 
+		window.opener.document.getElementById("zipcode").value = zipcode;
+	else
+		window.opener.document.getElementById("zip").value = zipcode;
+	window.opener.document.getElementById("addr1").value =  addr1 + addr2 + addr3;
 	window.close();
 	
 }
