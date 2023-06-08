@@ -38,4 +38,9 @@ public interface UserMapper {
 	//사용자 정보 수정
 	public void userInfoUpdate(UserVO user);
 	
+	//회원 탈퇴
+	public void userInfoDelete(String userid);
+	
+	//패스워드 수정
+	public void passwordUpdate(UserVO user);
 }
