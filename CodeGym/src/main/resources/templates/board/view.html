@@ -342,7 +342,7 @@
 	
 </script>
 	
-	<div class="main">
+	<div class="main" style="padding:5%;">
 		<h1>자유게시판 상세내용</h1>
 		<br>
 		<div class="boardView">
@@ -381,7 +381,7 @@
 			</div>
 			
 		</div>
-		<th:block th:if="${session.userid == 'null'}">
+		<th:block th:if="${not #strings. isEmpty(session.userid)}">
 		<div class="replyDiv" style="width:60%;height:300px;margin:auto;text-align:left;">
 			<p id="replyNotice">댓글 작성</p>
 			<form id="replyForm" name="replyForm" method="POST"> 
