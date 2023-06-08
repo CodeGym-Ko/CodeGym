@@ -1,7 +1,10 @@
 package com.board.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.*;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
 @Setter
 public class UserVO {
@@ -23,4 +26,12 @@ public class UserVO {
 	private String stored_filename;
 	private long filesize;
 	
+	@Override
+	public String toString() {
+		return "UserVO [userid=" + userid + ", username=" + username + ", password=" + password + ", gender=" + gender
+				+ ", hobby=" + hobby + ", job=" + job + ", description=" + description + ", zipcode=" + zipcode
+				+ ", address=" + address + ", telno=" + telno + ", email=" + email + ", authkey=" + authkey + ", role="
+				+ role + ", org_filename=" + org_filename + ", stored_filename=" + stored_filename + ", filesize="
+				+ filesize + "]";
+	}
 }

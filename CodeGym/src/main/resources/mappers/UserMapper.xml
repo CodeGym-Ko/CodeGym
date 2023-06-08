@@ -49,5 +49,13 @@
 			or building like '%'||#{addrSearch}||'%'  
 	) where rnum between #{startPoint} and #{endPoint}
 </select>
+
+<!-- 사용자 정보 수정 -->
+<update id="userInfoUpdate" parameterType="com.board.dto.UserVO">
+	update tbl_member set username=#{username},telno=#{telno}, email=#{email}, zipcode=#{zipcode},
+		address=#{address}, org_filename=#{org_filename}, stored_filename=#{stored_filename},
+		filesize=#{filesize} where userid=#{userid}
+</update>
+
 	
 </mapper>  

@@ -174,4 +174,58 @@ public class UserController {
 			
 		}
 		
+		//사용자 정보 수정 보기
+		@GetMapping("/user/userInfoModify")
+		public void getMemberInfoModify(Model model,HttpSession session) {
+			
+			String userid = (String)session.getAttribute("userid");
+			UserVO user = service.userinfo(userid);
+			//UserVO user_date = service.welcomeView(userid);
+			System.out.println(" === Get /user/userInfoModify userid : " + userid);
+			model.addAttribute("user", user);
+			System.out.println("model : " + model);
+			//model.addAttribute("user_date", user_date);
+		}
+		
+		//사용자 정보 수정
+		@PostMapping("/user/userInfoModify")
+		public String postuserInfoModify(UserVO user,
+				@RequestParam("fileUpload") MultipartFile multipartFile ) {
+		System.out.println("===== Post /user/userInfoModify === user : "+user.toString());
+		
+		String path = "c:\\Repository\\profile\\";
+		File targetFile;
+		
+		if(!multipartFile.isEmpty()) {
+
+			//기존 프로파일 이미지 삭제
+			UserVO vo = new UserVO();
+			vo = service.userinfo(user.getUserid());
+			File file = new File(path + vo.getStored_filename());
+			file.delete();
+			
+			String org_filename = multipartFile.getOriginalFilename();	
+			String org_fileExtension = org_filename.substring(org_filename.lastIndexOf("."));	
+			String stored_filename =  UUID.randomUUID().toString().replaceAll("-", "") + org_fileExtension;	
+							
+			try {
+				targetFile = new File(path + stored_filename);
+				
+				multipartFile.transferTo(targetFile);
+				
+				user.setOrg_filename(org_filename);
+				user.setStored_filename(stored_filename);
+				user.setFilesize(multipartFile.getSize());
+																			
+			} catch (Exception e ) { e.printStackTrace(); }
+				
+		}	
+
+			service.userInfoUpdate(user);
+			return "redirect:/user/userinfo";
+			
+		}
+		
+		
+		
 }

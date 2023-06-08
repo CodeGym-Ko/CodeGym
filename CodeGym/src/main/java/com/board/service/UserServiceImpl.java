@@ -65,5 +65,11 @@ public class UserServiceImpl implements UserService {
 		data.put("addrSearch", addrSearch);
 		return mapper.addrSearch(data);
 	}
+	
+	//사용자 정보 수정
+	@Override
+	public void userInfoUpdate(UserVO user) {
+		mapper.userInfoUpdate(user);		
+	}
 
 }
