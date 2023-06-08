@@ -73,8 +73,7 @@
 							<a th:if="${session.userid == null}" class="btn btn-success" style="color: white;" href="/user/login">로그인</a>
 							<div th:if="${session.userid != null}">
 								<a class="btn btn-success" style="color: white;" href="/user/logout">로그아웃</a>
-								<p style="color:gray">[[${session.userid}]] 님 환영</p>
-							</div>
+								<p style="color:gray">[[${session.userid}]] 님 환영💪🏽</p></div>
 							
 						</li>
 						<li th:if="${session.userid == null}" class="nav-item">

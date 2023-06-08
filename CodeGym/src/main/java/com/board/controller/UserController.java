@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.board.dto.AddressVO;
+import com.board.dto.FileVO;
 import com.board.dto.UserVO;
+import com.board.service.BoardService;
 import com.board.service.UserService;
 import com.board.util.Page;
 
@@ -29,6 +31,9 @@ public class UserController {
 	
 	@Autowired
 	UserService service;
+	
+	@Autowired
+	BoardService boardService;
 	
 	@Autowired //비밀번호 암호화 의존성 주입
 	private BCryptPasswordEncoder pwdEncoder; 
@@ -171,6 +176,7 @@ public class UserController {
 			
 			String session_userid = (String)session.getAttribute("userid");
 			model.addAttribute("user", service.userinfo(session_userid));
+			System.out.println("model : " + model);
 			
 		}
 		
@@ -226,6 +232,52 @@ public class UserController {
 			
 		}
 		
+		//회원탈퇴
+		@GetMapping("/user/userInfoDelete")
+		public String getDeleteMember(HttpSession session) throws Exception {
+			String userid = (String)session.getAttribute("userid"); 
+			
+			String path_profile = "c:\\Repository\\profile\\";
+			String path_file = "c:\\Repository\\file\\";
+			
+			//회원 프로필 사진 삭제
+			UserVO user= new UserVO();
+			user = service.userinfo(userid);		
+			File file = new File(path_profile + user.getStored_filename());
+			file.delete();
+			
+			//회원이 업로드한 파일 삭제
+			List<FileVO> fileList = boardService.fileInfoByUserid(userid);
+			for(FileVO vo:fileList) {
+				File f = new File(path_file + vo.getStored_filename());
+				f.delete();
+			}
+			//게시물,댓글,파일업로드 정보, 회원정보 전체 삭제
+			service.userInfoDelete((String)session.getAttribute("userid"));
+			
+			session.invalidate();
+			System.out.println("=== Get 회원 탈퇴 완료 확인");
+			return "redirect:/";
+		}
+		
+		//사용자 패스워드 변경 페이지 보기
+		@GetMapping("/user/userPasswordModify")
+		public void getMemberPasswordModify() { }
+		
+		//사용자 패스워드 변경 
+		@PostMapping("/user/userPasswordModify")
+		public String postMemberPasswordModify(@RequestParam("old_userpassword") String old_password,
+				@RequestParam("new_userpassword") String new_password, HttpSession session) { 
+			
+			String userid = (String)session.getAttribute("userid");
+			
+			UserVO member = service.userinfo(userid);
+			if(pwdEncoder.matches(old_password, member.getPassword())) {
+				member.setPassword(pwdEncoder.encode(new_password));
+				service.passwordUpdate(member);
+			}	
+			return "redirect:/user/logout";
+		}
 		
 		
 }
