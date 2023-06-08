@@ -29,31 +29,6 @@ public class BoardController {
 	@Autowired
 	BoardService service; // 의존성 주입
 
-	@GetMapping("/exercise/freeWeight")
-	public void getExercise() {
-	}
-	
-	@GetMapping("/exercise/chest")
-	public void getChest() {
-
-	}
-	@GetMapping("/exercise/abdominals")
-	public void getAbs() {
-		
-	}
-
-	@GetMapping("/nutritional/bulkup")
-	public void getBulkup() {
-	}
-
-	@GetMapping("/nutritional/diet")
-	public void getDiet() {
-	}
-
-	@GetMapping("/nutritional/bmi")
-	public void getBmi() {
-	}
-
 	// 공지사항
 	@GetMapping("/customerCenter/notice")
 	public void getNotice(@RequestParam("page") int pageNum,
