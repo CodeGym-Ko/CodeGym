@@ -3,7 +3,7 @@
 <th:block layout:fragment="content">
   
 <!-- 개발 영역 시작 -->
-
+<title> 회원가입 </title>
 
 <script>
 	window.onload = () => {
@@ -189,19 +189,60 @@
 
 
 </script>
+
+<style>
+.imageZone {
+	border: 2px solid #2e7d31;
+	width: 60%;
+	height: auto;
+	color: #92AAB0;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+	padding: 50px 50px;
+	font-size: 200%;
+}
+
+.addrSearch {
+	width: 80%;
+	border: none;
+	border-bottom: 2px solid #adadad;
+	margin: 5px;
+	padding: 10px 10px;
+	outline: none;
+	color: #636e72;
+	font-size: 16px;
+	height: 25px;
+	background: none;
+}
+
+.WriteForm {
+  width:50%;
+  height:auto;
+  margin: auto;
+  padding: 20px, 20px;
+  text-align: left;
+  background-color:#FFFFFF;
+  text-align: center;
+  border:4px solid black;
+  border-radius: 30px;
+}
+
+</style>
 <div class="main">
-	<h1>회원 등록</h1><br>
 	
+	<br>
 	<div class="WriteForm">
+	<br><br><h1>회원 등록</h1>
 		<form id="RegistryForm" name="RegistryForm" method="POST">
-		<br><br>
+		<br>
 			<input type="file" name="fileUpload" id="imageFile" style="display:none;" />
-    		<div class="imageZone" id="imageZone">클릭 후 탐색창에서 사진을 <br>선택해 주세요.</div>
-			<input type="text" class="input_field" id="userid" name="userid" placeholder="여기에 아이디를 입력해 주세요." onchange="idCheck()"><br>
+    		<div class="imageZone" id="imageZone">클릭 후 탐색창에서 사진을 <br>선택해 주세요.</div><br>
+			아이디 : <input type="text" class="input_field" id="userid" name="userid" placeholder="여기에 아이디를 입력해 주세요." onchange="idCheck()" style="width:30%;  text-align:left; position:auto; left: 35px;"><br><br>
 			<span id="idCheckNotice"></span>			
-			<input type="text" class="input_field" id="username" name="username" placeholder="여기에 이름을 입력해 주세요.">
-			<input type="password" class="input_field" id="password" name="password" placeholder="여기에 패스워드를 입력해 주세요.">
-			<input type="password" class="input_field" id="password1" name="password1" placeholder="여기에 패스워드를 입력해 주세요.">
+			이름 : <input type="text" class="input_field" id="username" name="username" placeholder="여기에 이름을 입력해 주세요."style="width:30%; text-align:left; position:auto; left: 35px;"><br><br>
+			비밀번호 : <input type="password" class="input_field" id="password" name="password" placeholder="여기에 패스워드를 입력해 주세요."style="width:30%; text-align:left; position:auto; left: 35px;"><br><br>
+			비밀번호 확인 : <input type="password" class="input_field" id="password1" name="password1" placeholder="여기에 패스워드를 입력해 주세요."style="width:30%; text-align:left; position:auto; left: 10px;"><br><br>
 			<div style="width:90%; text-align:left; position:relative; left: 35px; border-bottom:2px solid #adadad; margin:10px; padding: 10px;">
 				성별 : 
 				<label><input type="radio" name="gender" value="남성">남성</label>
@@ -220,24 +261,24 @@
 				</select>
 				<br>
 			</div>
-			<input type="text" id="addrSearch" name="addrSearch" class="addrSearch" placeholder="주소를 검색합니다.">
-	        <input type="button" id="btn_addrSearch" class="btn_addrSearch" value="주소검색" onclick="searchAddr()">
-	        <input type="text" id="zipcode" class="input_field" name="zipcode" placeholder="우편번호가 검색되어 입력됩니다." readonly>
-	        <input type="text" id="addr1" class="input_field" name="addr1" placeholder="주소가 검색되어 입력됩니다." readonly>
-	        <input type="text" id="addr2" class="input_field" name="addr2" placeholder="상세주소를 입력하세요" >
+			<input type="text" id="addrSearch" name="addrSearch" class="addrSearch" placeholder="주소를 검색합니다."><br>
+	        <input type="button" id="btn_addrSearch" class="btn_addrSearch" value="주소검색" onclick="searchAddr()"><br>
+	        <input type="text" id="zipcode" class="input_field" name="zipcode" placeholder="우편번호가 검색되어 입력됩니다." readonly><br>
+	        <input type="text" id="addr1" class="input_field" name="addr1" placeholder="주소가 검색되어 입력됩니다." readonly><br>
+	        <input type="text" id="addr2" class="input_field" name="addr2" placeholder="상세주소를 입력하세요" ><br>
 	        <input type="hidden" id="address" name="address">
-	        <input type="text" id="telno" name="telno" class="input_field" placeholder="전화번호를 입력하세요.">
-	        <input type="text" id="email" name="email" class="input_field" placeholder="이메일주소를 입력하세요.">
+	        <input type="text" id="telno" name="telno" class="input_field" placeholder="전화번호를 입력하세요."><br>
+	        <input type="text" id="email" name="email" class="input_field" placeholder="이메일주소를 입력하세요."><br>
 	        <p style="color:red;">일반 사용자 권한으로 등록됩니다.</p>
 			<br>
-			<textarea class="input_content" id="description" cols="100" rows="30" name="description" placeholder="자기소개를 입력해 주세요.">
-			</textarea><br>
-			<input type="button" id="btnRegister" class="btn_write" value="여기를 클릭하세요!!!">
-			
+			<textarea class="input_content" id="description" cols="100" rows="10" name="description" placeholder="자기소개를 입력해 주세요.">
+			</textarea><br><br>
+			<input type="button" id="btnRegister" class="btn btn-success centered-button" value="회원가입">
+			<br><br>
 		</form>
 	
 	</div>
-
+<br><br>
 </div>
 
 
