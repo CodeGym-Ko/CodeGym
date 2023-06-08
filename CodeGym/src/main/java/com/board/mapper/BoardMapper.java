@@ -16,6 +16,9 @@ public interface BoardMapper {
 	//게시물 목록 보기
 	public List<BoardVO> list(Map<String,Object> data);
 	
+	//공지사항
+	public List<BoardVO> notice(Map<String,Object> data);
+	
 	//게시물 전체 갯수 계산
 	public int getTotalCount(String keyword);
 	

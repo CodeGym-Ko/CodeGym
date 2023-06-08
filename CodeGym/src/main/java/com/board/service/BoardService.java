@@ -13,6 +13,9 @@ public interface BoardService {
 	//게시물 목록 보기
 	public List<BoardVO> list(int startPoint,int postNum, String keyword);
 	
+	//게시물 목록 보기
+	public List<BoardVO> notice(int startPoint,int postNum, String keyword);
+	
 	//게시물 전체 갯수 계산
 	public int getTotalCount(String keyword);
 	
