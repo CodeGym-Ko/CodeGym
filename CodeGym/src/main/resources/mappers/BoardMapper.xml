@@ -7,22 +7,23 @@
 <!-- 게시물 목록 보기 --> 
 <select id="list" parameterType="HashMap" resultType="com.board.dto.BoardVO">
 	select seq, seqno, title, writer, regdate,hitno from 
-		(select row_number() over (order by seqno desc) as seq,seqno, title,
+		(select row_number() over (order by seqno desc) as seq,seqno, title, boardtype,
 		 writer, hitno,to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as regdate from tbl_board 
          where title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%' or 
          content like '%'||#{keyword}||'%' )
    		where seq between #{startPoint} and #{endPoint}	
+   		      and boardtype = 'free'
 </select>
 
 <!-- 게시물 목록 보기 --> 
 <select id="notice" parameterType="HashMap" resultType="com.board.dto.BoardVO">
 	select seq, seqno, title, writer, regdate,hitno from 
-		(select row_number() over (order by seqno desc) as seq,seqno, title, userid,
+		(select row_number() over (order by seqno desc) as seq,seqno, title, boardtype,
 		 writer, hitno,to_char(regdate, 'YYYY-MM-DD HH24:MI:SS') as regdate from tbl_board 
          where title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%' or 
          content like '%'||#{keyword}||'%' )
    		where seq between #{startPoint} and #{endPoint}	
-   		      and userid = 'root'
+   		      and boardtype = 'notice'
 </select>
 
 <!-- 전체 게시물 갯수 계산 -->
@@ -39,7 +40,7 @@
 
 <!-- 게시물 등록 -->
 <insert id="write" parameterType="com.board.dto.BoardVO">
-	insert into tbl_board (seqno,userid,writer,title,content,regdate) values (#{seqno},#{userid},#{writer},#{title},#{content},sysdate)
+	insert into tbl_board (seqno,userid,writer,title,content,regdate, boardType) values (#{seqno},#{userid},#{writer},#{title},#{content},sysdate,'free')
 </insert>
 
 <!-- 파일 업로드 정보 등록 -->

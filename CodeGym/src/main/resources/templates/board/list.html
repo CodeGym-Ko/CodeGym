@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+  
+<!-- 개발 영역 시작 -->
+<title>자유게시판</title>
+<link rel="stylesheet" href="/assets/css/board.css?after"> 
+<script>
+	
+	const search = () => {
+		const keyword = document.querySelector("#keyword");
+		document.location.href = '/board/list?page=1&keyword=' + encodeURIComponent(keyword.value);
+	}
+	
+	const press = () => {
+		if(event.keyCode==13) {
+			search();
+		}	
+	}
+	
+</script>
+
+	<div class="tableDiv" style="padding: 5%;">
+		<h1 style="padding: 0 0 3% 0; font-size: 28px; font-weight: bold; color: #333;">자유게시판</h1>
+		<div>
+			<input type="text" style="width:40%; height: 30px; border: 1px solid skyblue;" id="keyword" name="keyword" placeholder="검색할 제목, 작성자 또는 내용을 입력해주세요" onkeydown="press()">
+			<input class="btn btn-success" type="button" value="검색" onclick="search()">
+		</div>
+		<br>
+		<table class="InfoTable">
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회수</th>
+			</tr>
+			
+			<tbody>
+			<th:block th:if="${list != null }">
+				<tr th:each="list : ${list}" onmouseover="this.style.background='#46D2D2'" onmouseout="this.style.background='white'">
+				    <td th:text="${list.seq}"></td>
+				    <td style="text-align:left;">
+				    	<a id="hypertext" 
+				    	   th:href="@{'/board/view?seqno=' + ${list.seqno } + '&page=' + ${page} + '&keyword=' + ${keyword}}" 
+				    	   onmouseover="this.style.textDecoration='underline'" 
+				    	   onmouseout="this.style.textDecoration='none'">[[${list.title }]]
+				    	</a>
+				    </td>
+				    <td th:text="${list.writer}"></td>
+				    <td th:text="${list.regdate}"></td>
+				    <td th:text="${list.hitno}"></td>
+				</tr>
+			</th:block>
+			<th:block th:if="${list == null }">
+				<tr>
+					<td colspan="5">등록된 게시물이 없습니다.</td>
+				</tr>
+			</th:block>
+			</tbody>
+			
+		</table> 
+		<br>
+		<div>[(${pageList })]</div>
+		<br>
+		<div class="bottom_menu" style="display:inline-block;">
+			<input class="btn btn-success" type="button" value="글쓰기" onclick="document.location.href='/board/write'">
+			<input class="btn btn-success" type="button" value="처음으로" onclick="document.location.href='/board/list?page=1'">
+		</div> 
+	</div>
+
+<!-- 개발 영역 끝 -->
+</th:block>
+</html>
+
+
