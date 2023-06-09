@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+ <head>
+ <title>CodeGym 임시비밀번호</title>
+ <style>
+	
+ </style>
+ </head> 
+<!-- 개발 영역 시작 -->
+
+<div align=center>
+
+	<form name="pwSearchForm" class="pwSearchForm" id="pwSearchForm" method="post">
+    
+    <h1>임시 비밀번호 발급</h1>
+     	<div class="pwSearchFormDivision">
+         	<input type="text" name="userid" id="userid" class="userid" placeholder="아이디를 입력하세요.">
+         	<input type="text" id="username" name="username" class="username" onkeydown="press(this.form)" placeholder="이름을 입력하세요.">
+         	<p th:if="${msg == 'PASSWORD_NOT_FOUND'}" style="text-align: center; color:red;">입력한 조건에 맞는 사용자가 존재하지 않습니다. 다시 입력하세요 !!!</p>
+         	
+         	<br>
+         	<input type="button" id="btn_pwSearch" class="btn_pwSearch" value="임시 패스워드 발급" onclick="pwSearchCheck()"> 
+          <input type="button" class="btn_cancel" value="아이디 찾기" onclick="javascript:location.href='/user/findId'">
+        </div> 
+	</form>
+
+</div>
+
+
+<script>
+	function pwSearchCheck() {
+	  var userid = document.getElementById("userid");
+	  var username = document.getElementById("username");
+
+	  if (userid.value === "") {
+	    alert("아이디를 입력하세요.");
+	    userid.focus();
+	    return false;
+	  }
+
+	  if (username.value === "") {
+	    alert("이름을 입력하세요.");
+	    username.focus();
+	    return false;
+	  }
+
+	  document.getElementById("pwSearchForm").setAttribute("action", "/user/tempPw");
+	  document.getElementById("pwSearchForm").submit();
+	}
+	
+	//엔터로 
+	function press() {
+		
+		if(event.keyCode == 13){ pwSearchCheck(); }
+		
+	}
+
+</script>
+
+<!-- 개발 영역 끝 -->
+</th:block>
+</html>

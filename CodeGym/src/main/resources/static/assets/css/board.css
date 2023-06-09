@@ -47,16 +47,6 @@ a:active { color: red; }
 .navi_top {	width: 1350px; text-align: right; }
 .navi_bottom { text-align: center; }
 
-.boardView {
-  width:60%;
-  height:auto;
-  margin:auto;
-  text-align: left;
-  padding: 20px, 20px;
-  background-color:#FFFFFF;
-  border:4px solid gray;
-  border-radius: 20px;
-}
 
 .main {
   text-align: center;
@@ -133,7 +123,7 @@ a:active { color: red; }
   resize: both;
 }
 
-.btn_modify  {
+.btn_modify, .btn_register {
   position:relative;
   left:20%;
   transform: translateX(-50%);
@@ -141,7 +131,7 @@ a:active { color: red; }
   margin-bottom: 10px;
   width:40%;
   height:40px;
-  background: red;
+  background: #59ab6e;
   background-position: left;
   background-size: 200%;
   color:white;
@@ -151,8 +141,7 @@ a:active { color: red; }
   transition: 0.4s;
   display:inline;
 }
-
-.btn_delete  {
+.btn_cancel  {
   position:relative;
   left:20%;
   transform: translateX(-50%);
@@ -160,7 +149,7 @@ a:active { color: red; }
   margin-bottom: 10px;
   width:40%;
   height:40px;
-  background: pink;
+  background: #74d592;
   background-position: left;
   background-size: 200%;
   color:white;
@@ -179,26 +168,7 @@ a:active { color: red; }
   margin-bottom: 10px;
   width:40%;
   height:40px;
-  background: red;
-  background-position: left;
-  background-size: 200%;
-  color:white;
-  font-weight: bold;
-  border:none;
-  cursor:pointer;
-  transition: 0.4s;
-  display:inline;
-}
-
-.btn_cancel  {
-  position:relative;
-  left:20%;
-  transform: translateX(-50%);
-  margin-top: 20px;
-  margin-bottom: 10px;
-  width:40%;
-  height:40px;
-  background: pink;
+  background: #59ab6e;
   background-position: left;
   background-size: 200%;
   color:white;
