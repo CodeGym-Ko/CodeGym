@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.dto.AddressVO;
 import com.board.dto.FileVO;
@@ -279,5 +281,83 @@ public class UserController {
 			return "redirect:/user/logout";
 		}
 		
+		//사용자 아이디 찾기 보기
+		@GetMapping("/user/findId")
+		public void getSearchID() {
+		} 
 		
+		//사용자 아이디 찾기 
+		@PostMapping("/user/findId")
+		public String postSearchID(UserVO user, RedirectAttributes rttr) { 
+			
+//			String userid = service.searchID(user);
+			//조건에 해당하는 사용자가 아닐 경우 
+//			if(userid == null ) { 
+//				rttr.addFlashAttribute("msg", "ID_NOT_FOUND");
+//				return "redirect:/user/findId"; 
+//			}
+//			
+//			return "redirect:/user/IDView?userid=" + userid;
+			return null;
+		} 
+		
+		//찾은 아이디 보기
+		@GetMapping("/user/IDView")
+		public void postViewID(@RequestParam("userid") String userid, Model model) {
+			
+			model.addAttribute("userid", userid);
+			
+		}
+		
+		//사용자 패스워드 임시 발급 보기
+		@GetMapping("/user/tempPw")
+			public void getSearchPassword() { } 
+			
+		//사용자 패스워드 임시 발급
+		@PostMapping("/user/tempPw")
+			public String postSearchPassword(UserVO user, RedirectAttributes rttr) { 
+				
+//				if(service.searchPassword(user)==0) {
+//					
+//					rttr.addFlashAttribute("msg", "PASSWORD_NOT_FOUND");
+//					return "redirect:/user/tempPw"; 
+//					
+//				}
+				
+				//숫자 + 영문대소문자 10자리 임시패스워드 생성
+				StringBuffer tempPW = new StringBuffer();
+				Random rnd = new Random();
+				for (int i = 0; i < 10; i++) {
+				    int rIndex = rnd.nextInt(3);
+				    switch (rIndex) {
+				    case 0:
+				        // a-z : 아스키코드 97~122
+				    	tempPW.append((char) ((int) (rnd.nextInt(26)) + 97));
+				        break;
+				    case 1:
+				        // A-Z : 아스키코드 65~122
+				    	tempPW.append((char) ((int) (rnd.nextInt(26)) + 65));
+				        break;
+				    case 2:
+				        // 0-9
+				    	tempPW.append((rnd.nextInt(10)));
+				        break;
+				    }
+				}
+				
+				user.setPassword(pwdEncoder.encode(tempPW));
+				service.passwordUpdate(user);
+				System.out.println("==== Post /user/tempPw/   tempPW : " + tempPW);
+				
+				return "redirect:/user/tempPWView?password=" + tempPW;
+				
+			} 
+			
+			//발급한 임시패스워드 보기
+			@GetMapping("/user/tempPWView")
+			public void getTempPWView(Model model, @RequestParam("password") String password) {
+				
+				model.addAttribute("password", password);
+				
+			}
 }

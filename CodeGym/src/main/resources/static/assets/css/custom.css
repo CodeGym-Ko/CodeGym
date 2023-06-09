@@ -1,3 +1,16 @@
-/*
-Custom Css
-*/
+.boxradius {
+		margin: 150px auto 100px auto;
+		padding: 50px;
+		text-align: center;
+		border: 3px solid;
+		width: 75%;
+		border-radius: 8px 8px 0 0;
+	}
+.profileImg {
+	width: 100px;
+	height: 100px;
+}
+
+h1 {
+	margin: 20px 0;
+}
