@@ -64,7 +64,7 @@
 		<div>[(${pageList })]</div>
 		<br>
 		<div class="bottom_menu" style="display:inline-block;">
-			<th:block th:if="${session.userid == 'null'}">
+			<th:block th:if="${not #strings. isEmpty(session.userid)}">
 				<input class="btn btn-success" type="button" value="글쓰기" onclick="document.location.href='/board/write'">
 			</th:block>
 			<input class="btn btn-success" type="button" value="처음으로" onclick="document.location.href='/board/list?page=1'">

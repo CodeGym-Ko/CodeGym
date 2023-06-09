@@ -192,21 +192,22 @@
 		for(const i in jsonInfo){
 			
 			let elm = document.createElement('div'); 
-			elm.setAttribute("id", "s" + data[i].replyseqno); 
-			elm.setAttribute("style", "font-size: 0.8em"); 
+			elm.setAttribute("id", "s" + data[i].replyseqno);
+			elm.setAttribute("class", "card border-dark mb-3"); 
+			elm.setAttribute("style", "font-size: 0.8em;margin:2%;text-align: left;"); 
 			
 			let result = "";
 
-			result += "작성자 : " + jsonInfo[i].replywriter;
+			result += "<div class='card-header'>작성자 : " + jsonInfo[i].replywriter;
 							
 			if(jsonInfo[i].userid == session_userid) {
 				result += "[<a href=" + "'javascript:replyModify(" + jsonInfo[i].replyseqno + ")' style='cursor:pointer;'>수정</a> | " ;
 				result += "<a href=" + "'javascript:replyDelete(" + jsonInfo[i].replyseqno + ")' style='cursor:pointer;'>삭제</a>]" ;
 			}
 			
-			result += "&nbsp;&nbsp;" + jsonInfo[i].replyregdate
-			result += "<div style='width:90%; height: auto; border-top: 1px solid gray; overflow: auto;'>";
-			result += "<pre id='c" + jsonInfo[i].replyseqno + "'>" + jsonInfo[i].replycontent + "</pre></div>";
+			result += "&nbsp;&nbsp;" + jsonInfo[i].replyregdate + "</div>"
+			result += "<div class='card-body'>";
+			result += "<pre class='card-title' id='c" + jsonInfo[i].replyseqno + "'>" + jsonInfo[i].replycontent + "</pre></div>";
 			result += "<br>";
 			
 			elm.innerHTML = result;
@@ -342,59 +343,66 @@
 	
 </script>
 	
-	<div class="main" style="padding:5%;">
-		<h1>자유게시판 상세내용</h1>
-		<br>
-		<div class="boardView">
-			<div class="field">이름 : [[${view.writer}]]</div>
-			<div class="field">제목 : [[${view.title}]]</div>
-			<div class="field">날짜 : [[${view.regdate}]]</div>
-			<div class="content"><pre>[[${view.content}]]</pre></div>
-			<div class="likeForm" style="width:40%; height:auto; margin:auto;">
-	         	<span id='like'></span>&nbsp;<a href='javascript:likeView()' id="likeClick" class="likeClick">좋아요</a>
-	        	<a href="javascript:disLikeView()" id="disLikeClick" class="dislikeClick">싫어요</a>&nbsp;<span id="dislike"></span><br>
-	  			<span id='myChoice' style='color:red'></span>
-        	</div>
+	<div class="main" style="padding:5%;text-align:center;">
+	<div class="card mb-3">
+		<h3 class="card-header">자유게시판 상세내용</h3>
+		<ul class="list-group list-group-flush" style="text-align:left;">
+    		<li class="list-group-item">이름 : [[${view.writer}]]</li>
+    		<li class="list-group-item">제목 : [[${view.title}]]</li>
+    		<li class="list-group-item">날짜 : [[${view.regdate}]]</li>
+    		<li class="list-group-item">[[${view.content}]]</li>
+  		</ul>
+		<div class="likeForm" style="padding:2%;width:50%; margin: auto; display: block;">
+         	<span id='like'></span>&nbsp;<a href='javascript:likeView()' id="likeClick" class="likeClick">좋아요</a>
+        	<a href="javascript:disLikeView()" id="disLikeClick" class="dislikeClick">싫어요</a>&nbsp;<span id="dislike"></span><br>
+  			<span id='myChoice' style='color:red'></span>
+       	</div>
         	
 	        <th:block th:if="${fileListView != 'null'}">
 		       	<div th:each="fileView : ${fileListView}">
-					<div class="field">파일명 : <a href="#" th:attr="onclick='fileDownload(\'' + ${fileView.fileseqno} + '\')'">[[${fileView.org_filename}]]</a> ( [[${fileView.filesize}]] Byte )</div>
+					<div class="form-control is-valid" style="width:50%; margin: auto; display: block;">파일명 : <a href="#" th:attr="onclick='fileDownload(\'' + ${fileView.fileseqno} + '\')'">[[${fileView.org_filename}]]</a> ( [[${fileView.filesize}]] Byte )</div>
 				</div>
 			</th:block>
 			<th:block th:if="${fileListView == 'null'}">
-				<div class="field">업로드된 파일이 없습니다.</div>
+				<div class="field" style="margin:1%;">업로드된 파일이 없습니다.</div>
 			</th:block>	
 			
-			<div style="text-align:center;">
+			<div style="text-align:center; padding:2%;" >
 				<th:block th:if="${pre_seqno != 0}">
-					<button onclick="pre_seqno()">이전글▼</button>
+					<button class="btn btn-outline-info" onclick="pre_seqno()">이전글▼</button>
 				</th:block>
-					<button id="btn_list" onclick="goList()">글목록</button>
+					<button class="btn btn-outline-info" id="btn_list" onclick="goList()">글목록</button>
 				<th:block th:if="${next_seqno != 0 }">
-					<button onclick="next_seqno()">다음글▲</button>
+					<button class="btn btn-outline-info" onclick="next_seqno()">다음글▲</button>
 				</th:block>
 				<th:block th:if="${session.userid == view.userid }">
-					<button id="btn_write" onclick="document.location.href='/board/write'">글작성</button>
-					<button id="btn_modify" onclick="modify()">수정</button>
-					<button id="btn_delete" onclick="del()">삭제</button>
+					<button class="btn btn-outline-success" id="btn_write" onclick="document.location.href='/board/write'">글작성</button>
+					<button class="btn btn-outline-success" id="btn_modify" onclick="modify()">수정</button>
+					<button class="btn btn-outline-secondary" id="btn_delete" onclick="del()">삭제</button>
 				</th:block>
 			</div>
-			
+		
 		</div>
 		<th:block th:if="${not #strings. isEmpty(session.userid)}">
-		<div class="replyDiv" style="width:60%;height:300px;margin:auto;text-align:left;">
-			<p id="replyNotice">댓글 작성</p>
-			<form id="replyForm" name="replyForm" method="POST"> 
-				작성자 : <input type="text" id="replywriter" name="replywriter" th:value="${session.username}" readonly /><br><br>
-		    	<textarea id='replycontent' name='replycontent' cols='80' rows='5' maxlength='150' placeholder='글자수:150자 이내'></textarea><br>
-		     	<input type="hidden" id="seqno" name="seqno" th:value="${view.seqno}">
-	    		<input type="hidden" id="userid" name="userid" th:value="${session.userid}">
-			</form>
-			<input type="button" id="btn_reply" value="댓글등록" onclick="replyRegister()">
-			<input type="button" id="btn_cancel" value="취소" onclick="replyCancel()">
+		<div class="replyDiv" style="padding:1%; width:50%; margin: auto; display: block;text-align:left;">
+			<div class="card border-success mb-3">
+				<div class="card-header">댓글 작성하기</div>
+					<div class="card-body">
+						<form id="replyForm" name="replyForm" method="POST"> 
+							<input type="text" class="form-control" id="replywriter" name="replywriter" th:value="${session.username}" readonly /><br>
+					    	<textarea class="form-control" id='replycontent' name='replycontent' maxlength='150' placeholder='글자수: 150자 이내'></textarea><br>
+					     	<input type="hidden" id="seqno" name="seqno" th:value="${view.seqno}">
+				    		<input type="hidden" id="userid" name="userid" th:value="${session.userid}">
+						</form>
+					</div>
+				<div style="margin: auto; display:inline-block; padding:2%;">
+	 				<input type="button" class="btn btn-success" id="btn_reply" value="등록" onclick="replyRegister()">
+					<input type="button" class="btn btn-success" id="btn_cancel" value="취소" onclick="replyCancel()">
+				</div>
+			</div>
 		</div>
 		</th:block>
-		<div id="replyList" style="width:100%; height:auto; overflow:auto;">
+		<div id="replyList" style="width:50%; margin: auto; display: block;">
 		</div>		
 		
 	</div>
