@@ -44,6 +44,11 @@ public class UserController {
 	@GetMapping("/user/login")
 	public void getLogin() {}
 	
+//	@PostMapping("/user/login")
+//	public void postLogIn() {
+//		System.out.println("==== Post /user/login ==");
+//		
+//	}
 
 	@ResponseBody
 	@PostMapping("/user/login")
@@ -102,7 +107,7 @@ public class UserController {
 	@GetMapping("/user/logout")
 	public String getLogout(HttpSession session) throws Exception {
 		
-		session.invalidate();
+//		session.invalidate();
 		return "redirect:/";
 	}
 	

@@ -153,7 +153,6 @@
 			}).then((response) => response.json())
 			  .then((data) => {
 				 if(data.message == 'good'){				 
-					 //document.location.href='/board/list?page=1';
 					 document.location.href='/';
 				} else {
 					alert("시스템 장애로 자동 로그인이 실패 했습니다.");		 
@@ -187,6 +186,12 @@
 	}	
 	
 	//로그인 처리
+	const login = () => {
+		document.loginForm.action = '/user/login';
+		document.loginForm.submit();
+	}
+	
+	//로그인 처리
 	const loginCheck = async () => {
 		
 		let userid = document.querySelector('#userid');
@@ -217,8 +222,8 @@
 		  .then((data) => {
 			 if(data.message == 'good'){				 
 				 cookieManage(userid.value,password.value,data.authkey);
-				 //document.location.href='/board/list?page=1';
 				 document.location.href='/';
+				 //login();
 			} else if(data.message === 'ID_NOT_FOUND') {
 				 	msg.innerHTML = '존재하지 않는 아이디입니다.';
 			} else if(data.message === 'PASSWORD_NOT_FOUND') {

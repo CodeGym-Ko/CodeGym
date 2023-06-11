@@ -295,7 +295,7 @@ public class BoardController {
 		data.put("seqno", seqno);
 		service.deleteFileList(data);
 		service.delete(seqno);
-		return "redirect:/board/list?page=1";
+		return "redirect:/";
 
 	}
 
