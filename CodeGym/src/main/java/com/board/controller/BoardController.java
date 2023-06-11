@@ -62,10 +62,8 @@ public class BoardController {
 	@PostMapping("/board/fileCheck")
 	public String postFileCheck(@RequestBody int seqno) throws Exception {
 		if(service.fileListView(seqno).size() == 0) {
-			System.out.println("1번");
 			return "{\"status\":\"bad\"}";
 		} else {
-			System.out.println("2번");
 			return "{\"status\":\"good\"}";
 		}
 	}
