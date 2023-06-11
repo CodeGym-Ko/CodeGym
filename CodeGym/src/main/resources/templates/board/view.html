@@ -3,7 +3,7 @@
 <th:block layout:fragment="content">
   
 <!-- 개발 영역 시작 -->
-<title>자유게시판 상세보기</title>
+<title>자유게시판</title>
 
 <script>
 	var likeCnt; 
@@ -193,7 +193,7 @@
 			
 			let elm = document.createElement('div'); 
 			elm.setAttribute("id", "s" + data[i].replyseqno);
-			elm.setAttribute("class", "card border-dark mb-3"); 
+			elm.setAttribute("class", "card mb-3"); 
 			elm.setAttribute("style", "font-size: 0.8em;margin:2%;text-align: left;"); 
 			
 			let result = "";
@@ -344,8 +344,8 @@
 </script>
 	
 	<div class="main" style="padding:5%;text-align:center;">
-	<div class="card mb-3">
-		<h3 class="card-header">자유게시판 상세내용</h3>
+	<div class="card border-dark mb-3" style="width:48%; margin: auto; display: block;">
+		<h3 class="card-header">자유게시판</h3>
 		<ul class="list-group list-group-flush" style="text-align:left;">
     		<li class="list-group-item">이름 : [[${view.writer}]]</li>
     		<li class="list-group-item">제목 : [[${view.title}]]</li>
@@ -353,8 +353,12 @@
     		<li class="list-group-item">[[${view.content}]]</li>
   		</ul>
 		<div class="likeForm" style="padding:2%;width:50%; margin: auto; display: block;">
-         	<span id='like'></span>&nbsp;<a href='javascript:likeView()' id="likeClick" class="likeClick">좋아요</a>
-        	<a href="javascript:disLikeView()" id="disLikeClick" class="dislikeClick">싫어요</a>&nbsp;<span id="dislike"></span><br>
+         	<span id='like' style="font-weight: bolder; color: red;"></span>&nbsp;<a href='javascript:likeView()' id="likeClick" class="likeClick" style="display:none;">좋아요</a>
+         	<img src="/assets/img/good.png" onclick="likeView()" style="cursor:pointer;">
+        	
+        	<a href="javascript:disLikeView()" id="disLikeClick" class="dislikeClick" style="display:none;">싫어요</a>
+        	<img src="/assets/img/bad.png" onclick="disLikeView()" style="cursor:pointer;">
+        	<span id="dislike" style="font-weight: bolder; color: green;"></span><br>
   			<span id='myChoice' style='color:red'></span>
        	</div>
         	
@@ -363,26 +367,29 @@
 					<div class="form-control is-valid" style="width:50%; margin: auto; display: block;">파일명 : <a href="#" th:attr="onclick='fileDownload(\'' + ${fileView.fileseqno} + '\')'">[[${fileView.org_filename}]]</a> ( [[${fileView.filesize}]] Byte )</div>
 				</div>
 			</th:block>
-			<th:block th:if="${fileListView == 'null'}">
+			<th:block th:if="${#lists.isEmpty(fileListView)}">
 				<div class="field" style="margin:1%;">업로드된 파일이 없습니다.</div>
 			</th:block>	
 			
 			<div style="text-align:center; padding:2%;" >
 				<th:block th:if="${pre_seqno != 0}">
-					<button class="btn btn-outline-info" onclick="pre_seqno()">이전글▼</button>
+					<button class="btn btn-outline-dark" onclick="pre_seqno()">이전글▼</button>
 				</th:block>
 					<button class="btn btn-outline-info" id="btn_list" onclick="goList()">글목록</button>
 				<th:block th:if="${next_seqno != 0 }">
-					<button class="btn btn-outline-info" onclick="next_seqno()">다음글▲</button>
+					<button class="btn btn-outline-dark" onclick="next_seqno()">다음글▲</button>
 				</th:block>
 				<th:block th:if="${session.userid == view.userid }">
-					<button class="btn btn-outline-success" id="btn_write" onclick="document.location.href='/board/write'">글작성</button>
-					<button class="btn btn-outline-success" id="btn_modify" onclick="modify()">수정</button>
-					<button class="btn btn-outline-secondary" id="btn_delete" onclick="del()">삭제</button>
+					<button class="btn btn-outline-info" id="btn_write" onclick="document.location.href='/board/write'">글작성</button>
+					<button class="btn btn-outline-info" id="btn_modify" onclick="modify()">수정</button>
+					<button class="btn btn-outline-info" id="btn_delete" onclick="del()">삭제</button>
 				</th:block>
 			</div>
-		
 		</div>
+		
+		<div id="replyList" style="width:50%; margin: auto; display: block;">
+		</div>	
+		
 		<th:block th:if="${not #strings. isEmpty(session.userid)}">
 		<div class="replyDiv" style="padding:1%; width:50%; margin: auto; display: block;text-align:left;">
 			<div class="card border-success mb-3">
@@ -402,9 +409,6 @@
 			</div>
 		</div>
 		</th:block>
-		<div id="replyList" style="width:50%; margin: auto; display: block;">
-		</div>		
-		
 	</div>
 
 <!-- 개발 영역 끝 -->

@@ -5,7 +5,45 @@
 <!-- 개발 영역 시작 -->
 <title>자유게시판</title>
 <link rel="stylesheet" href="/assets/css/board.css?after"> 
-<script>
+<script th:inline="javascript">
+	
+	// 댓글 개수 처리 부분
+	window.onload = async() => {
+		
+		var list = /*[[${list}]]*/ [];
+		
+		for(let i = 0; i < list.length; i++) {
+			
+			const data = {seqno : list[i].seqno};
+		
+			await fetch('/board/reply?option=L', {
+				method: 'POST',
+				headers: {"content-type":"application/json"},
+				body: JSON.stringify(data)		
+			}).then((response) => response.json())
+			  .then((data) => document.querySelector("#replyCnt" + list[i].seqno).innerHTML = data.length)
+			  .catch((error) => {
+				  console.log("error = " + error);
+				  alert("시스템 장애로 댓글 등록이 실패했습니다.");
+			});
+			
+			await fetch('/board/fileCheck', {
+			  method: 'POST',
+			  headers: { "Content-Type": "application/json" },
+			  body: list[i].seqno
+			})
+			  .then(response => response.json())
+			  .then(data => {
+			    if (data.status === 'good') {
+			      document.querySelector("#file" + list[i].seqno).src = "/assets/img/file.png";
+			    } 
+			  });
+		
+			
+		}
+
+	}
+	
 	
 	const search = () => {
 		const keyword = document.querySelector("#keyword");
@@ -45,6 +83,8 @@
 				    	   th:href="@{'/board/view?seqno=' + ${list.seqno } + '&page=' + ${page} + '&keyword=' + ${keyword}}" 
 				    	   onmouseover="this.style.textDecoration='underline'" 
 				    	   onmouseout="this.style.textDecoration='none'">[[${list.title }]]
+				    	   <img th:id="'file' + ${list.seqno}" src="">
+				    	   [<span th:id="'replyCnt' + ${list.seqno}"></span>]
 				    	</a>
 				    </td>
 				    <td th:text="${list.writer}"></td>

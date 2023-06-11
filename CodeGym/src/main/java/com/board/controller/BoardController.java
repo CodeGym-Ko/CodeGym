@@ -56,6 +56,19 @@ public class BoardController {
 			return "/board/list";
 
 	}
+	
+	// 파일 여부 체크
+	@ResponseBody
+	@PostMapping("/board/fileCheck")
+	public String postFileCheck(@RequestBody int seqno) throws Exception {
+		if(service.fileListView(seqno).size() == 0) {
+			System.out.println("1번");
+			return "{\"status\":\"bad\"}";
+		} else {
+			System.out.println("2번");
+			return "{\"status\":\"good\"}";
+		}
+	}
 
 	// 게시물 작성 화면보기
 	@GetMapping("/board/write")
