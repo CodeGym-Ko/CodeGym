@@ -12,12 +12,6 @@ public class UserVO {
 	private String userid;
 	private String username;
 	private String password;
-	private String gender;
-	private String hobby;
-	private String job;
-	private String description;
-	private String zipcode;
-	private String address;
 	private String telno;
 	private String email;
 	private String authkey;
@@ -26,12 +20,13 @@ public class UserVO {
 	private String stored_filename;
 	private long filesize;
 	
+	private String fromsocial;
+	
 	@Override
 	public String toString() {
-		return "UserVO [userid=" + userid + ", username=" + username + ", password=" + password + ", gender=" + gender
-				+ ", hobby=" + hobby + ", job=" + job + ", description=" + description + ", zipcode=" + zipcode
-				+ ", address=" + address + ", telno=" + telno + ", email=" + email + ", authkey=" + authkey + ", role="
-				+ role + ", org_filename=" + org_filename + ", stored_filename=" + stored_filename + ", filesize="
-				+ filesize + "]";
+		return "UserVO [userid=" + userid + ", username=" + username + ", password=" + password 
+				+", telno=" + telno + ", email=" + email + ", authkey=" + authkey 
+				+ ", role=" + role + ", org_filename=" + org_filename + ", stored_filename="
+				+ stored_filename + ", filesize=" + filesize + "]";
 	}
 }

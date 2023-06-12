@@ -42,6 +42,12 @@
  		text-decoration-line: none;
  		color : black;
 	}
+	.authBox {
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-evenly;
+	    margin: 10px 0 20px 0;
+	}
  </style>
  </head> 
 <!-- 개발 영역 시작 -->
@@ -60,42 +66,28 @@
 		<input type="checkbox" id="rememberPassword" onclick="checkRememberPassword()">패스워드 기억
 		<input type="checkbox" id="rememberMe" onclick="checkRememberMe()">자동 로그인
 		<br><br>
-		<a href="/oauth2/authorization/google">구글 계정으로 로그인</a>
+		
+		<div>다른 계정으로 로그인 하기</div>
+		<div class="authBox">		
+			<a href="/oauth2/authorization/google">
+				<img src="https://d1nuzc1w51n1es.cloudfront.net/d99d8628713bb69bd142.png" style="width:50px;">
+				<div class="">Google</div>
+			</a>
+			<a href="#">
+				<img src="https://d1nuzc1w51n1es.cloudfront.net/7edcff9c01ccc20d1ef6.png" style="width:50px;">
+				<div class="">Kakao</div>
+			</a>
+			<a href="#">
+				<img src="https://phinf.pstatic.net/contact/78/2015/7/15/naveridlogin_1436952514384.png" style="width:50px;">
+				<div class="">Naver</div>
+			</a>
+		</div>
 		<input type="button" id="btn_login" class="login_btn" value="로그인" onclick="loginCheck()"><hr>
 	</form>
+	
 	<div class="bottomText"><a href="/user/findId">아이디 찾기</a>  |  <a href="/user/tempPw">임시비밀번호 발급</a><br><br></div>
         <div class="bottomText">사용자가 아니면 👉<a href="/user/signup">여기</a>를 눌러 등록을 해주세요.<br><br></div>
 </div>
-
-
-<!-- <div class="id_pw_wrap">
-	<div class="input_row" id="id_line">
-		<div class="icon_cell" id="id_cell">
-			<span class="icon_id">
-				<span class="blind">아이디</span>
-			</span>
-		</div>
-		<input type="text" id="id" name="id" placeholder="아이디" title="아이디" class="input_text" maxlength="41" value="">
-		<span role="button" class="btn_delete" id="id_clear" style="display: none;">
-			<span class="icon_delete">
-				<span class="blind">삭제</span>
-			</span>
-		</span>
-	</div>
-	<div class="input_row" id="pw_line">
-		<div class="icon_cell" id="pw_cell">
-			<span class="icon_pw">
-				<span class="blind">비밀번호</span>
-			</span>
-		</div>
-		<input type="password" id="pw" name="pw" placeholder="비밀번호" title="비밀번호" class="input_text" maxlength="16">
-		<span role="button" class="btn_delete" id="pw_clear" style="display: block;">
-			<span class="icon_delete">
-				<span class="blind">삭제</span>
-			</span>
-		</span>
-	</div>
-</div> -->
 
 <script>
 	window.onload = async () => {
@@ -187,7 +179,7 @@
 	
 	//로그인 처리
 	const login = () => {
-		document.loginForm.action = '/user/login';
+		document.loginForm.action = '/';
 		document.loginForm.submit();
 	}
 	
@@ -215,15 +207,15 @@
 		formData.append("userid", userid.value);
 		formData.append("password", password.value);
 	
-		await fetch('/user/login?autologin=NEW',{
+		await fetch('/user/loginCheck?autologin=NEW',{
 			method : 'POST',
 			body : formData
 		}).then((response) => response.json())
 		  .then((data) => {
 			 if(data.message == 'good'){				 
 				 cookieManage(userid.value,password.value,data.authkey);
-				 document.location.href='/';
-				 //login();
+				 //document.location.href='/';
+				 login();
 			} else if(data.message === 'ID_NOT_FOUND') {
 				 	msg.innerHTML = '존재하지 않는 아이디입니다.';
 			} else if(data.message === 'PASSWORD_NOT_FOUND') {
