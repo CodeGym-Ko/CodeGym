@@ -1,25 +1,16 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,32 +19,28 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
+
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>둔근(Glutes) 프리웨이트</b>
     <div class="exercise-images-grid">
       
@@ -65,9 +52,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>대략 무릎 높이 또는 몇 인치 낮은 상자나 벤치를 찾으십시오.</p></li>
-        <li><span>02</span><p>발가락이나 발등을 상자 위에 놓을 수 있습니다. 앞발을 앞으로 향하게 하거나 약간 바깥쪽으로 돌리고 무릎과 엉덩이를 동시에 꺾습니다.</p></li>
-        <li><span>03</span><p>앞발이 더 앞으로 나갈수록 엉덩이의 가동 범위가 더 길어집니다.</p></li>
+        <p>무릎 높이 정도의 상자를 준비합니다.</p>
+        <p>발가락이나 발등을 상자 위에 걸칩니다.</p>
+        <p>앞발을 앞으로 향하게 하거나 약간 바깥쪽으로 돌리고 무릎과 엉덩이를 동시에 꺾습니다.</p>
+        <p>원위치 하며, 동작을 반복합니다.</p>
     </ol>
 
 
@@ -81,10 +69,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>뒤에 벤치가 있는 바닥에 앉으세요. 바벨을 엉덩이 바로 위의 다리 위에 놓으십시오.</p></li>
-        <li><span>02</span><p>어깨가 벤치에 기대도록 벤치에 등을 기대고 벤치를 지지대로 사용하여 팔을 양쪽으로 쭉 뻗습니다.</p></li>
-        <li><span>03</span><p>발을 통해 운전하고 엉덩이를 위로 확장하여 체중을 올리십시오. 어깨와 발로 체중을 지탱하십시오.</p></li>
-        <li><span>04</span><p>가능한 한 천천히 확장한 다음 천천히 시작 위치로 돌아갑니다.</p></li>
+        <p>뒤에 벤치가 있는 바닥에 앉습니다. 바벨을 엉덩이 바로 위의 다리 위에 놓으십시오.</p>
+        <p>어깨가 벤치에 기대도록 벤치에 등을 기대고 벤치를 지지대로 사용하여 팔을 양쪽으로 쭉 뻗습니다.</p>
+        <p>발을 통해 엉덩이와 상체를 들어올립니다. 어깨와 발로 체중을 지탱합니다.</p>
+        <p>가능한 한 천천히 동작을 수행하고, 원위치합니다.</p>
     </ol>
 
     <div class="exercise-images-grid">
@@ -97,10 +85,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발 중앙을 바 아래에 두고 어깨 너비만큼 벌린 손으로 바를 잡습니다.</p></li>
-        <li><span>02</span><p>무릎을 구부린 다음 등을 곧게 펴서 바를 들어 올리십시오. 허리를 곧게 펴는 것이 중요합니다.</p></li>
-        <li><span>03</span><p>전체 높이로 서서 유지하십시오.</p></li>
-        <li><span>04</span><p>무릎을 구부리고 등을 똑바로 유지하여 바를 바닥으로 내립니다.</p></li>
+        <p>발 중앙을 바 아래에 두고 어깨 너비만큼 벌린 손으로 바를 잡습니다.</p>
+        <p>무릎을 구부린 다음 등을 곧게 펴서 바를 들어 올리십시오. 허리를 곧게 펴는 것이 중요합니다.</p>
+        <p>일자로 서서 자세를 유지합니다.</p>
+        <p>무릎을 구부리고 등을 똑바로 유지하여 바를 바닥으로 내립니다.</p>
     </ol>
 
     <div class="exercise-images-grid">
@@ -113,15 +101,15 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발을 어깨 너비로 벌리고 서십시오. 등의 자연스러운 아치를 유지하고 견갑골을 조이고 가슴을 들어 올립니다.</p></li>
-        <li><span>02</span><p>바를 어깨 너머로 잡고 등 위쪽으로 지지합니다. 다리를 곧게 펴서 바를 풀고 뒤로 물러서십시오.</p></li>
-        <li><span>03</span><p>엉덩이가 무릎 아래에 올 때까지 등의 형태를 변경하지 않고 웨이트를 내리면서 무릎을 구부립니다.</p></li>
-        <li><span>04</span><p>바를 시작 위치로 되돌리고 다리로 들어 올린 다음 상단에서 숨을 내쉬십시오.</p></li>
+        <p>발을 어깨 너비로 벌리고 서십시오. 견갑골을 조이면서 가슴을 들어 올립니다.</p>
+        <p>바를 어깨 너머로 잡고 등 위쪽으로 지탱합니다. 다리를 곧게 펴서 바를 내리면서 스쿼트를 합니다.</p>
+        <p>엉덩이가 무릎 아래에 올 때까지 등의 형태를 변경하지 않고 바를 내리면서 무릎을 구부립니다.</p>
+        <p>바를 원위치하며, 다리에 힘을주고, 일자로 섯을 때, 숨을 내쉬십시오.</p>
     </ol>
     
     
    
 
-</body>
+</div>
 
 </html>

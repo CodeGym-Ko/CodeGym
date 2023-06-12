@@ -1,25 +1,13 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
-
-</head>
-
-<script>
-
-</script>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
-
-ol {
-  list-style: none;
-  color: #ccc;
-}
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,32 +16,28 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
+
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>대흉근(CHEST) 맨몸운동</b>
 
     <div class="exercise-images-grid">
@@ -66,10 +50,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>어깨 바로 아래 땅에 손을 단단히 놓으십시오.</p></li>
-        <li><span>02</span><p>몸 전체가 일직선이 되도록 허리를 펴고 천천히 몸을 내립니다.</p></li>
-        <li><span>03</span><p>견갑골을 앞뒤로 당기고 팔꿈치를 몸 가까이에 붙입니다.</p></li>
-        <li><span>03</span><p>숨을 내쉬면서 원위치합니다.</p></li>
+        <p>어깨 바로 아래 땅에 손을 단단히 놓으십시오.</p>
+        <p>몸 전체가 일직선이 되도록 허리를 펴고 천천히 몸을 내립니다.</p>
+        <p>견갑골을 앞뒤로 당기고 팔꿈치를 몸 가까이에 붙입니다.</p>
+        <p>숨을 내쉬면서 원위치합니다.</p>
     </ol>
     
     <div class="exercise-images-grid">
@@ -82,9 +66,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>장비 위에 팔을 고정한 상태로 몸을 잡습니다.</p></li>
-        <li><span>02</span><p>상체를 앞으로 숙인 상태에서 천천히 몸을 낮추고 팔꿈치를 펴줍니다.</p></li>
-        <li><span>03</span><p>팔이 잠길 때까지 바 위로 몸을 들어 올리십시오.</p></li>
+        <p>장비 위에 팔을 고정한 상태로 몸을 잡습니다.</p>
+        <p>상체를 앞으로 숙인 상태에서 천천히 몸을 낮추고 팔꿈치를 펴줍니다.</p>
+        <p>팔이 잠길 때까지 바 위로 몸을 들어 올리십시오.</p>
     </ol>
 
      
@@ -99,14 +83,14 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>벤치 또는 견고한 높은 플랫폼을 향하여 서십시오.</p></li>
-        <li><span>02</span><p>어깨 너비보다 약간 넓은 벤치 또는 플랫폼 가장자리에 손을 놓습니다.</p></li>
-        <li><span>01</span><p>가슴이 벤치에 거의 닿을 때까지 천천히 몸을 내립니다.</p></li>
-        <li><span>02</span><p>팔이 펴질 때까지 몸을 밀어 올리십시오.</p></li>
+        <p>벤치 또는 견고한 높은 플랫폼을 향하여 서십시오.</p>
+        <p>어깨 너비보다 약간 넓은 벤치 또는 플랫폼 가장자리에 손을 놓습니다.</p>
+        <p>가슴이 벤치에 거의 닿을 때까지 천천히 몸을 내립니다.</p>
+        <p>팔이 펴질 때까지 몸을 밀어 올리십시오.</p>
     </ol>
     
     
  
-</body>
+</div>
 
 </html>

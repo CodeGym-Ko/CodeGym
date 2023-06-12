@@ -1,25 +1,14 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 /* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -27,34 +16,30 @@ ol li {
   margin-bottom: 20px;
 }
 
-li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
-  font-size:20px;
+li p   {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:25px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
+
 
 </style>
 
-<body>
-    <b>팔뚝(CHEST) 프리웨이트</b>
+<div style="text-align:center;">
+    <b>팔뚝(ForeArms) 프리웨이트</b>
 
     <div class="exercise-images-grid">
        
@@ -66,11 +51,11 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>회외(언더핸드) 그립으로 직선 막대를 잡습니다.</p></li>
-        <li><span>02</span><p>평평한 벤치 옆에 무릎을 꿇고 팔뚝을 벤치에 올려 놓고 손목은 벤치에서 조금 떨어뜨립니다.</p></li>
-        <li><span>03</span><p>바벨이 펴질 때까지 손목을 아래로 당깁니다.</p></li>
-        <li><span>04</span><p>손목이 완전히 구부러질 때까지 바벨을 구부립니다.</p></li>
-        <li><span>05</span><p>이 동작을 반복합니다.</p></li>
+        <p>회외(언더핸드) 그립으로 직선 막대를 잡습니다.</p>
+        <p>평평한 벤치 옆에 무릎을 꿇고 팔뚝을 벤치에 올려 놓고 손목은 벤치에서 조금 떨어뜨립니다.</p>
+        <p>바벨이 펴질 때까지 손목을 아래로 당깁니다.</p>
+        <p>손목이 완전히 구부러질 때까지 바벨을 구부립니다.</p>
+        <p>이 동작을 반복합니다.</p>
     </ol>
     
     <div class="exercise-images-grid">
@@ -83,11 +68,11 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>똑바로 서서 손과 발을 어깨 너비로 벌리고 회내 그립을 사용하여 바벨을 뒤로 잡습니다.</p></li>
-        <li><span>02</span><p>손목을 반원 모양으로 위로 천천히 구부립니다.</p></li>
-        <li><span>03</span><p>움직임의 정점에서 바벨을 잡고 천천히 시작 위치로 바벨을 내립니다.</p></li>
+        <p>똑바로 서서 손과 발을 어깨 너비로 벌리고 회내 그립을 사용하여 바벨을 뒤로 잡습니다.</p>
+        <p>손목을 반원 모양으로 위로 천천히 구부립니다.</p>
+        <p>움직임의 정점에서 바벨을 잡고 천천히 시작 위치로 바벨을 내립니다.</p>
     </ol>
 
-</body>
+</div>
 
 </html>
