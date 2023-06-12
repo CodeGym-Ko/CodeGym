@@ -67,5 +67,10 @@
     update tbl_member set password=#{password}, lastpwdate=SYSDATE, pwcheck=1 where userid=#{userid}
 </update>
 
+<!-- 구글 사용자 등록 -->
+<insert id="googleSignup" parameterType="com.board.dto.UserVO">
+	insert into tbl_member (userid,username,password,role,regdate,fromsocial) 
+		values (#{userid},#{username},#{password},#{role},sysdate,#{fromsocial})
+</insert>
 	
 </mapper>  

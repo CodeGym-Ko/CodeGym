@@ -2,6 +2,7 @@ package com.board;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true) // 특정 주소로 접근하면 권한 및 인증을 미리 체크
 public class WebSecurityConfig {
 
 	private final AuthSuccessHandler authSuccessHandler; //의존성 주입
@@ -44,14 +46,16 @@ public class WebSecurityConfig {
 		// 폼 로그인
 		http.formLogin(login -> login
                 .usernameParameter("userid")   
-                //.loginPage("/user/login") 
+                //.loginPage("/user/login") // post 요청을 해야 한다고 뜨는데 뭔소리징
                 .loginPage("/") 
                 .successHandler(authSuccessHandler)  
                 .failureHandler(authFailureHandler));
+		
 		// auth2 로그인
 		http
     	.oauth2Login(login -> login
-            .loginPage("/user/login") 
+            //.loginPage("/user/login")
+            .loginPage("/")
             .successHandler(oauth2SucessHandler)
             .failureHandler(oauth2FailureHandler));
 		
@@ -100,7 +104,7 @@ public class WebSecurityConfig {
         
 		System.out.println("스프링 시큐리티 설정 완료 !!!");
 		
-		// http.build()를 호출하여 HttpSecurity 객체를 SecurityFilterChain으로 빌드하고 반환합니다.
+		// http.build()를 호출하여 HttpSecurity 객체를 SecurityFilterChain으로 빌드하고 반환
 		return http.build();
 		
 		// 필터 체인은 Spring Security의 인증 및 권한 부여에 적용

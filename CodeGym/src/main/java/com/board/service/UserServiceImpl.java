@@ -83,4 +83,10 @@ public class UserServiceImpl implements UserService {
 	public void passwordUpdate(UserVO user) {
 		mapper.passwordUpdate(user);		
 	}
+	
+	//구글 사용자 등록
+	@Override
+	public void googleSignup(UserVO user) {
+		mapper.googleSignup(user);
+	}
 }

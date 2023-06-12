@@ -33,7 +33,7 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 		session.setAttribute("userid", userInfo.getUserid());
 		session.setAttribute("username", userInfo.getUsername());
 		session.setAttribute("role", userInfo.getRole());
-		System.out.println(" 시큐리티config 통해서 로그인 성공 !!! userid : "+session.getId());
+		System.out.println(" 시큐리티 통해서 로그인 성공 !!! userid : "+session.getId());
 		
 		setDefaultTargetUrl("/");
 		super.onAuthenticationSuccess(request, response, authentication);

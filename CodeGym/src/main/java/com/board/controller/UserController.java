@@ -44,16 +44,34 @@ public class UserController {
 	@GetMapping("/user/login")
 	public void getLogin() {}
 	
-//	@PostMapping("/user/login")
-//	public void postLogIn() {
-//		System.out.println("==== Post /user/login ==");
-//		
-//	}
-
-	@ResponseBody
 	@PostMapping("/user/login")
-	public String postLogIn(UserVO loginData,HttpSession session,@RequestParam("autologin") String autologin) {
+	public void postLogIn() {
 		System.out.println("==== Post /user/login ==");
+		
+	}
+//	@ResponseBody
+//	@PostMapping("/user/loginCheck")
+//	public String postLogIn(UserVO loginData,HttpSession session) {
+//		System.out.println("==== Post /user/loginCheck ==");
+//		//아이디 존재 여부 확인
+//		if(service.idCheck(loginData.getUserid()) == 0)
+//			return "{\"message\":\"ID_NOT_FOUND\"}";
+//		
+//		//아이디가 존재하면 읽어온 userid로 로그인 정보 가져 오기
+//		UserVO member = service.userinfo(loginData.getUserid());
+//		
+//		//패스워드 확인
+//		if(!pwdEncoder.matches(loginData.getPassword(),member.getPassword())) {
+//			return "{\"message\":\"PASSWORD_NOT_FOUND\"}";
+//		}
+//		
+//		return "{\"message\":\"good\"}";
+//	}	
+	
+	@ResponseBody
+	@PostMapping("/user/loginCheck")
+	public String postLogIn(UserVO loginData,HttpSession session,@RequestParam("autologin") String autologin) {
+		System.out.println("==== Post /user/loginCheck ==");
 		String authkey = "";
 		
 		//로그인 시 자동 로그인 체크할 경우 신규 authkey 등록
@@ -65,6 +83,7 @@ public class UserController {
 		
 		//authkey가 클라이언트에 쿠키로 존재할 경우 로그인 과정 없이 세션 생성 후 게시판 목록 페이지로 이동  
 		if(autologin.equals("PASS")) {
+			
 			
 			UserVO userinfo = service.userinfoByAuthkey(loginData.getAuthkey());
 			if(userinfo != null) {
@@ -79,29 +98,73 @@ public class UserController {
 			}else 
 				return "{\"message\":\"bad\"}";
 		}
-
+		
 		//아이디 존재 여부 확인
 		if(service.idCheck(loginData.getUserid()) == 0)
 			return "{\"message\":\"ID_NOT_FOUND\"}";
 		
 		//아이디가 존재하면 읽어온 userid로 로그인 정보 가져 오기
-		UserVO user = service.userinfo(loginData.getUserid());
+		UserVO member = service.userinfo(loginData.getUserid());
 		
 		//패스워드 확인
-		if(!pwdEncoder.matches(loginData.getPassword(),user.getPassword())) {
+		if(!pwdEncoder.matches(loginData.getPassword(),member.getPassword())) {
 			return "{\"message\":\"PASSWORD_NOT_FOUND\"}";
-		}else { //패스워드가 존재
-			
-		//세션 생성
-		session.setMaxInactiveInterval(3600*7);
-		session.setAttribute("userid", user.getUserid());
-		session.setAttribute("username", user.getUsername());
-		session.setAttribute("role", user.getRole());
-		
-		System.out.println("==== 로그인 성공 == DB에서 가져온 userid : "+ user.getUserid());
-		return "{\"message\":\"good\",\"authkey\":\"" + user.getAuthkey() + "\"}";
 		}
+		return "{\"message\":\"good\"}";
 	}
+
+//	@ResponseBody
+//	@PostMapping("/user/login")
+//	public String postLogIn(UserVO loginData,HttpSession session,@RequestParam("autologin") String autologin) {
+//		System.out.println("==== Post /user/login ==");
+//		String authkey = "";
+//		
+//		//로그인 시 자동 로그인 체크할 경우 신규 authkey 등록
+//		if(autologin.equals("NEW")) { 	 
+//			authkey = UUID.randomUUID().toString().replaceAll("-", ""); 
+//			loginData.setAuthkey(authkey);
+//			service.authkeyUpdate(loginData);	
+//		}
+//		
+//		//authkey가 클라이언트에 쿠키로 존재할 경우 로그인 과정 없이 세션 생성 후 게시판 목록 페이지로 이동  
+//		if(autologin.equals("PASS")) {
+//			
+//			UserVO userinfo = service.userinfoByAuthkey(loginData.getAuthkey());
+//			if(userinfo != null) {
+//				
+//				//세션 생성
+//				session.setMaxInactiveInterval(3600*7);
+//				session.setAttribute("userid", userinfo.getUserid());
+//				session.setAttribute("username", userinfo.getUsername());
+//				session.setAttribute("role", userinfo.getRole());
+//				
+//				return "{\"message\":\"good\"}";
+//			}else 
+//				return "{\"message\":\"bad\"}";
+//		}
+//
+//		//아이디 존재 여부 확인
+//		if(service.idCheck(loginData.getUserid()) == 0)
+//			return "{\"message\":\"ID_NOT_FOUND\"}";
+//		
+//		//아이디가 존재하면 읽어온 userid로 로그인 정보 가져 오기
+//		UserVO user = service.userinfo(loginData.getUserid());
+//		
+//		//패스워드 확인
+//		if(!pwdEncoder.matches(loginData.getPassword(),user.getPassword())) {
+//			return "{\"message\":\"PASSWORD_NOT_FOUND\"}";
+//		}else { //패스워드가 존재
+//			
+//		//세션 생성
+//		session.setMaxInactiveInterval(3600*7);
+//		session.setAttribute("userid", user.getUserid());
+//		session.setAttribute("username", user.getUsername());
+//		session.setAttribute("role", user.getRole());
+//		
+//		System.out.println("==== 로그인 성공 == DB에서 가져온 userid : "+ user.getUserid());
+//		return "{\"message\":\"good\",\"authkey\":\"" + user.getAuthkey() + "\"}";
+//		}
+//	}
 	
 	//로그아웃
 	@GetMapping("/user/logout")

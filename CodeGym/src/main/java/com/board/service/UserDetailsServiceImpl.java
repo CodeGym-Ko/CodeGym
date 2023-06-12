@@ -30,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		SimpleGrantedAuthority grantedAuthority 
 			= new SimpleGrantedAuthority(userInfo.getRole());
 		grantedAuthorities.add(grantedAuthority);
-		
+		System.out.println(" +++ UserDetailsServiceImpl +++ grantedAuthorities : "+ grantedAuthorities);
 		//User 생성자 인자 --> 아이디, 패스워드, 사용자롤들
 		User user = new User(username, userInfo.getPassword(), grantedAuthorities);
 		
