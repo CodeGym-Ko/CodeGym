@@ -4,131 +4,98 @@
   
 <!-- 개발 영역 시작 -->
 
-<title>벌크업 식단 정보</title>
-  <style>
-    /* 전체 페이지 스타일 */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 20px;
-    }
+<ul class="nav nav-tabs" role="tablist">
 
-    /* 헤더 스타일 */
-    header {
-      background-color: #f3f7ea;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" data-bs-toggle="tab" href="#normal" aria-selected="true" role="tab" tabindex="-1">일반식</a>
+  </li>
+  
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" data-bs-toggle="tab" href="#vegan" aria-selected="true" role="tab" tabindex="-1">비건</a>
+  </li>
+  
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" data-bs-toggle="tab" href="#vegetarian" aria-selected="true" role="tab" tabindex="-1">채식주의</a>
+  </li>
+  
+</ul>
 
-    /* 카테고리 스타일 */
-    .categories {
-      margin-bottom: 20px;
-    }
-
-    .categories a {
-      display: inline-block;
-      margin-right: 10px;
-      padding: 5px 10px;
-      background-color: #eee;
-      color: #333;
-      text-decoration: none;
-      border-radius: 3px;
-    }
-
-    .categories a:hover {
-      background-color: #ddd;
-    }
-
-    /* 식단 정보 스타일 */
-    .meal-info {
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    .meal-info h2 {
-      color: #333;
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .meal-info ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
-
-    .meal-info li {
-      margin-bottom: 10px;
-    }
-    
-    #topBanner img {
-      width: 100%;
-      max-width: 1200px;
+<style>
+.image-container {
+      width: 50%;
       height: auto;
-      display: block;
+      display: inline-block;
       margin: 20px auto;
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    }
-  </style>
+}
+</style>
+
+<div id="myTabContent" class="tab-content">
+	  
+	<div style="border: 1px solid gold; float: left; width: 33%;">
+	    <img class="topBanner" src="/images/bulkup.png" title="1">
+	</div>
+	  
+	  
+	  <div class="tab-pane fade" id="normal" role="tabpanel">
+	  	
+	  	<div class="card border-primary mb-3" style="max-width: 20rem;">
+			  <div class="card-header">일반식</div>
+			  <div class="card-body">
+			  	아침
+			    <ul>
+			      <li>닭가슴살 샌드위치</li>
+			      <li>계란 훈제와 토스트</li>
+			      <li>귀리와 견과류</li>
+			    </ul>
+			    점심
+			    <ul>
+			      <li>소고기 스테이크와 감자</li>
+			      <li>삼겹살 볶음밥</li>
+			      <li>닭고기 카레</li>
+			    </ul>
+			    저녁
+			    <ul>
+			      <li>연어 스테이크와 채소</li>
+			      <li>돼지고기 된장찌개</li>
+			      <li>스테이크와 감자 그라탕</li>
+			    </ul>
+			  </div>
+		</div>
+		   
+		
+	  </div>
+ 
+	  <div class="tab-pane fade" id="vegan" role="tabpanel">
+			<div class="card border-primary mb-3" style="max-width: 20rem;">
+					<div class="card-header">비건</div>
+					<div class="card-body">
+							<ul>
+							<li>아침: 콩과 두부 스크램블</li>
+							 <li>점심: 고구마와 퀴노아 그린 볼</li>
+							<li>저녁: 아보카도와 블랙빈 버거</li>
+							</ul>
+					</div>
+			</div>
+	 </div>
+	 
+	 <div class="tab-pane fade" id="vegetarian" role="tabpanel">
+			<div class="card border-primary mb-3" style="max-width: 20rem;">
+					<div class="card-header">채식주의</div>
+					<div class="card-body">
+							<ul>
+								<li>아침: 토피와 버터 토스트</li>
+           					 	<li>점심: 허니 글레이즈드 치킨</li>
+            					<li>저녁: 새우와 채소 볶음</li>
+							</ul>
+					</div>
+			</div>
+
+	
+	 </div>
   
-  <header>
-    <h1>벌크업 식단 정보</h1>
-  </header>
-  
-  <div class="categories">
-  	<a href="#normarl">일반식</a>
-    <a href="#vegan">비건</a>
-    <a href="#vegetarian">채식주의</a>
-  </div>
-  
-  <section>
-  	<img id="topBanner" src="/images/bulkup.png" title="벌크업">
-  </section>
-  
-  <section id="normal" class="meal-info">
-    <h2>일반식</h2>
-    아침
-    <ul>
-      <li>닭가슴살 샌드위치</li>
-      <li>계란 훈제와 토스트</li>
-      <li>귀리와 견과류</li>
-    </ul>
-    점심
-    <ul>
-      <li>소고기 스테이크와 감자</li>
-      <li>삼겹살 볶음밥</li>
-      <li>닭고기 카레</li>
-    </ul>
-    저녁
-    <ul>
-      <li>연어 스테이크와 채소</li>
-      <li>돼지고기 된장찌개</li>
-      <li>스테이크와 감자 그라탕</li>
-    </ul>
-  </section>
-  
-  <section id="vegan" class="meal-info">
-    <h2>비건</h2>
-    <ul>
-      <li>아침: 콩과 두부 스크램블</li>
-      <li>점심: 고구마와 퀴노아 그린 볼</li>
-      <li>저녁: 아보카도와 블랙빈 버거</li>
-    </ul>
-  </section>
-  
-  <section id="vegetarian" class="meal-info">
-    <h2>채식주의</h2>
-    <ul>
-      <li>아침: 토피와 버터 토스트</li>
-      <li>점심: 허니 글레이즈드 치킨</li>
-      <li>저녁: 새우와 채소 볶음</li>
-    </ul>
-  </section>
+</div>
 
 <!-- 개발 영역 끝 -->
 </th:block>
