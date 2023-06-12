@@ -1,25 +1,14 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
-
-ol {
-  list-style: none;
-  color: #ccc;
-}
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,33 +17,27 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
-
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>어깨(Shoulder) 스트레칭</b>
     <div class="exercise-images-grid">
        
@@ -66,9 +49,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>팔꿈치가 머리 뒤에서 위를 향하도록 몸 뒤로 한 팔을 뻗습니다.</p></li>
-        <li><span>02</span><p>팔꿈치에 다른 손을 대고 어깨와 맞물리도록 스트레칭을 돕습니다.</p></li>
-        <li><span>03</span><p>몇 초 동안 멈춘 다음 다른 팔로 스트레칭을 반복합니다.</p></li>
+        <p>팔꿈치가 머리 뒤에서 위를 향하도록 몸 뒤로 한 팔을 뻗습니다.</p>
+        <p>팔꿈치에 다른 손을 대고 어깨와 맞물리도록 스트레칭을 돕습니다.</p>
+        <p>몇 초 동안 멈춘 다음 다른 팔로 스트레칭을 반복합니다.</p>
     </ol>
     
     <div class="exercise-images-grid">
@@ -80,9 +63,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>양쪽 팔로 시작하십시오. 어깨를 앞으로 내밀고 가슴 쪽으로 밀면서 시작합니다.</p></li>
-        <li><span>02</span><p>필요에 따라 반복합니다.</p></li>
-        <li><span>03</span><p>어깨로 원을 그리며 계속해서 귀쪽으로 당기고, 가슴을 바깥쪽으로 확장하면서 동작을 마칩니다.</p></li>
+        <p>양쪽 팔로 시작하십시오. 어깨를 앞으로 내밀고 가슴 쪽으로 밀면서 시작합니다.</p>
+        <p>필요에 따라 반복합니다.</p>
+        <p>어깨로 원을 그리며 계속해서 귀쪽으로 당기고, 가슴을 바깥쪽으로 확장하면서 동작을 마칩니다.</p>
     </ol>
 
      
@@ -95,10 +78,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발을 어깨너비로 벌리고 서세요. 어깨 높이에서 가슴 앞쪽에 한 팔을 놓고 팔꿈치 위의 다른 팔의 팔뚝을 눌러 스트레칭 팔을 손으로 구부립니다.</p></li>
-        <li><span>02</span><p>팔이 곧게 펴질 때까지 누르고 상체를 돌려 더 깊은 스트레칭을 하십시오.</p></li>
-        <li><span>03</span><p>다른 팔로 반복합니다.</p></li>
+        <p>발을 어깨너비로 벌리고 서세요. 어깨 높이에서 가슴 앞쪽에 한 팔을 놓고 팔꿈치 위의 다른 팔의 팔뚝을 눌러 스트레칭 팔을 손으로 구부립니다.</p>
+        <p>팔이 곧게 펴질 때까지 누르고 상체를 돌려 더 깊은 스트레칭을 하십시오.</p>
+        <p>다른 팔로 반복합니다.</p>
     </ol>
-</body>
+</div>
 
 </html>

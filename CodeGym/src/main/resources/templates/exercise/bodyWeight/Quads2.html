@@ -1,25 +1,15 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
-
-</head>
-
-<script>
-
-</script>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,9 +18,7 @@ ol li {
 }
 
 li p {
-  font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
@@ -42,18 +30,16 @@ span {
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
+
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>허벅지(Quads) 맨몸운동</b>
 
     <div class="exercise-images-grid">
@@ -65,9 +51,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발을 어깨 너비로 벌리고 서십시오.</p></li>
-        <li><span>02</span><p>무릎과 엉덩이를 구부리고 몸을 낮추면서 스쿼트 자세로 다시 앉습니다.</p></li>
-        <li><span>03</span><p>다시 일어나면서 원위치 합니다. 이 동작을 반복합니다.</p></li>
+       <p>발을 어깨 너비로 벌리고 서십시오.</p>
+       <p>무릎과 엉덩이를 구부리고 몸을 낮추면서 스쿼트 자세로 다시 앉습니다.</p>
+       <p>다시 일어나면서 원위치 합니다. 이 동작을 반복합니다.</p>
     </ol>
     
 
@@ -81,10 +67,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>한 발을 앞으로 내딛습니다.</p></li>
-        <li><span>02</span><p>뒤쪽 무릎이 지면에 거의 닿을 때까지 몸을 내립니다.</p></li>
-        <li><span>03</span><p>몸을 똑바로 세우고 앞 무릎이 앞 발 위에 있는지 확인하십시오.</p></li>
-        <li><span>04</span><p>원위치 할 때까지 앞발로 바닥을 밉니다. 다리를 바꾸며 동작을 반복합니다.</p></li>
+        <p>한 발을 앞으로 내딛습니다.</p>
+        <p>뒤쪽 무릎이 지면에 거의 닿을 때까지 몸을 내립니다.</p>
+        <p>몸을 똑바로 세우고 앞 무릎이 앞 발 위에 있는지 확인하십시오.</p>
+        <p>원위치 할 때까지 앞발로 바닥을 밉니다. 다리를 바꾸며 동작을 반복합니다.</p>
     </ol>
 
     
@@ -99,11 +85,11 @@ b {
     </div>
 
     <ol>
-      <li><span>01</span><p>발을 어깨 너비로 벌리고 서십시오.</p></li>
-      <li><span>02</span><p>규칙적인 스쿼트로 시작한 다음 코어를 사용하고 폭발적으로 뛰어오릅니다.</p></li>
-      <li><span>03</span><p>착지하면 몸을 다시 스쿼트 자세로 낮춥니다. 이 동작을 반복합니다.</p></li>
+      <p>발을 어깨 너비로 벌리고 서십시오.</p>
+      <p>규칙적인 스쿼트로 시작한 다음 코어를 사용하고 폭발적으로 뛰어오릅니다.</p>
+      <p>착지하면 몸을 다시 스쿼트 자세로 낮춥니다. 이 동작을 반복합니다.</p>
     </ol>
 
-</body>
+</div>
 
 </html>

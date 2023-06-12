@@ -1,25 +1,15 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
-
-</head>
-
-<script>
-
-</script>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,9 +18,7 @@ ol li {
 }
 
 li p {
-  font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
@@ -42,18 +30,17 @@ span {
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
+
 
 </style>
 
-<body>
+
+<div style="text-align:center;">
     <b>종아리(Calves) 맨몸운동</b>
 
     <div class="exercise-images-grid">
@@ -66,9 +53,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>앞으로 걸어가 발가락을 땅에 닿게 하세요.</p></li>
-        <li><span>02</span><p>발뒤꿈치를 땅에서 들어 올리고 종아리 근육을 긴장시키십시오.</p></li>
-        <li><span>03</span><p>각 다리에서 반복하고 천천히 앞으로 걸어가십시오.</p></li>
+       <p>앞으로 걸어가 발가락을 땅에 닿게 하세요.</p>
+       <p>발뒤꿈치를 땅에서 들어 올리고 종아리 근육을 긴장시키십시오.</p>
+       <p>각 다리에서 반복하고 천천히 앞으로 걸어가십시오.</p>
     </ol>
     
 
@@ -82,9 +69,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발가락을 바닥으로 향하게 합니다.</p></li>
-        <li><span>02</span><p>앞뒤로 천천히 걷는다.</p></li>
-        <li><span>03</span><p>걷는 동안 가능한 한 오랫동안 발뒤꿈치를 공중에 띄웁니다.</p></li>
+       <p>발가락을 바닥으로 향하게 합니다.</p>
+       <p>앞뒤로 천천히 걷는다.</p>
+       <p>걷는 동안 가능한 한 오랫동안 발뒤꿈치를 공중에 띄웁니다.</p>
     </ol>
 
     
@@ -99,11 +86,11 @@ b {
     </div>
 
     <ol>
-      <li><span>01</span><p>벽을 사용하여 균형을 잡는 데 도움이 되도록 앞으로 몸을 기울여 플랫폼이나 플레이트에 있는 발바닥으로 균형을 잡습니다.</p></li>
-      <li><span>02</span><p>발 뒤꿈치를 땅쪽으로 내리고 잠시 멈춘 다음 발끝으로 서있는 것처럼 발의 볼을 밀어서 움직임의 정점에서 멈춥니다.</p></li>
-      <li><span>03</span><p>필요에 따라 반복합니다.</p></li>
+     <p>벽을 사용하여 균형을 잡는 데 도움이 되도록 앞으로 몸을 기울여 플랫폼이나 플레이트에 있는 발바닥으로 균형을 잡습니다.</p>
+     <p>발 뒤꿈치를 땅쪽으로 내리고 잠시 멈춘 다음 발끝으로 서있는 것처럼 발의 볼을 밀어서 움직임의 정점에서 멈춥니다.</p>
+     <p>필요에 따라 반복합니다.</p>
     </ol>
 
-</body>
+</div>
 
 </html>

@@ -1,25 +1,16 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,32 +19,27 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>광배근(Lats) 프리웨이트</b>
     <div class="exercise-images-grid">
        
@@ -65,10 +51,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>어깨 넓이의 회내 또는 회외 그립으로 바벨을 잡습니다.</p></li>
-        <li><span>02</span><p>평평한 등을 유지하면서 엉덩이를 앞으로 구부리십시오.</p></li>
-        <li><span>03</span><p>바벨을 상복부 쪽으로 당깁니다.</p></li>
-        <li><span>04</span><p>바벨을 앞으로 밀고, 다시 반복하십시오.</p></li>
+        <p>어깨 넓이로 서고, 바벨을 잡습니다.</p>
+        <p>등에 힘을 주며, 엉덩이를 앞으로 구부리십시오.</p>
+        <p>바벨을 상복부 쪽으로 당깁니다.</p>
+        <p>바벨을 앞으로 밀고, 다시 반복하십시오.</p>
     </ol>
     
     <div class="exercise-images-grid">
@@ -81,10 +67,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>바벨을 놓고 발을 어깨 너비로 벌리고 바벨을 마주보고 서십시오.</p></li>
-        <li><span>02</span><p>오버핸드 그립으로 바벨의 끝을 잡고 팔은 곧게 펴고 어깨는 편안하게 유지합니다.</p></li>
-        <li><span>03</span><p>엉덩이와 무릎을 구부려 몸통이 지면과 거의 평행이 될 때까지 내립니다.</p></li>
-        <li><span>04</span><p>바벨을 가슴쪽으로 당기고 웨이트를 올리면서 견갑골을 함께 조입니다.</p></li>
+        <p>바벨을 놓고 발을 어깨 너비로 벌리고 바벨을 마주보고 서십시오.</p>
+        <p>바벨의 끝을 잡고 팔은 곧게 펴고 어깨는 편안하게 유지합니다.</p>
+        <p>엉덩이와 무릎을 구부려 몸통이 지면과 거의 평행이 될 때까지 내립니다.</p>
+        <p>바벨을 가슴쪽으로 당기고 웨이트를 올리면서 견갑골을 함께 조입니다.</p>
     </ol>
 
     <div class="exercise-images-grid">
@@ -97,14 +83,12 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>바벨을 놓고 발을 어깨 너비로 벌리고 엇갈린 자세로 옆을 향하여 서십시오.</p></li>
-        <li><span>02</span><p>오버핸드 그립으로 바벨의 끝을 잡고 팔은 곧게 펴고 어깨는 편안하게 유지합니다.</p></li>
-        <li><span>03</span><p>엉덩이와 무릎을 구부려 몸통이 지면과 거의 평행이 될 때까지 내립니다.</p></li>
-        <li><span>04</span><p>바벨을 가슴쪽으로 당기고 웨이트를 올리면서 견갑골을 함께 조입니다.</p></li>
+        <p>바벨을 놓고 발을 어깨 너비로 벌리고 엇갈린 자세로 옆을 향하여 서십시오.</p>
+        <p>바벨의 끝을 잡고 팔은 곧게 펴고 어깨는 편안하게 유지합니다.</p>
+        <p>엉덩이와 무릎을 구부려 몸통이 지면과 거의 평행이 될 때까지 내립니다.</p>
+        <p>바벨을 가슴쪽으로 당기고 웨이트를 올리면서 견갑골을 함께 조입니다.</p>
     </ol>
 
-   
-
-</body>
+</div>
 
 </html>

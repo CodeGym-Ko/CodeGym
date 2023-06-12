@@ -1,25 +1,16 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,32 +19,27 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>외복사근(Obliques) 맨몸운동 입니다.</b>
     <div class="exercise-images-grid">
       
@@ -65,9 +51,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발 뒤꿈치를 땅에서 떼십시오.</p></li>
-        <li><span>02</span><p>가슴을 펴고 등을 평평하게 유지하십시오. 모든 움직임이 척추 중앙과 상부에서 일어나도록 하세요.</p></li>
-        <li><span>03</span><p>가슴을 왼쪽으로 향하게 한 다음 가슴이 오른쪽으로 향할 때까지 척추에서 회전합니다.</p></li>
+        <p>발 뒤꿈치를 땅에서 떼십시오.</p>
+        <p>가슴을 펴고 등을 평평하게 유지하십시오. 모든 움직임이 척추 중앙과 상부에서 일어나도록 하세요.</p>
+        <p>가슴을 왼쪽으로 향하게 한 다음 가슴이 오른쪽으로 향할 때까지 척추에서 회전합니다.</p>
     </ol>
     
     <div class="exercise-images-grid">
@@ -80,9 +66,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>팔꿈치와 엉덩이를 바닥에 대고 시작합니다. 중립 주먹 또는 평평한 손을 바닥에 대십시오.</p></li>
-        <li><span>02</span><p>측면 판자 위치에서 시작한 다음 엉덩이를 바닥에 내립니다.</p></li>
-        <li><span>02</span><p>반복을 끝내기 위해 엉덩이를 다시 천장으로 당깁니다.</p></li>
+        <p>팔꿈치와 엉덩이를 바닥에 대고 시작합니다. 중립 주먹 또는 평평한 손을 바닥에 대십시오.</p>
+        <p>측면 판자 위치에서 시작한 다음 엉덩이를 바닥에 내립니다.</p>
+        <p>반복을 끝내기 위해 엉덩이를 다시 천장으로 당깁니다.</p>
     </ol>
 
     <div class="exercise-images-grid">
@@ -94,12 +80,12 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>팔꿈치 측면 판자 위치에서 시작하십시오.</p></li>
-        <li><span>02</span><p>다른 손으로 천장에 닿으십시오.</p></li>
-        <li><span>03</span><p>척추 중앙과 상부에서 회전하고 바닥과 몸통 사이의 열린 공간을 통해 도달하십시오.</p></li>
-        <li><span>04</span><p>뒤로 손을 뻗은 다음 다시 시작 위치로 회전합니다.</p></li>
+        <p>팔꿈치 측면 판자 위치에서 시작하십시오.</p>
+        <p>다른 손으로 천장에 닿으십시오.</p>
+        <p>척추 중앙과 상부에서 회전하고 바닥과 몸통 사이의 열린 공간을 통해 도달하십시오.</p>
+        <p>뒤로 손을 뻗은 다음 다시 시작 위치로 회전합니다.</p>
     </ol>
 
-</body>
+</div>
 
 </html>
