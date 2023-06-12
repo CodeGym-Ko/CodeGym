@@ -1,25 +1,16 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,32 +19,27 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>허리(Lowerback) 맨몸운동</b>
     <div class="exercise-images-grid">
         
@@ -65,8 +51,8 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>무릎을 약간 구부린 상태에서 발을 어깨 너비보다 조금 더 넓게 벌리고 서십시오. 머리 뒤쪽에 손을 대십시오.</p></li>
-        <li><span>02</span><p>등을 곧게 펴고 엉덩이를 돌려 어깨가 바닥을 향하도록 합니다. 가슴이 바닥과 평행이 되면 멈춥니다.</p></li>
+        <p>무릎을 약간 구부린 상태에서 발을 어깨 너비보다 조금 더 넓게 벌리고 서십시오. 머리 뒤쪽에 손을 대십시오.</p>
+        <p>등을 곧게 펴고 엉덩이를 돌려 어깨가 바닥을 향하도록 합니다. 가슴이 바닥과 평행이 되면 멈춥니다.</p>
     </ol>
     
     <div class="exercise-images-grid">
@@ -79,11 +65,11 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>팔을 앞으로 완전히 뻗은 상태로 바닥에 엎드려 눕습니다.</p></li>
-        <li><span>02</span><p>동시에 팔, 다리, 가슴을 바닥에서 들어 올리고 자세를 유지합니다.</p></li>
-        <li><span>03</span><p>팔, 다리, 가슴을 천천히 시작 위치로 내립니다. 이를 반복합니다.</p></li>
+        <p>팔을 앞으로 완전히 뻗은 상태로 바닥에 엎드려 눕습니다.</p>
+        <p>동시에 팔, 다리, 가슴을 바닥에서 들어 올리고 자세를 유지합니다.</p>
+        <p>팔, 다리, 가슴을 천천히 시작 위치로 내립니다. 이를 반복합니다.</p>
     </ol>
 
-</body>
+</div>
 
 </html>

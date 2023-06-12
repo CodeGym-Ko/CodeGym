@@ -1,25 +1,14 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
 
 /* list styles */
-
-ol {
-  list-style: none;
-  color: #ccc;
-}
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,9 +17,7 @@ ol li {
 }
 
 li p {
-  font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
@@ -42,18 +29,15 @@ span {
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 </style>
 
-<body>
+<div style="text-align:center;">
   
     <b>복근(abdominals) 스트레칭</b><br><br>
 
@@ -67,9 +51,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>팔뚝을 바닥에 평평하게 놓고 바닥에 배를 대고 눕습니다.</p></li>
-        <li><span>02</span><p>팔꿈치를 펴고 상체를 위로 밀어 올린다.</p></li>
-        <li><span>03</span><p>복근이 당기는 느낌이 들 때까지 상체를 위로 밀어 올린 다음 시작 위치로 돌아가 반복합니다.</p></li>
+        <p>팔뚝을 바닥에 평평하게 놓고 바닥에 배를 대고 눕습니다.</p>
+        <p>팔꿈치를 펴고 상체를 위로 밀어 올린다.</p>
+        <p>복근이 당기는 느낌이 들 때까지 상체를 위로 밀어 올린 다음 시작 위치로 돌아가 반복합니다.</p>
     </ol>
     
 
@@ -83,9 +67,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>똑바로 서십시오.</p></li>
-        <li><span>02</span><p>손가락이 맞물릴 수 있을 때까지 양손을 위로 뻗습니다.</p></li>
-        <li><span>03</span><p>손을 머리 위로 올리고 복부에 스트레칭이 느껴질 때까지 몸을 뒤로 젖힙니다.</p></li>
+        <p>똑바로 서십시오.</p>
+        <p>손가락이 맞물릴 수 있을 때까지 양손을 위로 뻗습니다.</p>
+        <p>손을 머리 위로 올리고 복부에 스트레칭이 느껴질 때까지 몸을 뒤로 젖힙니다.</p>
     </ol>
 
     
@@ -99,11 +83,11 @@ b {
     </div>
 
     <ol>
-      <li><span>01</span><p>왼팔을 위로 뻗은 다음 천천히 오른쪽으로 몸을 기울입니다. 사근에 스트레칭이 느껴질 때까지 몸을 기울입니다.</p></li>
-      <li><span>02</span><p>똑바로 서십시오.</p></li>
-      <li><span>03</span><p>왼팔로 원하는 횟수만큼 반복한 후 오른팔로 바꿔 왼쪽으로 몸을 기울인다.</p></li>
+      <p>왼팔을 위로 뻗은 다음 천천히 오른쪽으로 몸을 기울입니다. 사근에 스트레칭이 느껴질 때까지 몸을 기울입니다.</p>
+      <p>똑바로 서십시오.</p>
+      <p>왼팔로 원하는 횟수만큼 반복한 후 오른팔로 바꿔 왼쪽으로 몸을 기울인다.</p>
     </ol>
 
-</body>
+</div>
 
 </html>

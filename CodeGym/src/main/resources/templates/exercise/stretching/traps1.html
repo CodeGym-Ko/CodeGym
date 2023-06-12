@@ -1,25 +1,14 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
-
-ol {
-  list-style: none;
-  color: #ccc;
-}
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,32 +17,27 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>승모근(Traps) 스트레칭</b>
     <div class="exercise-images-grid">
  
@@ -65,9 +49,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발을 어깨 너비로 벌리고 똑바로 서십시오.</p></li>
-        <li><span>02</span><p>왼손을 머리에 대고 머리를 왼쪽 어깨 쪽으로 부드럽게 당깁니다. 그런 다음 원위치 합니다.</p></li>
-        <li><span>03</span><p>오른손을 사용하여 오른쪽 어깨를 향해 당기면서 반복합니다.</p></li>
+        <p>발을 어깨 너비로 벌리고 똑바로 서십시오.</p>
+        <p>왼손을 머리에 대고 머리를 왼쪽 어깨 쪽으로 부드럽게 당깁니다. 그런 다음 원위치 합니다.</p>
+        <p>오른손을 사용하여 오른쪽 어깨를 향해 당기면서 반복합니다.</p>
     </ol>
     
     <div class="exercise-images-grid">
@@ -80,9 +64,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>가슴을 정면으로 향하게 하고 머리를 왼쪽으로 90도 돌립니다. 그런 다음 원위치 합니다.</p></li>
-        <li><span>02</span><p>발을 어깨 너비로 벌리고 똑바로 서십시오.</p></li>
-        <li><span>03</span><p>반복하면서 머리를 반대 방향으로 돌립니다.</p></li>
+        <p>가슴을 정면으로 향하게 하고 머리를 왼쪽으로 90도 돌립니다. 그런 다음 원위치 합니다.</p>
+        <p>발을 어깨 너비로 벌리고 똑바로 서십시오.</p>
+        <p>반복하면서 머리를 반대 방향으로 돌립니다.</p>
     </ol>
 
      
@@ -97,10 +81,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발을 어깨 너비로 벌리고 똑바로 서십시오.</p></li>
-        <li><span>02</span><p>머리를 앞으로 끄덕이며 턱을 가슴으로 가져옵니다.</p></li>
-        <li><span>03</span><p>목 전체가 늘어나는 것을 느낄 것입니다.</p></li>
+        <p>발을 어깨 너비로 벌리고 똑바로 서십시오.</p>
+        <p>머리를 앞으로 끄덕이며 턱을 가슴으로 가져옵니다.</p>
+        <p>목 전체가 늘어나는 것을 느낄 것입니다.</p>
     </ol>
-</body>
+</div>
 
 </html>

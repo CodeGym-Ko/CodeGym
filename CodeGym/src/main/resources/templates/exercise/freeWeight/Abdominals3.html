@@ -1,26 +1,15 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
-
-</head>
-
-<script>
-
-</script>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -29,9 +18,7 @@ ol li {
 }
 
 li p {
-  font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
@@ -43,18 +30,15 @@ span {
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>복근(abdominals) 프리웨이트</b>
 
     <div class="exercise-images-grid">
@@ -67,9 +51,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>양손으로 바벨을 잡고 바닥에 무릎을 꿇고 발을 들어 올린다.</p></li>
-        <li><span>02</span><p>바벨을 앞으로 천천히 굴려 몸을 곧은 자세로 늘립니다.</p></li>
-        <li><span>03</span><p>뻗은 자세에서 잠시 멈춘 후 다시 시작 자세로 몸을 당깁니다. </p></li>
+        <p>양손으로 바벨을 잡고 바닥에 무릎을 꿇고 발을 들어 올린다.</p>
+        <p>바벨을 앞으로 천천히 굴려 몸을 곧은 자세로 늘립니다.</p>
+        <p>뻗은 자세에서 잠시 멈춘 후 다시 시작 자세로 몸을 당깁니다. </p>
     </ol>
     
 
@@ -83,8 +67,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>어깨 너비보다 약간 넓은 그립으로 바를 잡습니다. 바를 천장쪽으로 밀면서 팔을 자극합니다.</p></li>
-        <li><span>02</span><p>복근을 구부리고 윗몸일으키기. 바벨을 머리 위로 유지하면서 상체를 수직으로 세우는 것을 목표로합니다.</p></li>
+        <p>어깨 너비보다 약간 넓은 그립으로 바를 잡습니다.</p>
+        <p>바를 천장쪽으로 밀면서 팔을 자극합니다.</p>
+        <p>복근을 구부리고 윗몸일으키기를 합니다. </p>
+        <p>바벨을 머리 위로 유지하면서 상체를 수직으로 세우는 것을 목표로합니다.</p>
     </ol>
 
     
@@ -99,11 +85,11 @@ b {
     </div>
 
     <ol>
-      <li><span>01</span><p>다리를 올린 상태에서 벤치 프레스 자세로 시작합니다. 무릎을 약간 구부린 상태로 유지하십시오.</p></li>
-      <li><span>02</span><p>바의 랙을 풀고 담당자를 시작하십시오.</p></li>
-      <li><span>03</span><p>바를 몸통으로 가져오고 흉곽을 두드린 다음 천장을 다시 누르십시오.</p></li>
+      <p>다리를 올린 상태에서 벤치 프레스 자세로 시작합니다. 무릎을 약간 구부린 상태로 유지합니다.</p>
+      <p>바의 랙을 풀고 웨이트를 시작합니다.</p>
+      <p>바를 몸통으로 가져오고 흉곽에 자극이 가도록 합니다.</p>
     </ol>
 
-</body>
+</div>
 
 </html>

@@ -1,25 +1,13 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
-
-</head>
-
-<script>
-
-</script>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
-
-ol {
-  list-style: none;
-  color: #ccc;
-}
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,32 +16,26 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
-
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>둔근(Glutes) 스트레칭</b>
     <div class="exercise-images-grid">
        
@@ -65,10 +47,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>앞쪽에서 한쪽 다리를 앞으로 뻗은 다음 같은 쪽 팔을 매트/바닥을 가로질러 쭉 뻗습니다.</p></li>
-        <li><span>02</span><p>다리와 팔을 완전히 펴십시오.</p></li>
-        <li><span>03</span><p>스트레칭의 최고점에서 유지한 다음 천천히 시작 위치로 돌아갑니다.</p></li>
-        <li><span>04</span><p>몸을 반대쪽으로 전환하고 반복합니다.</p></li>
+        <p>앞쪽에서 한쪽 다리를 앞으로 뻗은 다음 같은 쪽 팔을 매트/바닥을 가로질러 쭉 뻗습니다.</p>
+        <p>다리와 팔을 완전히 펴십시오.</p>
+        <p>스트레칭의 최고점에서 유지한 다음 천천히 시작 위치로 돌아갑니다.</p>
+        <p>몸을 반대쪽으로 전환하고 반복합니다.</p>
     </ol>
 
 
@@ -82,10 +64,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>바닥에 앉아 한쪽 다리를 평평하게 하고 다른 쪽 다리는 위에 놓으십시오.</p></li>
-        <li><span>02</span><p>같은 쪽 팔로 다리를 잡고 엉덩이와 등을 천천히 돌립니다.</p></li>
-        <li><span>03</span><p>스트레칭의 최고점에서 유지한 다음 천천히 시작 위치로 돌아갑니다.</p></li>
-        <li><span>04</span><p>몸을 반대쪽으로 전환하고 반복합니다.</p></li>
+       <p>바닥에 앉아 한쪽 다리를 평평하게 하고 다른 쪽 다리는 위에 놓으십시오.</p>
+       <p>같은 쪽 팔로 다리를 잡고 엉덩이와 등을 천천히 돌립니다.</p>
+       <p>스트레칭의 최고점에서 유지한 다음 천천히 시작 위치로 돌아갑니다.</p>
+       <p>몸을 반대쪽으로 전환하고 반복합니다.</p>
     </ol>
 
     <div class="exercise-images-grid">
@@ -98,15 +80,15 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>평평하게 누워서 왼쪽 다리를 90도 각도로 가져옵니다.</p></li>
-        <li><span>02</span><p>왼쪽 다리를 양손으로 잡고 천천히 엉덩이를 오른쪽으로 돌립니다.</p></li>
-        <li><span>03</span><p>스트레칭의 최고점에서 유지한 다음 천천히 시작 위치로 돌아갑니다.</p></li>
-        <li><span>04</span><p>몸을 반대쪽으로 전환하고 반복합니다.</p></li>
+        <p>평평하게 누워서 왼쪽 다리를 90도 각도로 가져옵니다.</p>
+        <p>왼쪽 다리를 양손으로 잡고 천천히 엉덩이를 오른쪽으로 돌립니다.</p>
+        <p>스트레칭의 최고점에서 유지한 다음 천천히 시작 위치로 돌아갑니다.</p>
+        <p>몸을 반대쪽으로 전환하고 반복합니다.</p>
     </ol>
     
     
    
 
-</body>
+</div>
 
 </html>/

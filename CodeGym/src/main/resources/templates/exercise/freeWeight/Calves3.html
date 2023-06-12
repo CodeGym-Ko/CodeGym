@@ -1,13 +1,7 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
-
-</head>
-
-<script>
-
-</script>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
 <style>	
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
@@ -15,11 +9,10 @@
 
 
 /* list styles */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+/* list styles */
 
-ol {
-  list-style: none;
-  color: #ccc;
-}
+
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -27,11 +20,9 @@ ol li {
   margin-bottom: 20px;
 }
 
-li p {
-  font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
-  font-size:20px;
+li p   {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:25px;
   color: #555;
   padding-left: 60px;
 }
@@ -42,17 +33,16 @@ span {
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
+
+
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>종아리(Calves) 프리웨이트</b>
 
     <div class="exercise-images-grid">
@@ -65,10 +55,10 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>바를 등에 댑니다.</p></li>
-        <li><span>02</span><p>바닥에 발을 평평하게 놓고 시작합니다.</p></li>
-        <li><span>03</span><p>무릎을 고정한 상태에서 발뒤꿈치를 위로 뻗고 수축된 자세에서 멈춥니다.</p></li>
-        <li><span>03</span><p>천천히 시작 위치로 돌아갑니다. 이를 반복합니다.</p></li>
+        <p>바를 등에 댑니다.</p>
+        <p>바닥에 발을 평평하게 놓고 시작합니다.</p>
+        <p>무릎을 고정한 상태에서 발뒤꿈치를 위로 뻗고 수축된 자세에서 멈춥니다.</p>
+        <p>천천히 시작 위치로 돌아갑니다. 이를 반복합니다.</p>
     </ol>
     
 
@@ -82,9 +72,8 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>발가락을 바닥으로 향하게 합니다.</p></li>
-        <li><span>02</span><p>앞뒤로 천천히 걷는다.</p></li>
-        <li><span>03</span><p>걷는 동안 가능한 한 오랫동안 발뒤꿈치를 공중에 띄웁니다.</p></li>
+        <p>발가락을 바닥으로 향하게 합니다.</p>
+        <p>가능한 한 오랫동안 발뒤꿈치를 공중에 띄웁니다.</p>
     </ol>
 
     
@@ -98,9 +87,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>무릎에 바벨을 놓고 벤치에 앉아 시작하십시오. 발은 엉덩이 너비만큼 떨어져 바닥에 평평해야 합니다.</p></li>
-        <li><span>02</span><p>지지를 위해 바벨에 손을 대고 발 뒤꿈치를 땅에서 들어 올리십시오.</p></li>
-        <li><span>03</span><p>이 자세를 잠시 유지한 다음 천천히 발뒤꿈치를 다시 바닥으로 내립니다.</p></li>
+        <p>무릎에 바벨을 놓고 벤치에 앉아 시작하십시오. 발은 엉덩이 너비만큼 떨어져 바닥에 평평해야 합니다.</p>
+        <p>지지를 위해 바벨에 손을 대고 발 뒤꿈치를 땅에서 들어 올리십시오.</p>
+        <p>이 자세를 잠시 유지한 다음 천천히 발뒤꿈치를 다시 바닥으로 내립니다.</p>
     </ol>
 
     <div class="exercise-images-grid">
@@ -113,11 +102,11 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>오버핸드 그립을 사용하여 등과 어깨에 걸쳐 바벨을 잡습니다.</p></li>
-        <li><span>02</span><p>코어에 힘을 주고 등을 곧게 펴고 발 볼을 밀어 발뒤꿈치를 최대한 높이 들어 올립니다.</p></li>
-        <li><span>03</span><p>종아리가 늘어나도록 발뒤꿈치를 다시 시작 위치로 내립니다.</p></li>
+        <p>오버핸드 그립을 사용하여 등과 어깨에 걸쳐 바벨을 잡습니다.</p>
+        <p>코어에 힘을 주고 등을 곧게 펴고 발 볼을 밀어 발뒤꿈치를 최대한 높이 들어 올립니다.</p>
+        <p>이제 원위치하고, 이 동작을 반복합니다.</p>
     </ol>
 
-</body>
+</div>
 
 </html>

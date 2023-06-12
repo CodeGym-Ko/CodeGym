@@ -1,25 +1,14 @@
-<!doctype html>
-<html lang="ko">
-<meta charset="utf-8">
-<head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
 
-</head>
-
-<script>
-
-</script>
 
 <style>	
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Song+Myung&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@700&family=Single+Day&family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 
 
 /* list styles */
-
-ol {
-  list-style: none;
-  color: #ccc;
-}
 
 ol li {
   font: bold 24pt helvetica, arial, sans-serif;
@@ -28,32 +17,26 @@ ol li {
 }
 
 li p {
-    font-family: 'Black Han Sans', sans-serif;
-    font-family: 'Gothic A1', sans-serif;
-    font-family: 'Song Myung', serif;
+ font-family: 'Noto Sans KR', sans-serif;
   font-size:20px;
   color: #555;
   padding-left: 60px;
 }
 
 span {
-    color:#555;
+  color:#555;
   position: absolute;
   line-height: 25px;
 }
 
-b {
+b,p {
   text-align:center;
   font-size:35px;
-  font-family: 'Black Han Sans', sans-serif;
-  font-family: 'Gothic A1', sans-serif;
-  font-family: 'Single Day', cursive;
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
-
 </style>
 
-<body>
+<div style="text-align:center;">
     <b>광배근(Lats) 스트레칭</b>
     <div class="exercise-images-grid">
        
@@ -65,9 +48,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>양손을 앞 벽에 댑니다.</p></li>
-        <li><span>02</span><p>스트레칭이 느껴질 때까지 몸을 천천히 내립니다.</p></li>
-        <li><span>03</span><p>스트레칭의 바닥을 잡고 시작 위치로 돌아갑니다.</p></li>
+        <p>양손을 앞 벽에 댑니다.</p>
+        <p>스트레칭이 느껴질 때까지 몸을 천천히 내립니다.</p>
+        <p>스트레칭의 바닥을 잡고 시작 위치로 돌아갑니다.</p>
     </ol>
     
     <div class="exercise-images-grid">
@@ -80,9 +63,9 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>똑바로 서서 손을 머리 위로 완전히 뻗으십시오.</p></li>
-        <li><span>02</span><p>몸을 천천히 기울이고 반대쪽 손으로 다리를 따라 내려갑니다.</p></li>
-        <li><span>03</span><p>스트레칭의 바닥을 잡고 시작 위치로 돌아온 다음 반대쪽도 실시합니다.</p></li>
+        <p>똑바로 서서 손을 머리 위로 완전히 뻗으십시오.</p>
+        <p>몸을 천천히 기울이고 반대쪽 손으로 다리를 따라 내려갑니다.</p>
+        <p>스트레칭의 바닥을 잡고 시작 위치로 돌아온 다음 반대쪽도 실시합니다.</p>
     </ol>
 
     <div class="exercise-images-grid">
@@ -95,13 +78,13 @@ b {
     </div>
 
     <ol>
-        <li><span>01</span><p>기댈 벽을 찾고 등 뒤로 손을 대고 삼두근을 벽에 대십시오.</p></li>
-        <li><span>02</span><p>천천히 벽에 기대십시오.</p></li>
-        <li><span>03</span><p>시작 위치로 돌아간 다음 반대쪽도 실시합니다.</p></li>
+        <p>기댈 벽을 찾고 등 뒤로 손을 대고 삼두근을 벽에 대십시오.</p>
+        <p>천천히 벽에 기대십시오.</p>
+        <p>시작 위치로 돌아간 다음 반대쪽도 실시합니다.</p>
     </ol>
 
    
 
-</body>
+</div>
 
 </html>
