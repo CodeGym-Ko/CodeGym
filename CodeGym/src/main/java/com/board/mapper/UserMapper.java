@@ -43,4 +43,7 @@ public interface UserMapper {
 	
 	//패스워드 수정
 	public void passwordUpdate(UserVO user);
+	
+	//구글 사용자 등록
+	public void googleSignup(UserVO user);
 }
