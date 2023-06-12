@@ -36,6 +36,12 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.notice(data);
 	}
 	
+	// 인덱스 페이지 hot 게시물 뽑기
+	@Override
+	public BoardVO hotBoard(String boardType) {
+		return mapper.hotBoard(boardType);
+	}
+	
 	//게시물 전체 갯수 계산
 	@Override
 	public int getTotalCount(String keyword) {

@@ -35,6 +35,13 @@ public class BoardController {
 	@Autowired
 	BoardService service; // 의존성 주입
 	
+	@GetMapping("/")
+	public String index(Model model) throws Exception {
+		
+		model.addAttribute("freeHotBoard", service.hotBoard("free"));
+		return "index";
+	}
+	
 	
 	// 게시물 목록 보기
 	@GetMapping("/board/list")
@@ -96,10 +103,11 @@ public class BoardController {
 
 		String path = "c:\\Repository\\file\\";
 		int seqno = 0;
-		
+		System.out.println("kind====="+kind);
 		if (kind.equals("I")) { // 게시물 등록
 			seqno = service.getSeqnoWithNextval();
 			board.setSeqno(seqno);
+			board.setBoardType("free");
 			service.write(board);
 		}
 		if (kind.equals("U")) { // 게시물 수정 시 파일 수정
@@ -400,6 +408,7 @@ public class BoardController {
 			if(kind.equals("I")) { //게시물 등록 시 게시물 등록 
 				seqno = service.getSeqnoWithNextval();
 				board.setSeqno(seqno);
+				board.setBoardType("notice");
 				service.write(board);			
 			}
 			

@@ -10,7 +10,7 @@ body { font-family: "나눔고딕", "맑은고딕" }
 h1 { font-family: "HY견고딕" }
 
 
-.userid, .username, .userpasswd, .userpasswd1, .telno, .email {
+.userid, .username, .userpasswd, .userpasswd1, .telno, .email, .zip, .addr1, .addr2 {
   width: 80%;
   border:none;
   border-bottom: 2px solid #adadad;
@@ -96,6 +96,11 @@ h1 { font-family: "HY견고딕" }
 	    <input type="hidden" id="filesizeInput" name="filesize" th:value="${user.filesize}">
 	    <input type="hidden" name="userid" th:value="${user.userid}">
 	    <input type="text" id="username" name="username" class="username" th:value="${user.username}">
+
+        
+        
+        
+        
         <input type="text" id="telno" name="telno" class="telno" th:value="${user.telno}">
         <input type="text" id="email" name="email" class="email" th:value="${user.email}">
         <input type="button" id="btn_modify" class="btn_modify" value="사용자 정보 수정">
