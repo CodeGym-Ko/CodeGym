@@ -86,7 +86,6 @@ public class BoardController {
 	@PostMapping("/board/write")
 	public String postWrite(BoardVO board) throws Exception {
 		int seqno = service.getSeqnoWithNextval();
-		System.out.println("seqno=="+seqno);
 		board.setSeqno(seqno);
 		board.setBoardType("free");
 		service.write(board);
@@ -103,7 +102,6 @@ public class BoardController {
 
 		String path = "c:\\Repository\\file\\";
 		int seqno = 0;
-		System.out.println("kind====="+kind);
 		if (kind.equals("I")) { // 게시물 등록
 			seqno = service.getSeqnoWithNextval();
 			board.setSeqno(seqno);
@@ -512,7 +510,6 @@ public class BoardController {
 		
 		//model.addAttribute("view", mapper.view(seqno));
 		
-		System.out.println("keyword=" + keyword);
 		model.addAttribute("view", service.view(seqno));
 		model.addAttribute("page", pageNum);
 		model.addAttribute("keyword", keyword);	
