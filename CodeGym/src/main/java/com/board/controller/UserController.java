@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.dto.AddressVO;
+import com.board.dto.FileVO;
 import com.board.dto.UserVO;
+import com.board.service.BoardService;
 import com.board.service.UserService;
 import com.board.util.Page;
 
@@ -30,6 +34,9 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
+	@Autowired
+	BoardService boardService;
+	
 	@Autowired //비밀번호 암호화 의존성 주입
 	private BCryptPasswordEncoder pwdEncoder; 
 
@@ -37,6 +44,11 @@ public class UserController {
 	@GetMapping("/user/login")
 	public void getLogin() {}
 	
+//	@PostMapping("/user/login")
+//	public void postLogIn() {
+//		System.out.println("==== Post /user/login ==");
+//		
+//	}
 
 	@ResponseBody
 	@PostMapping("/user/login")
@@ -95,7 +107,7 @@ public class UserController {
 	@GetMapping("/user/logout")
 	public String getLogout(HttpSession session) throws Exception {
 		
-		session.invalidate();
+//		session.invalidate();
 		return "redirect:/";
 	}
 	
@@ -171,7 +183,186 @@ public class UserController {
 			
 			String session_userid = (String)session.getAttribute("userid");
 			model.addAttribute("user", service.userinfo(session_userid));
+			System.out.println("model : " + model);
 			
 		}
 		
+		//사용자 정보 수정 보기
+		@GetMapping("/user/userInfoModify")
+		public void getMemberInfoModify(Model model,HttpSession session) {
+			
+			String userid = (String)session.getAttribute("userid");
+			UserVO user = service.userinfo(userid);
+			//UserVO user_date = service.welcomeView(userid);
+			System.out.println(" === Get /user/userInfoModify userid : " + userid);
+			model.addAttribute("user", user);
+			System.out.println("model : " + model);
+			//model.addAttribute("user_date", user_date);
+		}
+		
+		//사용자 정보 수정
+		@PostMapping("/user/userInfoModify")
+		public String postuserInfoModify(UserVO user,
+				@RequestParam("fileUpload") MultipartFile multipartFile ) {
+		System.out.println("===== Post /user/userInfoModify === user : "+user.toString());
+		
+		String path = "c:\\Repository\\profile\\";
+		File targetFile;
+		
+		if(!multipartFile.isEmpty()) {
+
+			//기존 프로파일 이미지 삭제
+			UserVO vo = new UserVO();
+			vo = service.userinfo(user.getUserid());
+			File file = new File(path + vo.getStored_filename());
+			file.delete();
+			
+			String org_filename = multipartFile.getOriginalFilename();	
+			String org_fileExtension = org_filename.substring(org_filename.lastIndexOf("."));	
+			String stored_filename =  UUID.randomUUID().toString().replaceAll("-", "") + org_fileExtension;	
+							
+			try {
+				targetFile = new File(path + stored_filename);
+				
+				multipartFile.transferTo(targetFile);
+				
+				user.setOrg_filename(org_filename);
+				user.setStored_filename(stored_filename);
+				user.setFilesize(multipartFile.getSize());
+																			
+			} catch (Exception e ) { e.printStackTrace(); }
+				
+		}	
+
+			service.userInfoUpdate(user);
+			return "redirect:/user/userinfo";
+			
+		}
+		
+		//회원탈퇴
+		@GetMapping("/user/userInfoDelete")
+		public String getDeleteMember(HttpSession session) throws Exception {
+			String userid = (String)session.getAttribute("userid"); 
+			
+			String path_profile = "c:\\Repository\\profile\\";
+			String path_file = "c:\\Repository\\file\\";
+			
+			//회원 프로필 사진 삭제
+			UserVO user= new UserVO();
+			user = service.userinfo(userid);		
+			File file = new File(path_profile + user.getStored_filename());
+			file.delete();
+			
+			//회원이 업로드한 파일 삭제
+			List<FileVO> fileList = boardService.fileInfoByUserid(userid);
+			for(FileVO vo:fileList) {
+				File f = new File(path_file + vo.getStored_filename());
+				f.delete();
+			}
+			//게시물,댓글,파일업로드 정보, 회원정보 전체 삭제
+			service.userInfoDelete((String)session.getAttribute("userid"));
+			
+			session.invalidate();
+			System.out.println("=== Get 회원 탈퇴 완료 확인");
+			return "redirect:/";
+		}
+		
+		//사용자 패스워드 변경 페이지 보기
+		@GetMapping("/user/userPasswordModify")
+		public void getMemberPasswordModify() { }
+		
+		//사용자 패스워드 변경 
+		@PostMapping("/user/userPasswordModify")
+		public String postMemberPasswordModify(@RequestParam("old_userpassword") String old_password,
+				@RequestParam("new_userpassword") String new_password, HttpSession session) { 
+			
+			String userid = (String)session.getAttribute("userid");
+			
+			UserVO member = service.userinfo(userid);
+			if(pwdEncoder.matches(old_password, member.getPassword())) {
+				member.setPassword(pwdEncoder.encode(new_password));
+				service.passwordUpdate(member);
+			}	
+			return "redirect:/user/logout";
+		}
+		
+		//사용자 아이디 찾기 보기
+		@GetMapping("/user/findId")
+		public void getSearchID() {
+		} 
+		
+		//사용자 아이디 찾기 
+		@PostMapping("/user/findId")
+		public String postSearchID(UserVO user, RedirectAttributes rttr) { 
+			
+//			String userid = service.searchID(user);
+			//조건에 해당하는 사용자가 아닐 경우 
+//			if(userid == null ) { 
+//				rttr.addFlashAttribute("msg", "ID_NOT_FOUND");
+//				return "redirect:/user/findId"; 
+//			}
+//			
+//			return "redirect:/user/IDView?userid=" + userid;
+			return null;
+		} 
+		
+		//찾은 아이디 보기
+		@GetMapping("/user/IDView")
+		public void postViewID(@RequestParam("userid") String userid, Model model) {
+			
+			model.addAttribute("userid", userid);
+			
+		}
+		
+		//사용자 패스워드 임시 발급 보기
+		@GetMapping("/user/tempPw")
+			public void getSearchPassword() { } 
+			
+		//사용자 패스워드 임시 발급
+		@PostMapping("/user/tempPw")
+			public String postSearchPassword(UserVO user, RedirectAttributes rttr) { 
+				
+//				if(service.searchPassword(user)==0) {
+//					
+//					rttr.addFlashAttribute("msg", "PASSWORD_NOT_FOUND");
+//					return "redirect:/user/tempPw"; 
+//					
+//				}
+				
+				//숫자 + 영문대소문자 10자리 임시패스워드 생성
+				StringBuffer tempPW = new StringBuffer();
+				Random rnd = new Random();
+				for (int i = 0; i < 10; i++) {
+				    int rIndex = rnd.nextInt(3);
+				    switch (rIndex) {
+				    case 0:
+				        // a-z : 아스키코드 97~122
+				    	tempPW.append((char) ((int) (rnd.nextInt(26)) + 97));
+				        break;
+				    case 1:
+				        // A-Z : 아스키코드 65~122
+				    	tempPW.append((char) ((int) (rnd.nextInt(26)) + 65));
+				        break;
+				    case 2:
+				        // 0-9
+				    	tempPW.append((rnd.nextInt(10)));
+				        break;
+				    }
+				}
+				
+				user.setPassword(pwdEncoder.encode(tempPW));
+				service.passwordUpdate(user);
+				System.out.println("==== Post /user/tempPw/   tempPW : " + tempPW);
+				
+				return "redirect:/user/tempPWView?password=" + tempPW;
+				
+			} 
+			
+			//발급한 임시패스워드 보기
+			@GetMapping("/user/tempPWView")
+			public void getTempPWView(Model model, @RequestParam("password") String password) {
+				
+				model.addAttribute("password", password);
+				
+			}
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+ <head>
+ <title>CodeGym 아이디 찾기</title>
+ <style>
+	
+ </style>
+ </head> 
+<!-- 개발 영역 시작 -->
+
+<div align=center>
+
+	<form name="IDSearchForm" class="IDSearchForm" id="IDSearchForm" method="post">
+        <h1>아이디 찾기</h1>
+     	<div class="IDSearchFormDivision">
+         	<input type="text" name="username" id="username" class="username" placeholder="이름을 입력하세요.">
+         	<input type="text" id="telno" name="telno" class="telno" onkeydown="press(this.form)" placeholder="전화번호를 입력하세요.">
+         	
+			<p th:if="${msg == 'ID_NOT_FOUND'}" style="text-align: center; color:red;">입력한 조건에 맞는 사용자가 존재하지 않습니다. 다시 입력하세요 !!!</p>
+
+         	<br>
+         	<input type="button" id="btn_IDSearch" class="btn_IDSearch" value="아이디 찾기" onclick="IDSearchCheck()"> 
+            <input type="button" class="btn_cancel" value="취소" onclick='javascript:location.href="/"'> 
+     	</div> 
+	</form>
+
+</div>
+
+
+<script th:inline="javascript">
+    function IDSearchCheck() {
+        var username = document.getElementById("username");
+        var telno = document.getElementById("telno");
+
+        if (username.value === "") {
+            alert("이름을 입력하세요.");
+            username.focus();
+            return false;
+        }
+
+        if (telno.value === "") {
+            alert("전화번호를 입력하세요.");
+            telno.focus();
+            return false;
+        }
+
+        document.getElementById("IDSearchForm").setAttribute("action", "/user/findId");
+        document.getElementById("IDSearchForm").submit();
+    }
+    
+    const press = () => { if(event.keyCode == 13) pwSearchCheck(); }
+
+</script>
+
+
+<!-- 개발 영역 끝 -->
+</th:block>
+</html>
