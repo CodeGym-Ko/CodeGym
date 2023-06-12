@@ -96,13 +96,7 @@ h1 { font-family: "HY견고딕" }
 	    <input type="hidden" id="filesizeInput" name="filesize" th:value="${user.filesize}">
 	    <input type="hidden" name="userid" th:value="${user.userid}">
 	    <input type="text" id="username" name="username" class="username" th:value="${user.username}">
-        <input type="text" id="addrSearch" name="addrSearch" class="addrSearch" placeholder="변경할 주소를 입력해서 검색해 주세요.">
-        <input type="button" id="btn_addrSearch" class="btn_addrSearch btn-success" value="주소검색" onclick="searchAddr()">
-        <input type="text" id="zip" class="zip" name="zip" th:value="${user.zipcode}" disabled>
-        <input type="hidden" name="zipcode">
-        <input type="text" id="addr1" class="addr1" name="addr1" th:value="${user.address}" disabled>
-        <input type="text" id="addr2" class="addr2" name="addr2" placeholder="변경할 상세주소를 입력하세요" >
-        <input type="hidden" id="address" name="address">
+        
         <input type="text" id="telno" name="telno" class="telno" th:value="${user.telno}">
         <input type="text" id="email" name="email" class="email" th:value="${user.email}">
         <input type="button" id="btn_modify" class="btn_modify" value="사용자 정보 수정">
