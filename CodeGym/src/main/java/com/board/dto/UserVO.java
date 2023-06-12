@@ -27,7 +27,7 @@ public class UserVO {
 	private long filesize;
 	
 	private String fromsocial;
-	// tostring
+	
 	@Override
 	public String toString() {
 		return "UserVO [userid=" + userid + ", username=" + username + ", password=" + password + ", gender=" + gender
