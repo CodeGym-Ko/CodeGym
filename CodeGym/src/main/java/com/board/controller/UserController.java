@@ -134,7 +134,7 @@ public class UserController {
 			}
 			
 			user.setPassword(pwdEncoder.encode(user.getPassword()));
-			
+			System.out.println(user.toString()+"userid");
 			service.signup(user);		
 			return "{\"username\":\"" + URLEncoder.encode(user.getUsername(),"UTF-8") + "\",\"status\":\"good\"}";
 			//{"username": "김철수", "status": "good"}
@@ -150,28 +150,29 @@ public class UserController {
 			return service.idCheck(userid);
 			
 		}
-		
-		//주소검색
-		@GetMapping("/user/addrSearch")
-		public void getSearchAddr(@RequestParam("addrSearch") String addrSearch,
-				@RequestParam("page") int pageNum,Model model) throws Exception {
-			
-			int postNum = 5;
-			int startPoint = (pageNum -1)*postNum+1; //테이블에서 읽어 올 행의 위치
-			int endPoint = pageNum*postNum;
-			int listCount = 10;
-			
-			Page page = new Page();
-			
-			int totalCount = service.addrTotalCount(addrSearch);
-			List<AddressVO> list = new ArrayList<>();
-			list = service.addrSearch(startPoint, endPoint, addrSearch);
 
-			model.addAttribute("list", list);
-			model.addAttribute("pageListView", page.getPageAddress(pageNum, postNum, listCount, totalCount, addrSearch));
-			
-		}
-		
+		/*
+		 * //주소검색
+		 * 
+		 * @GetMapping("/user/addrSearch") public void
+		 * getSearchAddr(@RequestParam("addrSearch") String addrSearch,
+		 * 
+		 * @RequestParam("page") int pageNum,Model model) throws Exception {
+		 * 
+		 * int postNum = 5; int startPoint = (pageNum -1)*postNum+1; //테이블에서 읽어 올 행의 위치
+		 * int endPoint = pageNum*postNum; int listCount = 10;
+		 * 
+		 * Page page = new Page();
+		 * 
+		 * int totalCount = service.addrTotalCount(addrSearch); List<AddressVO> list =
+		 * new ArrayList<>(); list = service.addrSearch(startPoint, endPoint,
+		 * addrSearch);
+		 * 
+		 * model.addAttribute("list", list); model.addAttribute("pageListView",
+		 * page.getPageAddress(pageNum, postNum, listCount, totalCount, addrSearch));
+		 * 
+		 * }
+		 */
 		//회원정보 보기
 		@GetMapping("/user/userinfo")
 		public void getUserInfo(Model model, HttpSession session) { 
