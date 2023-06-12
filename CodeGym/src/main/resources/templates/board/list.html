@@ -79,6 +79,9 @@
 				<tr th:each="list : ${list}" onmouseover="this.style.background='#46D2D2'" onmouseout="this.style.background='white'">
 				    <td th:text="${list.seq}"></td>
 				    <td style="text-align:left;">
+				    	<th:block th:if="${list.hitno >= 100}">
+				    		<img src="/assets/img/hot.png">
+				    	</th:block>
 				    	<a id="hypertext" 
 				    	   th:href="@{'/board/view?seqno=' + ${list.seqno } + '&page=' + ${page} + '&keyword=' + ${keyword}}" 
 				    	   onmouseover="this.style.textDecoration='underline'" 
