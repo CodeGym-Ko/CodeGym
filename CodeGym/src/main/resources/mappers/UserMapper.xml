@@ -26,8 +26,8 @@
 
 <!-- 사용자 등록 -->
 <insert id="signup" parameterType="com.board.dto.UserVO">
-	insert into tbl_member (userid,username,password,gender,hobby,job,description,zipcode,address,telno,email,role,org_filename,stored_filename,filesize,regdate) values
-	 (#{userid},#{username},#{password},#{gender},#{hobby},#{job},#{description},#{zipcode},#{address},#{telno},#{email},'USER',#{org_filename},#{stored_filename},#{filesize},sysdate)
+	insert into tbl_member (userid,username,password,telno,email,role,org_filename,stored_filename,filesize,regdate) values
+	 (#{userid},#{username},#{password},#{telno},#{email},'USER',#{org_filename},#{stored_filename},#{filesize},sysdate)
 </insert>
 
 <!-- 사용자 정보 보기 -->
@@ -52,8 +52,7 @@
 
 <!-- 사용자 정보 수정 -->
 <update id="userInfoUpdate" parameterType="com.board.dto.UserVO">
-	update tbl_member set username=#{username},telno=#{telno}, email=#{email}, zipcode=#{zipcode},
-		address=#{address}, org_filename=#{org_filename}, stored_filename=#{stored_filename},
+	update tbl_member set username=#{username},telno=#{telno}, email=#{email}, org_filename=#{org_filename}, stored_filename=#{stored_filename},
 		filesize=#{filesize} where userid=#{userid}
 </update>
 

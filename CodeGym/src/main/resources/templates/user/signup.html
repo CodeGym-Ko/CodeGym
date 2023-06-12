@@ -65,14 +65,6 @@
 		else if(Pass.search(/\s/) != -1){ alert("암호는 공백 없이 입력해주세요."); return false; }
 		else if(num < 0 || eng < 0 || spe < 0 ){ alert("암호는 영문,숫자,특수문자를 혼합하여 입력해주세요."); return false; }
 	
-		const gender = document.querySelector('input[name=gender]:checked');	
-		const hobby = document.querySelectorAll('input[name=hobbies]:checked');
-		let hobbyArray = [];
-		for(let i=0; i<hobby.length; i++)
-			hobbyArray.push(hobby[i].value);
-		const job = document.querySelector('select[name=job] option:checked');
-	
-		address.value = addr1.value + " " + addr2.value;
 	 	if(telno.value == '') { alert("전화번호를 입력하세요."); telno.focus(); return false; }
 	 	//전화번호 문자열 정리
 		const beforeTelno = telno.value;
@@ -101,8 +93,6 @@
 				
 		};
 		*/
-		
-		
 		await fetch('/user/signup', {
 			method: 'POST',
 			body: formData,
@@ -120,27 +110,6 @@
 	});
 }
 
-	const selectAll = (checkElement) => {
-		//<input type="checkbox" id="all" name="all" onclick="selectAll(this)">가 
-		//ckeck 여부를 확인할 수 있는 값(ckecked==true 또는 ckecked==false)을 보내고
-		//이 값이 checkElement에 들어감.
-		//checkElement 값을 checkbox.checked에 넣어준다.
-		/*
-		const checkboxes = document.getElementsByName("hobbies");
-		checkboxes.forEach((checkbox) => {
-			checkbox.checked = checkElement.checked; 
-		});
-		*/
-	
-		if(document.getElementById('all').checked == true)
-			for(var i=0; i<document.getElementsByName('hobby').length; i++)
-				document.getElementsByName('hobby')[i].checked = true;
-		if(document.getElementById('all').checked == false)
-			for(var i=0; i<document.getElementsByName('hobby').length; i++)
-				document.getElementsByName('hobby')[i].checked = false;
-		
-	}
-	
 	const idCheck = async () => {
 		
 		const userid = document.querySelector("#userid");
@@ -170,8 +139,8 @@
 
 <style>
 .imageZone {
-	border: 2px solid #2e7d31;
-	width: 60%;
+	border: 2px solid rgb(58, 160, 64);
+	width: auto;
 	height: auto;
 	color: #92AAB0;
 	text-align: center;
@@ -207,19 +176,19 @@
     		<div class="imageZone" id="imageZone">클릭 후 탐색창에서 사진을 <br>선택해 주세요.</div><br>
     		<div class="form-group has-success">
 			  <label class="form-label mt-4" for="userid">아이디</label>
-			  <input type="text" class="form-control is-valid" id="userid" name="userid" placeholder="여기에 아이디를 입력해 주세요." onchange="idCheck()">
+			  <input type="text" class="form-control is-valid" id="userid" name="userid" placeholder="여기에 아이디를 입력해주세요." onchange="idCheck()">
 			<span id="idCheckNotice"></span><br>
-			  <label class="form-label mt-4" for="username">이름</label>
-			  <input type="text" class="form-control is-valid" id="username" name="username" placeholder="여기에 이름을 입력해 주세요." >
+			  <label class="form-label mt-4" for="username">닉네임</label>
+			  <input type="text" class="form-control is-valid" id="username" name="username" placeholder="여기에 사용하실 닉네임을 입력해주세요." >
 			  <label class="form-label mt-4" for="userid">비밀번호</label>
-			  <input type="password" class="form-control is-valid" id="password" name="password" placeholder="여기에 패스워드를 입력해 주세요." >
+			  <input type="password" class="form-control is-valid" id="password" name="password" placeholder="여기에 패스워드를 입력해주세요." >
+			  <small id="emailHelp" class="form-text text-muted">암호는 8자리 ~ 20자리 영문,숫자,특수문자를 혼합하여 입력해주세요.</small><br>
 			  <label class="form-label mt-4" for="userid">비밀번호 확인</label>
-			  <input type="password" class="form-control is-valid" id="password1" name="password1" placeholder="여기에 패스워드를 입력해 주세요." >
-			비밀번호 : <input type="password" class="input_field" id="password" name="password" placeholder="여기에 패스워드를 입력해 주세요."style="width:30%; text-align:left; position:auto; left: 35px;"><br><br>
-			비밀번호 확인 : <input type="password" class="input_field" id="password1" name="password1" placeholder="여기에 패스워드를 입력해 주세요."style="width:30%; text-align:left; position:auto; left: 10px;"><br><br>
-			
-	        전화번호 : <input type="text" id="telno" name="telno" class="input_field" placeholder="전화번호를 입력하세요."><br><br>
-	        이메일 : <input type="text" id="email" name="email" class="input_field" placeholder="이메일주소를 입력하세요."><br>
+			  <input type="password" class="form-control is-valid" id="password1" name="password1" placeholder="여기에 패스워드를 입력해주세요." ><br>
+			  <label class="form-label" for="telno" >전화번호</label>
+			  <input class="form-control" id="telno" name="telno" type="text" placeholder="전화번호를 입력해주세요."><br>
+			  <label class="form-label" for="email">이메일</label>
+			  <input class="form-control" id="email" name="email" type="text" placeholder="이메일을 입력해주세요.">
 	       <!--  <p style="color:red;">일반 사용자 권한으로 등록됩니다.</p> -->
 	       </div>
 			<br>
