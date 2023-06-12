@@ -69,8 +69,9 @@
 
 <!-- 구글 사용자 등록 -->
 <insert id="googleSignup" parameterType="com.board.dto.UserVO">
-	insert into tbl_member (userid,username,password,role,regdate,fromsocial) 
-		values (#{userid},#{username},#{password},#{role},sysdate,#{fromsocial})
+	insert into tbl_member (userid, username, password, role, regdate, fromsocial, org_filename, description) 
+		values (#{userid}, #{username}, #{password}, #{role}, sysdate, #{fromsocial}, #{org_filename}, '구글 사용자 계정')
 </insert>
+
 	
 </mapper>  
