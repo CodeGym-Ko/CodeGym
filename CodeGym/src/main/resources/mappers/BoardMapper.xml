@@ -26,6 +26,10 @@
    		      and boardtype = 'notice'
 </select>
 
+<select id="hotBoard" parameterType="com.board.dto.BoardVO" resultType="com.board.dto.BoardVO">
+	SELECT * FROM tbl_board WHERE hitno = (SELECT max(hitno) FROM tbl_board) and boardtype = #{boardType}
+</select>
+
 <!-- 전체 게시물 갯수 계산 -->
 <select id="getTotalCount" parameterType="string" resultType="int">
 	select count(*) from tbl_board 
