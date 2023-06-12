@@ -2,65 +2,89 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/default_layout">
 <th:block layout:fragment="content">
+<link rel="stylesheet" href="/assets/css/board.css?after"> 
+<!-- 개발 영역 시작 -->
+<title>공지사항</title>
 
-	<!-- 개발 영역 시작 -->
-	<title>공지사항</title>
+<script th:inline="javascript">
+	window.onload = async() => {
 
-	<div class="container" style="padding: 8%;">
-		<div class="tableDiv text-center">
-			<h1 style="padding: 0 0 3% 0; font-size: 28px; font-weight: bold; color: #333;">공지사항</h1>
-			<div class="input-group mb-3">
-				<input type="text" class="form-control" id="keyword" placeholder="검색할 제목, 작성자 이름 및 내용을 입력해 주세요"
-					onkeydown="press()">
-				<div class="input-group-append">
-					<button class="btn btn-dark" type="button" onclick="search()">검색</button>
-				</div>
-			</div>
-			<br>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-						<th>조회수</th>
-					</tr>
-				</thead>
-				<tbody>
-					<th:block th:if="${list != null}">
-						<tr th:each="list:${list}" onmouseover="this.style.background='#d3facf'"
-							onmouseout="this.style.background='white'">
-							<td th:text="${list.seq}"></td>
-							<td style="text-align:left">
-								<a id="hypertext"
-									th:href="@{'/customerCenter/noticeView?seqno=' + ${list.seqno} + '&page=' + ${page} + '&keyword=' + ${keyword}}"
-									onmouseover="this.style.textDecoration='underline'"
-									onmouseout="this.style.textDecoration='none'">[[${list.title}]]</a>
-							</td>
-							<td th:text="${list.writer}"></td>
-							<td th:text="${list.regdate}"></td>
-							<td th:text="${list.hitno}"></td>
-						</tr>
-					</th:block>
-					<th:block th:if="${list == null}">
-						<tr>
-							<td colspan="5">등록된 게시물이 없습니다.</td>
-						</tr>
-					</th:block>
-				</tbody>
-			</table>
-			<br>
-			<div>[(${pageList})]</div>
-			<br>
-			<div class="bottom_menu">
-				<a href="/customerCenter/notice?page=1" class="btn btn-dark">처음으로</a>
-				<th:block th:if="${session.role == 'MASTER'}">
-					<a href="/customerCenter/noticeWrite" class="btn btn-dark">글쓰기</a>
-				</th:block>
-			</div>
-			<br><br>
+		var list = /*[[${list}]]*/ [];
+		console.log(list);
+		
+		for(let i = 0; i < list.length; i++) {
+			
+			const data = {seqno : list[i].seqno};
+			await fetch('/board/fileCheck', {
+			  method: 'POST',
+			  headers: { "Content-Type": "application/json" },
+			  body: list[i].seqno
+			})
+			  .then(response => response.json())
+			  .then(data => {
+			    if (data.status === 'good') {
+			      document.querySelector("#file" + list[i].seqno).src = "/assets/img/file.png";
+			    } 
+			  });
+		
+			
+		}
+	
+	}
+</script>
+		<div class="tableDiv" style="padding: 5%;">
+		<h1 style="padding: 0 0 3% 0; font-size: 28px; font-weight: bold; color: #333;">공지사항</h1>
+		<div>
+			<input type="text" style="width:40%; height: 30px; border: 1px solid skyblue;" id="keyword" name="keyword" placeholder="검색할 제목, 작성자 또는 내용을 입력해주세요" onkeydown="press()">
+			<input class="btn btn-success" type="button" value="검색" onclick="search()">
 		</div>
+		<br>
+		<table class="InfoTable">
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회수</th>
+			</tr>
+			
+			<tbody>
+			<th:block th:if="${list != null }">
+				<tr th:each="list : ${list}" onmouseover="this.style.background='#46D2D2'" onmouseout="this.style.background='white'">
+				    <td th:text="${list.seq}"></td>
+				    <td style="text-align:left;">
+				    	<th:block th:if="${list.hitno >= 100}">
+				    		<img src="/assets/img/hot.png">
+				    	</th:block>
+				    	<a id="hypertext" 
+				    	   th:href="@{'/customerCenter/noticeView?seqno=' + ${list.seqno } + '&page=' + ${page} + '&keyword=' + ${keyword}}" 
+				    	   onmouseover="this.style.textDecoration='underline'"  
+				    	   onmouseout="this.style.textDecoration='none'">[[${list.title }]]
+				    	   <img th:id="'file' + ${list.seqno}" src="">
+				    	</a>
+				    </td>
+				    <td th:text="${list.writer}"></td>
+				    <td th:text="${list.regdate}"></td>
+				    <td th:text="${list.hitno}"></td>
+				</tr>
+			</th:block>
+			<th:block th:if="${list == null }">
+				<tr>
+					<td colspan="5">등록된 게시물이 없습니다.</td>
+				</tr>
+			</th:block>
+			</tbody>
+			
+		</table> 
+		<br>
+		<div>[(${pageList })]</div>
+		<br>
+		<div class="bottom_menu" style="display:inline-block;">
+			<th:block th:if="${session.role == 'MASTER'}">
+				<input class="btn btn-success" type="button" value="글쓰기" onclick="document.location.href='/customerCenter/noticeWrite'">
+			</th:block>
+			<input class="btn btn-success" type="button" value="처음으로" onclick="document.location.href='/customerCenter/notice?page=1'">
+		</div> 
 	</div>
 
 

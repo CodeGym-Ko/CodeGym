@@ -6,8 +6,6 @@
 	<!-- 개발 영역 시작 -->
 	<title>공지사항 상세보기</title>
 	
-	<link rel="stylesheet" href="/assets/css/board.css?after">
-	
 	<script>
 		
 		const deleteBoard = () => {
@@ -17,42 +15,64 @@
 			}
 		}
 
+		
+		const goList = () => {
+			document.location.href='/customerCenter/notice?page=[[${page}]]&keyword=[[${keyword}]]';
+		};
+		
+		const pre_seqno = () => {
+			document.location.href='/customerCenter/noticeView?seqno=[[${pre_seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
+		};
+		
+		const next_seqno = () => {
+			document.location.href='/customerCenter/noticeView?seqno=[[${next_seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
+		};
+		
+		const modify = () => {
+			document.location.href='/customerCenter/noticeModify?seqno=[[${view.seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
+		}
+		
+		// 파일 다운로드
+		function fileDownload(fileseqno){
+			location.href='/board/fileDownload?fileseqno=' + fileseqno;
+		}
+		
 	</script>
 
 
-	<div class="main" style="padding: 5%;">
-		<h1>공지사항</h1>
-		<br>
-		<div class="boardView">
-			<div class="field">이름 : [[${view.writer}]]</div>
-			<div class="field">제목 : [[${view.title}]]</div>
-			<div class="field">날짜 : [[${view.regdate}]]</div>
-			<div class="content"><pre th:text="${view.content}"></pre></div>
+	<div class="main" style="padding:5%;text-align:center;">
+		<div class="card border-dark mb-3" style="width:48%; margin: auto; display: block;">
+			<h3 class="card-header">공지사항</h3>
+			<ul class="list-group list-group-flush" style="text-align:left;">
+	    		<li class="list-group-item">이름 : [[${view.writer}]]</li>
+	    		<li class="list-group-item">제목 : [[${view.title}]]</li>
+	    		<li class="list-group-item">날짜 : [[${view.regdate}]]</li>
+	    		<li class="list-group-item">[[${view.content}]]</li>
+	  		</ul>
 	        <th:block th:if="${fileListView != null}">
-	 			<div class="field" th:each="fileView:${fileListView}">파일명 : <a href="@{'/board/filedownload?fileseqno=' + ${fileView.fileseqno}}">[[${fileView.org_filename}]]</a> ( [[${fileView.filesize}]] Byte )</div>
+	 			<div style="margin:5%;" th:each="fileView : ${fileListView}">
+					<div class="form-control is-valid" style="width:50%; margin: auto; display: block;">파일명 : <a href="#" th:attr="onclick='fileDownload(\'' + ${fileView.fileseqno} + '\')'">[[${fileView.org_filename}]]</a> ( [[${fileView.filesize}]] Byte )</div>
+				</div>
 			</th:block>
 			<th:block th:if="${fileListView == null}">
-				<div class="field">업로드된 파일이 없습니다.</div>
+				<div class="field" style="margin:1%;">업로드된 파일이 없습니다.</div>
 			</th:block>	
-			<br><br>
 		</div>
-		<br>
-		<div class="bottom_menu">
+		<div style="text-align:center; padding:2%;" >
 			<th:block th:if="${pre_seqno != 0}">
-				&nbsp;&nbsp;<a th:href="@{'/customerCenter/noticeView?seqno=' + ${pre_seqno} + '&page=' + ${page} + '&keyword=' + ${keyword}}">이전글▼</a>&nbsp;&nbsp;
+				<button class="btn btn-outline-dark" onclick="pre_seqno()">이전글▼</button>
 			</th:block>
-			<a th:href="@{'/customerCenter/notice?page=' + ${page} + '&keyword=' + ${keyword}}">목록보기</a>&nbsp;&nbsp;
-			<th:block th:if="${next_seqno != 0}">
-				<a th:href="@{'/customerCenter/noticeView?seqno=' + ${next_seqno} + '&page=' + ${page} + '&keyword=' + ${keyword}}">다음글▲</a>&nbsp;&nbsp;
+				<button class="btn btn-outline-info" id="btn_list" onclick="goList()">글목록</button>
+			<th:block th:if="${next_seqno != 0 }">
+				<button class="btn btn-outline-dark" onclick="next_seqno()">다음글▲</button>
 			</th:block>
-			<a href="/customerCenter/noticeWrite">글 작성</a>&nbsp;&nbsp;
-			<th:block th:if="${session.userid == view.userid}">
-				<a th:href="@{'/customerCenter/noticeModify?seqno=' + ${view.seqno} + '&page=' + ${page} + '&keyword=' + ${keyword}}">글 수정</a>&nbsp;&nbsp;
-				<a href="javascript:deleteBoard()">글 삭제</a>
+			<th:block th:if="${session.role == 'MASTER'}">
+				<button class="btn btn-outline-info" id="btn_write" onclick="document.location.href='/customerCenter/noticeWrite'">글작성</button>
+				<button class="btn btn-outline-info" id="btn_modify" onclick="modify()">수정</button>
+				<button class="btn btn-outline-info" id="btn_delete" onclick="del()">삭제</button>
 			</th:block>
-		</div>	
+		</div>
 	</div>
-
 	<script>
 
 	</script>
