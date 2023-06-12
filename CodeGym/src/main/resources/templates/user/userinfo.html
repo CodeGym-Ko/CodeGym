@@ -47,18 +47,12 @@ body {
 			<div class=imgView style="width:80%;height:auto;margin: auto; padding: 20px; border: none;"><img th:src="@{'/profile/' + ${user.stored_filename}}" style="display:block;width:500px;height:auto;margin:auto"></div>
 			<div class="field">아이디 : [[${user.userid}]]</div>
 			<div class="field">이름 : [[${user.username}]]</div>
-			<div class="field">성별 : [[${user.gender}]]</div>
-			<div class="field">직업 : [[${user.job}]]</div>
-			<div class="field">취미 : [[${user.hobby}]]</div>
 			<div class="field">전화번호 : [[${user.telno}]]</div>
 			<div class="field">이메일 : [[${user.email}]]</div>
 			
-			<div class="field">주소 : | [[${user.zipcode}]] | [[${user.address}]]</div>
 			<!-- regdate가 없어서 안됨(테이블에도 없음) 필요하면 넣고 아님 말고 -->
 			<div class="field">서비스 가입일: ${#dates.format(user.regdate, 'yyyy-MM-dd')}<p>☝테이블에 컬럼이 없음 필요하면 만들고 아님 말고</p></div>
 			
-			<div class="content"> 설명? 자기소개?</div>
-			<textarea class="input_content" id="description" cols="50" rows="10" name="description" readonly>[[${user.description}]]</textarea>
 		</div>
 	
 		<br>
