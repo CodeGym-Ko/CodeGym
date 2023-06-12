@@ -89,4 +89,15 @@ public class UserServiceImpl implements UserService {
 	public void googleSignup(UserVO user) {
 		mapper.googleSignup(user);
 	}
+	//카카오 사용자 등록
+	@Override
+	public void kakaoSignup(UserVO user) {
+		mapper.googleSignup(user);
+	}
+	
+	//네이버 사용자 등록
+	@Override
+	public void naverSignup(UserVO user) {
+		mapper.googleSignup(user);
+	}
 }

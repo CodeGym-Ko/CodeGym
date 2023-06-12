@@ -38,11 +38,13 @@ public class OAuth2UserDetailsServiceImpl extends DefaultOAuth2UserService{
 		String providerId = oAuth2User.getAttribute("sub");
 		String email = oAuth2User.getAttribute("email");
 		String name = oAuth2User.getAttribute("name");
+		String picture = oAuth2User.getAttribute("picture");
 		
 		System.out.println("**************** provider =" + provider);
 		System.out.println("**************** providerId =" + providerId);
 		System.out.println("**************** email =" + email);
 		System.out.println("**************** name =" + name);
+		System.out.println("**************** picture =" + picture);
 		
 		oAuth2User.getAttributes().forEach((k,v) -> 
 			{System.out.println("구글로그인 주는거 forEach ==== " + k + " : " + v );});
@@ -53,10 +55,12 @@ public class OAuth2UserDetailsServiceImpl extends DefaultOAuth2UserService{
 		//구글에서 받은 승인된 이메일로 사용자 정보 등록
 		if(service.idCheck(email) == 0) {
 			user.setUserid(email);
+			user.setEmail(email);
 			user.setUsername(name);
+			user.setOrg_filename(picture);
 			user.setPassword(pwdEncoder.encode("12345"));
 			user.setRole("USER");
-			user.setFromsocial("G");			
+			user.setFromsocial("G"); // 구글이라 G			
 			service.googleSignup(user);
 		}
 

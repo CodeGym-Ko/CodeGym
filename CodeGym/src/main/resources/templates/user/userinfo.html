@@ -44,7 +44,11 @@ body {
 		<h1>회원 정보 보기</h1>
 		<br>
 		<div class="boardView">
-			<div class=imgView style="width:80%;height:auto;margin: auto; padding: 20px; border: none;"><img th:src="@{'/profile/' + ${user.stored_filename}}" style="display:block;width:500px;height:auto;margin:auto"></div>
+			<div class=imgView style="width:80%;height:auto;margin: auto; padding: 20px; border: none;">
+				<img th:if="${user.stored_filename != null}" th:src="@{'/profile/' + ${user.stored_filename}}" style="display:block;width:500px;height:auto;margin:auto">
+				<img th:if="${user.stored_filename == null}" th:src="${user.org_filename}" style="display:block;width:500px;height:auto;margin:auto">
+				
+			</div>
 			<div class="field">아이디 : [[${user.userid}]]</div>
 			<div class="field">이름 : [[${user.username}]]</div>
 			<div class="field">전화번호 : [[${user.telno}]]</div>
