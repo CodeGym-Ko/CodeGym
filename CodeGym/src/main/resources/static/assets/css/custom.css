@@ -14,3 +14,7 @@
 h1 {
 	margin: 20px 0;
 }
+
+.line {
+	text-decoration: line-through;
+}

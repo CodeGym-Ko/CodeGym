@@ -178,7 +178,7 @@
 					formData.append("SendToFileList", content_files[i]); // content_files은 배열 
 				}
 		}
-	
+		
 		await fetch(uploadURL, {
 			method: "POST",
 			body: formData

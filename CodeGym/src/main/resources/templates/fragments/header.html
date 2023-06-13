@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="/assets/css/bootstrap.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="/assets/css/templatemo.css">
-<!-- 	<link rel="stylesheet" href="/assets/css/board.css"> -->
 	<link rel="stylesheet" href="/assets/css/custom.css">
     
     <!-- Load fonts style after rendering the layout styles -->
@@ -71,13 +70,10 @@
 							</div>
 						</li>
 						<li class="nav-item">
-
 							<a th:if="${session.userid == null}" class="btn btn-success" style="color: white;" href="/user/login">로그인</a>
 							<div th:if="${session.userid != null}">
 								<a class="btn btn-success" style="color: white;" href="/user/logout">로그아웃</a>
-								<p style="color:gray">[[${session.username}]] 님 환영💪🏽</p>
 							</div>
-							
 						</li>
 						<li th:if="${session.userid == null}" class="nav-item">
 							<a class="btn btn-success" style="color: white;" href="/user/signup">
@@ -89,11 +85,10 @@
 								<i class="bi bi-person-fill"></i>
 							회원정보</a>
 						</li>
-						<li th:if="${session.username == 'null'}" class="nav-item">
-							
-							세션 자체가 없음
-						</li>
 					</ul>
+					<div th:if="${session.userid != null}">
+						<span style="color:gray;float:right;margin-right: 16%;">[[${session.username}]] 님 환영💪🏽</span>
+					</div>
 				</div>
 			</div>
 		</div>

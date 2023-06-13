@@ -35,6 +35,13 @@ public class BoardController {
 	@Autowired
 	BoardService service; // 의존성 주입
 	
+	@GetMapping("/")
+	public String index(Model model) throws Exception {
+		
+		model.addAttribute("freeHotBoard", service.hotBoard("free"));
+		return "index";
+	}
+	
 	
 	// 게시물 목록 보기
 	@GetMapping("/board/list")
@@ -79,7 +86,6 @@ public class BoardController {
 	@PostMapping("/board/write")
 	public String postWrite(BoardVO board) throws Exception {
 		int seqno = service.getSeqnoWithNextval();
-		System.out.println("seqno=="+seqno);
 		board.setSeqno(seqno);
 		board.setBoardType("free");
 		service.write(board);
@@ -96,10 +102,10 @@ public class BoardController {
 
 		String path = "c:\\Repository\\file\\";
 		int seqno = 0;
-		
 		if (kind.equals("I")) { // 게시물 등록
 			seqno = service.getSeqnoWithNextval();
 			board.setSeqno(seqno);
+			board.setBoardType("free");
 			service.write(board);
 		}
 		if (kind.equals("U")) { // 게시물 수정 시 파일 수정
@@ -400,6 +406,7 @@ public class BoardController {
 			if(kind.equals("I")) { //게시물 등록 시 게시물 등록 
 				seqno = service.getSeqnoWithNextval();
 				board.setSeqno(seqno);
+				board.setBoardType("notice");
 				service.write(board);			
 			}
 			
@@ -503,7 +510,6 @@ public class BoardController {
 		
 		//model.addAttribute("view", mapper.view(seqno));
 		
-		System.out.println("keyword=" + keyword);
 		model.addAttribute("view", service.view(seqno));
 		model.addAttribute("page", pageNum);
 		model.addAttribute("keyword", keyword);	

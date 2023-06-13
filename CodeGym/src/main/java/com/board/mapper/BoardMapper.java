@@ -19,6 +19,9 @@ public interface BoardMapper {
 	//공지사항
 	public List<BoardVO> notice(Map<String,Object> data);
 	
+	// 인덱스 페이지 hot 게시물 뽑기
+	public BoardVO hotBoard(String boardType);
+	
 	//게시물 전체 갯수 계산
 	public int getTotalCount(String keyword);
 	

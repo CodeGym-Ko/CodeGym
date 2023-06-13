@@ -96,13 +96,11 @@ h1 { font-family: "HY견고딕" }
 	    <input type="hidden" id="filesizeInput" name="filesize" th:value="${user.filesize}">
 	    <input type="hidden" name="userid" th:value="${user.userid}">
 	    <input type="text" id="username" name="username" class="username" th:value="${user.username}">
-        <input type="text" id="addrSearch" name="addrSearch" class="addrSearch" placeholder="변경할 주소를 입력해서 검색해 주세요.">
-        <input type="button" id="btn_addrSearch" class="btn_addrSearch btn-success" value="주소검색" onclick="searchAddr()">
-        <input type="text" id="zip" class="zip" name="zip" th:value="${user.zipcode}" disabled>
-        <input type="hidden" name="zipcode">
-        <input type="text" id="addr1" class="addr1" name="addr1" th:value="${user.address}" disabled>
-        <input type="text" id="addr2" class="addr2" name="addr2" placeholder="변경할 상세주소를 입력하세요" >
-        <input type="hidden" id="address" name="address">
+
+        
+        
+        
+        
         <input type="text" id="telno" name="telno" class="telno" th:value="${user.telno}">
         <input type="text" id="email" name="email" class="email" th:value="${user.email}">
         <input type="button" id="btn_modify" class="btn_modify" value="사용자 정보 수정">
@@ -124,10 +122,6 @@ h1 { font-family: "HY견고딕" }
 	
 		$("#btn_modify").click(function(){
 			
-			if($("#zip").val() == '') { alert("우편번호를 입력하세요."); $("#zip").focus(); return false; }
-			document.registerForm.zipcode.value = $("#zip").val();
-			$("#address").val($("#addr1").val() + " " + $("#addr2").val());
-
 			if($("#telno").val() == '') { alert("전화번호를 입력하세요."); $("#telno").focus(); return false; }
 		 	//전화번호 문자열 정리
 			var beforeTelno = $("#telno").val();
@@ -210,22 +204,7 @@ h1 { font-family: "HY견고딕" }
 		imgcheck = "Y";
 	}
 	
-	function searchAddr(){
-
-		var addrSearch = $("#addrSearch").val();
-		if(addrSearch =='') {
-			alert("검색할 주소를 입력하세요.");
-			$("#addrSearch").focus();
-			return false;
-		}
-
-		window.open(
-		          "addrSearch?page=1&addrSearch=" + addrSearch,
-		          "주소검색",
-		          "width=850, height=300, top=50, left=50"
-		);
-		
-	}
+	
 	
 </script>
 
