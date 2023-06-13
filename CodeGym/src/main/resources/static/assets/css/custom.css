@@ -1,5 +1,4 @@
 .boxradius {
-		margin: 150px auto 100px auto;
 		padding: 50px;
 		text-align: center;
 		border: 3px solid;
@@ -18,3 +17,19 @@ h1 {
 .line {
 	text-decoration: line-through;
 }
+
+.smallInfo {
+	float: none;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    color: #979797;
+}
+
+.main {
+	margin: 120px auto 100px auto;
+	text-align: center;
+}
+
+.noDot {
+	list-style-type: none;
+  }
