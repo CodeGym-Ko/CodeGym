@@ -20,7 +20,7 @@ public interface BoardService {
 	public BoardVO hotBoard(String boardType);
 	
 	//게시물 전체 갯수 계산
-	public int getTotalCount(String keyword);
+	public int getTotalCount(String keyword, String boardType);
 	
 	//게시물 번호 구하기
 	public int getSeqnoWithNextval();	

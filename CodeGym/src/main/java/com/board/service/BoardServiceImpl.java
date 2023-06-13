@@ -44,8 +44,11 @@ public class BoardServiceImpl implements BoardService {
 	
 	//게시물 전체 갯수 계산
 	@Override
-	public int getTotalCount(String keyword) {
-		return mapper.getTotalCount(keyword);
+	public int getTotalCount(String keyword, String boardType) {
+		Map<String,String> data = new HashMap<>();
+		data.put("keyword", keyword);
+		data.put("boardType", boardType);
+		return mapper.getTotalCount(data);
 	}
 	
 	//게시물 번호 구하기

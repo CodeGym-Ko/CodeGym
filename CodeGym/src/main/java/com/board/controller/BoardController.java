@@ -52,10 +52,9 @@ public class BoardController {
 			int pageListCount = 10; // 화면 하단에 보여지는 페이지 리스트 내의 페이지 개수
 			int startPoint = (pageNum - 1) * postNum;
 			int endPoint = pageNum * postNum;
-			int totalCount = service.getTotalCount(keyword);
+			int totalCount = service.getTotalCount(keyword, "free");
 
 			Page page = new Page();
-
 			model.addAttribute("list", service.list(startPoint, endPoint, keyword));
 			model.addAttribute("page", pageNum);
 			model.addAttribute("keyword", keyword);
@@ -358,7 +357,7 @@ public class BoardController {
 
 	// 공지사항
 	@GetMapping("/customerCenter/notice")
-	public void getNotice(@RequestParam("page") int pageNum,
+	public String getNotice(@RequestParam("page") int pageNum,
 			@RequestParam(name = "keyword", defaultValue = "", required = false) String keyword, Model model)
 			throws Exception {
 		// 목록 보기
@@ -366,13 +365,14 @@ public class BoardController {
 		int pageListCount = 10; // 화면 하단에 보여지는 페이지리스트 내의 페이지 갯수
 		int startPoint = (pageNum - 1) * postNum + 1;
 		int endPoint = pageNum * postNum;
+		int totalCount = service.getTotalCount(keyword, "notice");
 
 		Page page = new Page();
-
 		model.addAttribute("list", service.notice(startPoint, endPoint, keyword));
 		model.addAttribute("page", pageNum);
 		model.addAttribute("keyword", keyword);
-		model.addAttribute("pageList", page.getPageList(pageNum, postNum, pageListCount, service.getTotalCount(keyword), keyword));
+		model.addAttribute("pageList", page.getPageList(pageNum, postNum, pageListCount, totalCount, keyword));
+		return "/customerCenter/notice";
 	}
 	
 	// 공지사항 작성 화면
