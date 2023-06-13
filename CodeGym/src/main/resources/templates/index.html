@@ -18,11 +18,19 @@
 
 	<script th:inline="javascript">
 		window.onload = () => {
-			const list = /*[[${freeHotBoard}]]*/ [];
-			document.querySelector("#freeHotTitle").innerText = list.title;
-			document.querySelector("#freeHotContent").innerText = list.content;
-			const seqno = list.seqno;
-			document.querySelector("#freeHotBoard").href = "/board/view?seqno="+seqno+"&page=1&keyword=";
+			const freeHotBoard = /*[[${freeHotBoard}]]*/ [];
+			document.querySelector("#freeHotTitle").innerText = freeHotBoard.title;
+			document.querySelector("#freeHotContent").innerText = freeHotBoard.content;
+			const freeHotBoardSeqno = freeHotBoard.seqno;
+			document.querySelector("#freeHotBoard").href = "/board/view?seqno="+freeHotBoardSeqno+"&page=1&keyword=";
+
+			const todayWorkout = /*[[${todayWorkout}]]*/ [];
+			console.log(freeHotBoard);
+			console.log(todayWorkout);
+			document.querySelector("#todayWorkoutHotTitle").innerText = todayWorkout.title;
+			document.querySelector("#todayWorkoutHotContent").innerText = todayWorkout.content;
+			const todayWorkoutSeqno = todayWorkout.seqno;
+			document.querySelector("#todayWorkoutHotBoard").href = "/todayWorkout/view?seqno="+todayWorkoutSeqno+"&page=1&keyword=";
 		}
 		
 		
@@ -121,25 +129,12 @@
 				</div>
 				<div class="col-12 col-md-4 mb-4">
 					<div class="card h-100">
-						<a href="shop-single.html">
-						</a>
 						<div class="card-body">
-							<ul class="list-unstyled d-flex justify-content-between">
-								<li>
-									<i class="text-warning fa fa-star"></i>
-									<i class="text-warning fa fa-star"></i>
-									<i class="text-warning fa fa-star"></i>
-									<i class="text-muted fa fa-star"></i>
-									<i class="text-muted fa fa-star"></i>
-								</li>
-								<li class="text-muted text-right">$480.00</li>
-							</ul>
-							<a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
-							<p class="card-text">
-								Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo
-								ullamcorper.
+							<div class="card-header">
+								<a id="todayWorkoutHotBoard" href="" class="h2 text-decoration-none text-dark"><span id="todayWorkoutHotTitle"></span></a>
+							</div>
+							<p class="card-text" id="todayWorkoutHotContent" style="margin:5%;">
 							</p>
-							<p class="text-muted">Reviews (48)</p>
 						</div>
 					</div>
 				</div>

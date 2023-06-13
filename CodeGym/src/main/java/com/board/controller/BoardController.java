@@ -37,7 +37,7 @@ public class BoardController {
 	
 	@GetMapping("/")
 	public String index(Model model) throws Exception {
-		
+		model.addAttribute("todayWorkout", service.hotBoard("todayWorkout"));
 		model.addAttribute("freeHotBoard", service.hotBoard("free"));
 		return "index";
 	}
