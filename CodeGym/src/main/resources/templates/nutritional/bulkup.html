@@ -4,18 +4,30 @@
   
 <!-- 개발 영역 시작 -->
 
+<script>
+
+	function offNormal() {
+		document.getElementById("normalDiv").style.display = "none";
+	}
+	
+	function onNormal() {
+		document.getElementById("normalDiv").style.display = "block";
+	}
+	
+</script>
+
 <ul class="nav nav-tabs" role="tablist">
 
   <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#normal" aria-selected="true" role="tab">일반식</a>
+    <a class="nav-link" data-bs-toggle="tab" href="#normal" onclick="onNormal()" aria-selected="true" role="tab">일반식</a>
+  </li>
+  
+  <li class="nav-item" id="veganTab" role="presentation">
+    <a class="nav-link" data-bs-toggle="tab" href="#vegan" onclick="offNormal()" aria-selected="true" role="tab" tabindex="-1">비건</a>
   </li>
   
   <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#vegan" aria-selected="true" role="tab" tabindex="-1">비건</a>
-  </li>
-  
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#vegetarian" aria-selected="true" role="tab" tabindex="-1">채식주의</a>
+    <a class="nav-link" data-bs-toggle="tab" href="#vegetarian" onclick="offNormal()" aria-selected="true" role="tab" tabindex="-1">채식주의</a>
   </li>
   
 </ul>
@@ -25,9 +37,9 @@
 	
 	  
 	  
-	  <div class="tab-pane fade" id="normal" role="tabpanel">
+	  <div class="tab-pane fade active show" id="normal" role="tabpanel">
 	  	
-	  	<div class="card border-primary mb-3" style="max-width: 20rem;">
+	  	<div class="card border-primary mb-3" id="normalDiv" style="max-width: 20rem;">
 			  <div class="card-header">일반식</div>
 			  <div class="card-body">
 			  	아침
@@ -49,7 +61,6 @@
 			      <li>스테이크와 감자 그라탕</li>
 			    </ul>
 			  </div>
-			 
 		</div>
 		
 		   
