@@ -186,6 +186,17 @@
 		}); 
 		
 	}
+	
+	makeline = (box,num) => {
+		let fileline = '#fileLine' + num;
+		if(box.checked){ // 체크가 되면 checed==true라는 값을 전달받는다. 
+			document.querySelector(fileline).classList.add("line");
+		}
+	    else{
+			document.querySelector(fileline).classList.remove("line");
+	    }
+	        
+	}
 
 	</script>
 
@@ -381,14 +392,15 @@
 					<input type="hidden" name="page" th:value="${page}">
 					<input type="hidden" name="keyword" th:value="${keyword}">
 					<textarea class="content" id="content" cols="100" rows="500" name="content" th:text="${view.content}"></textarea>
-					<th:block th:if="${fileListView != null }">
-			         	<div id="fileList">	
-			         		<span style="position:relative;left:10px;text-align:left;" th:each="file:${fileListView}">
-			         		삭제 : <label><input type="checkbox" name="deleteFileList" th:value="${file.fileseqno}"> 
-			         			[[${file.org_filename}]]&nbsp;( [[${file.filesize}]] Byte)</label><br>
-			         		</span>
-			         	</div>       
-			        </th:block>
+					<div id="fileList" th:if="${fileListView != null}">
+			        <span th:each="file : ${fileListView}">
+				        삭제 :
+				            <label><input type="checkbox" th:id="'checkBox' + ${file.fileseqno}" name="deleteFileList" th:value="${file.fileseqno}"
+				                   onclick="makeline(this, this.value)">
+				            <span th:id="'fileLine' + ${file.fileseqno}" th:text="${file.org_filename + ' (' + file.filesize + ' Byte)'}"></span></label>
+				            <br>
+				        </span>
+					</div>
 	        		<div class="fileuploadForm">
 						<input type="file" id="inputFile" name="uploadFile" style="display:none;" multiple />
 						<div class="fileZone" id="fileZone">파일 첨부를 하기 위해서는 클릭하거나 여기로 파일을 드래그 하세요.<br>첨부파일은 최대 5개까지 등록이 가능합니다.</div>
