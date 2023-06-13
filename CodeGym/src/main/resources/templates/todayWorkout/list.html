@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+  
+<!-- 개발 영역 시작 -->
+<title>오운완</title>
+<link rel="stylesheet" href="/assets/css/board.css?after"> 
+<script th:inline="javascript">
+	
+	// 댓글 개수, 파일 첨부 표시
+	window.onload = async() => {
+		
+		var list = /*[[${list}]]*/ [];
+		
+		for(let i = 0; i < list.length; i++) {
+			
+			const data = {seqno : list[i].seqno};
+		
+			await fetch('/board/reply?option=L', {
+				method: 'POST',
+				headers: {"content-type":"application/json"},
+				body: JSON.stringify(data)		
+			}).then((response) => response.json())
+			  .then((data) => document.querySelector("#replyCnt" + list[i].seqno).innerHTML = data.length)
+			  .catch((error) => {
+				  console.log("error = " + error);
+				  alert("시스템 장애로 댓글 등록이 실패했습니다.");
+			});
+			
+			await fetch('/board/fileCheck', {
+			  method: 'POST',
+			  headers: { "Content-Type": "application/json" },
+			  body: list[i].seqno
+			})
+			  .then(response => response.json())
+			  .then(data => {
+			    if (data.status === 'good') {
+			      document.querySelector("#file" + list[i].seqno).src = "/assets/img/file.png";
+			    } 
+			  });
+		
+			
+		}
+
+	}
+	
+	
+	const search = () => {
+		const keyword = document.querySelector("#keyword");
+		document.location.href = '/todayWorkout/list?page=1&keyword=' + encodeURIComponent(keyword.value);
+	}
+	
+	const press = () => {
+		if(event.keyCode==13) {
+			search();
+		}	
+	}
+	
+</script>
+
+	<div class="tableDiv" style="padding: 5%;">
+		<h1 style="padding: 0 0 3% 0; font-size: 28px; font-weight: bold; color: #333;">💪🏽오운완🏋️‍♂️</h1>
+		<div>
+			<input type="text" style="width:40%; height: 30px; border: 1px solid skyblue;" id="keyword" name="keyword" placeholder="검색할 제목, 작성자 또는 내용을 입력해주세요" onkeydown="press()">
+			<input class="btn btn-success" type="button" value="검색" onclick="search()">
+		</div>
+		<br>
+		<table class="InfoTable">
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회수</th>
+			</tr>
+			
+			<tbody>
+			<th:block th:if="${list != null }">
+				<tr th:each="list : ${list}" onmouseover="this.style.background='#46D2D2'" onmouseout="this.style.background='white'">
+				    <td th:text="${list.seq}"></td>
+				    <td style="text-align:left;">
+				    	<th:block th:if="${list.hitno >= 100}">
+				    		<img src="/assets/img/hot.png">
+				    	</th:block>
+				    	<a id="hypertext" 
+				    	   th:href="@{'/todayWorkout/view?seqno=' + ${list.seqno } + '&page=' + ${page} + '&keyword=' + ${keyword}}" 
+				    	   onmouseover="this.style.textDecoration='underline'" 
+				    	   onmouseout="this.style.textDecoration='none'">[[${list.title }]]
+				    	   <img th:id="'file' + ${list.seqno}" src="">
+				    	   [<span th:id="'replyCnt' + ${list.seqno}"></span>]
+				    	</a>
+				    </td>
+				    <td th:text="${list.writer}"></td>
+				    <td th:text="${list.regdate}"></td>
+				    <td th:text="${list.hitno}"></td>
+				</tr>
+			</th:block>
+			<th:block th:if="${list == null }">
+				<tr>
+					<td colspan="5">등록된 게시물이 없습니다.</td>
+				</tr>
+			</th:block>
+			</tbody>
+			
+		</table> 
+		<br>
+		<div>[(${pageList })]</div>
+		<br>
+		<div class="bottom_menu" style="display:inline-block;">
+			<th:block th:if="${not #strings. isEmpty(session.userid)}">
+				<input class="btn btn-success" type="button" value="글쓰기" onclick="document.location.href='/todayWorkout/write'">
+			</th:block>
+			<input class="btn btn-success" type="button" value="처음으로" onclick="document.location.href='/todayWorkout/list?page=1'">
+		</div> 
+	</div>
+
+<!-- 개발 영역 끝 -->
+</th:block>
+</html>
+
+

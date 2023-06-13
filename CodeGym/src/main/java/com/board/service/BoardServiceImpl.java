@@ -35,6 +35,15 @@ public class BoardServiceImpl implements BoardService {
 		data.put("keyword", keyword);		
 		return mapper.notice(data);
 	}
+	//오운완
+	@Override
+	public List<BoardVO> todayWorkoutList(int startPoint, int endPoint, String keyword) {
+		Map<String,Object> data = new HashMap<>();
+		data.put("startPoint", startPoint);
+		data.put("endPoint", endPoint);
+		data.put("keyword", keyword);		
+		return mapper.todayWorkoutList(data);
+	}
 	
 	// 인덱스 페이지 hot 게시물 뽑기
 	@Override

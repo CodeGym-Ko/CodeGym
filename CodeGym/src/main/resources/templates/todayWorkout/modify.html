@@ -165,7 +165,7 @@
 		if(content_files.length != 0) { // 첨부된 파일이 있을 경우
 			uploadURL = '/board/fileUpload?kind=U';
 		} else { // 첨부된 파일이 없을 경우
-			uploadURL = '/board/modify';
+			uploadURL = '/todayWorkout/modify';
 		} 			
 		
 		let mForm = document.getElementById('ModifyForm');	
@@ -185,10 +185,10 @@
 		  .then(data => { 
 			  if(data.message == 'good') {
 				alert("게시물이 수정되었습니다.");
-				const seqno = '[[${view.seqno}]]';
+				const seqno = '[[${view.seqno}]]'; 
 		      	const page = '[[${page}]]';
 		        const keyword = '[[${keyword}]]';
-		        document.location.href='/board/view?seqno='+ seqno + '&page=' + page + '&keyword=' + keyword;
+		        document.location.href='/todayWorkout/view?seqno='+ seqno + '&page=' + page + '&keyword=' + keyword;
 			  }
 		  }).catch(error => {
 				alert("시스템 장애로 게시물 등록이 실패했습니다.");

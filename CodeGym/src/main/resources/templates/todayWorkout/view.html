@@ -321,24 +321,24 @@
 	// 삭제
 	const del = () => {
 	    if(confirm("정말로 삭제하시겠습니까?")){
-	        document.location.href = "/board/delete?seqno=[[${view.seqno}]]";
+	        document.location.href = "/todayWorkout/delete?seqno=[[${view.seqno}]]";
 	    }
 	};
 	
 	const goList = () => {
-		document.location.href='/board/list?page=[[${page}]]&keyword=[[${keyword}]]';
+		document.location.href='/todayWorkout/list?page=[[${page}]]&keyword=[[${keyword}]]';
 	};
 	
 	const pre_seqno = () => {
-		document.location.href='/board/view?seqno=[[${pre_seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
+		document.location.href='/todayWorkout/view?seqno=[[${pre_seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
 	};
 	
 	const next_seqno = () => {
-		document.location.href='/board/view?seqno=[[${next_seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
+		document.location.href='/todayWorkout/view?seqno=[[${next_seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
 	};
 	
 	const modify = () => {
-		document.location.href='/board/modify?seqno=[[${view.seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
+		document.location.href='/todayWorkout/modify?seqno=[[${view.seqno}]]&page=[[${page}]]&keyword=[[${keyword}]]';
 	}
 	
 </script>
