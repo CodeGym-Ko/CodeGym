@@ -3,10 +3,9 @@
 <th:block layout:fragment="content">
   
 <!-- 개발 영역 시작 -->
-<title>글 수정</title>
-<link rel="stylesheet" href="/assets/css/board.css?after"> 
-<script>
+<title>오운완 등록</title>
 
+<script>
 	window.onload = () => {
 		const fileZone = document.querySelector("#fileZone");
 		const inputFile = document.querySelector("#inputFile");
@@ -55,13 +54,13 @@
 		});		
 		
 	}
-
+	
 	var uploadCountLimit = 5; // 업로드 가능한 파일 갯수
 	var fileCount = 0; // 파일 현재 필드 숫자 totalCount랑 비교값
 	var fileNum = 0; // 파일 고유넘버
 	var content_files = new Array(); // 첨부파일 배열
 	var rowCount=0;
-
+	
 	const fileCheck = (files) => {
 		
 		// 배열로 변환
@@ -136,8 +135,7 @@
 	    });
 		
 		inputFile.value = "";	
-	}		
-
+	}	
 	
 	const fileDelete = (fileNum) => {
 	    var no = fileNum.replace(/[^0-9]/g, "");
@@ -145,17 +143,22 @@
 		document.querySelector("#"+fileNum).remove();
 		fileCount --;
 	}  
-
-
-	const ModifyForm = async() => {
 	
+	
+	const registerForm = async() => {
+	
+		if (document.getElementById("username").value == "") {
+		    alert("이름을 입력하세요!!!");
+		    document.getElementById("username").focus();
+		    return false;
+		}
 		if (document.getElementById("title").value == "") {
-		    alert("제목을 입력하세요!!!");
+			alert("제목을 입력하세요!!!");
 		    document.getElementById("title").focus();
 		    return false;
 		}
 		if (document.getElementById("content").value == "") {
-		    alert("내용을 입력하세요!!!");
+			alert("내용을 입력하세요!!!");
 		    document.getElementById("content").focus();
 		    return false;
 		}
@@ -163,86 +166,78 @@
 		let uploadURL = '';
 		
 		if(content_files.length != 0) { // 첨부된 파일이 있을 경우
-			uploadURL = '/board/fileUpload?kind=U';
+			uploadURL = '/todayWorkout/fileUpload?kind=I';
 		} else { // 첨부된 파일이 없을 경우
-			uploadURL = '/board/modify';
-		} 			
-		
-		let mForm = document.getElementById('ModifyForm');	
-	 	let formData = new FormData(mForm);
-		formData.append("seqno", "[[${view.seqno}]]");
-		
+			uploadURL = '/todayWorkout/write';
+		}
+			
+		let wForm = document.getElementById('WriteForm');
+	 	let formData = new FormData(wForm);
 		for (let i = 0; i < content_files.length; i++) {
-			if(!content_files[i].is_delete) {
-				formData.append("SendToFileList", content_files[i]); // content_files은 배열 
-			}
+				if(!content_files[i].is_delete) {
+					formData.append("SendToFileList", content_files[i]); // content_files은 배열 
+				}
 		}
 		
 		await fetch(uploadURL, {
 			method: "POST",
 			body: formData
 		}).then(response => response.json())
-		  .then(data => { 
-			  if(data.message == 'good') {
-				alert("게시물이 수정되었습니다.");
-				const seqno = '[[${view.seqno}]]';
-		      	const page = '[[${page}]]';
-		        const keyword = '[[${keyword}]]';
-		        document.location.href='/board/view?seqno='+ seqno + '&page=' + page + '&keyword=' + keyword;
+		  .then(data => {
+			  if(data.message == 'good'){
+				  alert("게시물이 등록되었습니다.");
+				  document.location.href = '/todayWorkout/list?page=1';
 			  }
 		  }).catch(error => {
 				alert("시스템 장애로 게시물 등록이 실패했습니다.");
-				console.log("error="+error);
+				console.log(error=>console.log("error="+error));
 		  })
 		
 	}
-	
-	makeline = (box,num) => {
-		let fileline = '#fileLine' + num;
-		if(box.checked){ // 체크가 되면 checed==true라는 값을 전달받는다. 
-			document.querySelector(fileline).classList.add("line");
-		}
-	    else{
-			document.querySelector(fileline).classList.remove("line");
-	    }
-	        
-	}
 
 </script>
+<link rel="stylesheet" href="/assets/css/board.css?after">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">오운완 등록</h1>
+          <form id="WriteForm" method="POST">
+            <div class="form-group">
+              <label for="writer">작성자</label>
+              <input type="text" class="form-control" id="writer" th:value="${session.username}" disabled>
+            </div>
+            <div class="form-group">
+              <label for="title">제목</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="여기에 제목을 입력하세요">
+            </div>
+            <input type="hidden" id="username" name="writer" th:value="${session.username}">
+            <input type="hidden" id="userid" name="userid" th:value="${session.userid}">
+            <div class="form-group">
+              <label for="content">내용</label>
+              <textarea class="form-control" id="content" name="content" rows="8" placeholder="여기에 내용을 입력하세요"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="uploadFile">첨부파일</label>
+              <input type="file" id="inputFile" name="uploadFile" style="display:none;" multiple>
+              <div class="fileZone" id="fileZone">파일 첨부를 하기 위해서는 클릭하거나 여기로 파일을 드래그 하세요.<br>첨부파일은 최대 5개까지 등록이 가능합니다.</div>
+              <div class="fileUploadList" id="fileUploadList"></div>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary" onclick="registerForm()">등록</button>
+              <button type="button" class="btn btn-secondary" onclick="history.back()">취소</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-	
-<div class="main">
-<div class="ModifyDiv">
-	<h1>글 수정</h1>
-	<form id="ModifyForm" method="POST" >
-		<input type="text" class="writer" id="writer" th:value="${session.username}" disabled>
-		<input type="text" class="title" id="title" name="title"  th:value="${view.title}">
-				<input type="hidden" name="seqno" th:value="${view.seqno}">
-				<input type="hidden" name="writer" th:value="${view.writer}">
-				<input type="hidden" name="userid" th:value="${view.userid}">
-				<input type="hidden" name="page" th:value="${page}">
-				<input type="hidden" name="keyword" th:value="${keyword}">
-				<textarea class="content" id="content" cols="100" rows="500" name="content" th:text="${view.content}"></textarea>
-				<div id="fileList" th:if="${fileListView != null}">
-			        <span th:each="file : ${fileListView}">
-			        삭제 :
-			            <label><input type="checkbox" th:id="'checkBox' + ${file.fileseqno}" name="deleteFileList" th:value="${file.fileseqno}"
-			                   onclick="makeline(this, this.value)">
-			            <span th:id="'fileLine' + ${file.fileseqno}" th:text="${file.org_filename + ' (' + file.filesize + ' Byte)'}"></span></label>
-			            <br>
-			        </span>
-				</div>
-		<div class="fileuploadForm">
-			<input type="file" id="inputFile" name="uploadFile" style="display:none;" multiple />
-			<div class="fileZone" id="fileZone">파일 첨부를 하기 위해서는 클릭하거나 여기로 파일을 드래그 하세요.<br>첨부파일은 최대 5개까지 등록이 가능합니다.</div>
-	  		<div class="fileUploadList" id="fileUploadList"></div>
-		</div>
-		<input type="button" class="btn_write" value="수정" onclick="ModifyForm()" />
-		<input type="button" class="btn_cancel" value="취소" onclick="history.back()" />
-	</form>	
-</div>
-</div>
+
 <!-- 개발 영역 끝 -->
 </th:block>
 </html>
