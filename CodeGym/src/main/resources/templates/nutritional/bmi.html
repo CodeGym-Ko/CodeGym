@@ -103,6 +103,18 @@ ul{
 	margin: 0px;
 	list-style: none;
 }
+#mark {
+ background-color:black;
+ width: 3px;
+ text-align: left;
+ height: 20px;
+ display: none;
+ }
+ 
+ strong {
+    font-weight: bold !important;
+	color: red;
+}
 
 </style>
 
@@ -131,7 +143,7 @@ ul{
     			<input type="text" id="age" name="age" maxlength="6" style="width:104px;ime-mode:disabled;">세(만)
 	   			<br>
 				<button class="btn btn-success" style="margin: 20px auto;" onclick="calculateBMI()">계산</button>
-				<button class="btn btn-dark" style="margin: 20px auto;" onclick="calculateBMI()">초기화</button>
+				<button class="btn btn-dark" style="margin: 20px auto;" onclick="clearBMI()">초기화</button>
 				
     			<div class="result" id="result"><br></div>
 			</li> 
@@ -139,7 +151,7 @@ ul{
 		<span></span>
 		<div class="obesity_bar">
 			
-			<div id="mark" style="background-color:black; width: 3px; text-align: left; height: 20px;"> </div>
+			<div id="mark"> </div>
 			<ul class="step5">
 				<li class="lv1">저체중(<18.5)</li>
 				<li class="lv2">정상(<23)</li>
@@ -163,8 +175,8 @@ ul{
 					</div> <span style="left:0;"></span> 
 				<ul class="lst_about"> </ul>
 				</div> 
-			</div> <p style="display:block;">남/녀, 연령 구분에 따른 신체질량지수 BMI(Body Mass Index)와 비만도를 측정해 보세요.</p> 
-		</div><p class="info">간단한 계산을 할 수 있는 웹 계산기 입니다.</p> 
+			</div> <p style="display:block;">남/녀, 연령 구분에 따른 신체질량지수 BMI(Body Mass Index)와 <br>비만도를 측정해 보세요.</p> 
+		</div><p class="info">BMI 계산을 할 수 있는 웹 계산기 입니다.</p> 
 	</div> 
 </div>
 
@@ -204,22 +216,45 @@ ul{
 	    }
 	
 	    var bmi = weight / (height * height);
-	    resultDiv.innerText = "나의 (신체질량지수)BMI  " + bmi.toFixed(2);
-		if(bmi.toFixed(2))
-		mark.style.marginLeft  = '100px'; // 패딩 크기 조정
-	  }
+	    
+		if(bmi<13){
+			mark.style.marginLeft  = '-6px';
+			resultDiv.innerHTML = "나의 (신체질량지수)BMI  " + bmi.toFixed(2) + " <strong>심한 저체중</strong> 입니다.<br>벌크업 식단🥩 <a href='/nutritional/bulkup'>추천</a></div>";
+		}else if (13<=bmi && bmi<18.5){
+			mark.style.marginLeft  = '90px';
+			resultDiv.innerHTML = "나의 (신체질량지수)BMI  " + bmi.toFixed(2) + " <strong>저체중</strong> 입니다.<br>벌크업 식단🥩 <a href='/nutritional/bulkup'>추천</a></div></div>";
+		}else if (18.5<=bmi && bmi<23){
+			mark.style.marginLeft  = '230px';
+			resultDiv.innerHTML = "나의 (신체질량지수)BMI  " + bmi.toFixed(2) + " <strong>정상</strong> 입니다.<br>프리 웨이트 운동🏋🏼‍♂️ <a href='/exercise/freeWeight/index'>추천</a></div>";
+		}else if (23<=bmi && bmi<25){
+			mark.style.marginLeft  = '346px';
+			resultDiv.innerHTML = "나의 (신체질량지수)BMI  " + bmi.toFixed(2) + " <strong>과체중</strong> 입니다.<br>맨몸 운동🤸🏽‍♀️ <a href='/exercise/bodyWeight/index'>추천</a></div>";
+		}else if (25<=bmi && bmi<30){
+			mark.style.marginLeft  = '460px';
+			resultDiv.innerHTML = "나의 (신체질량지수)BMI  " + bmi.toFixed(2) + " <strong>비만</strong> 입니다.<br>스트레칭🚶🏽‍♀️ <a href='/exercise/stretching/index'>추천</a></div>";
+		}else if (30<=bmi && bmi<35){
+			mark.style.marginLeft  = '580px';
+			resultDiv.innerHTML = "나의 (신체질량지수)BMI  " + bmi.toFixed(2) + " <strong>고도비만</strong> 입니다.<br>다이어드 식단🥗 <a href='/nutritional/diet'>추천</a></div>";
+		}else if (bmi>=35) {
+			mark.style.marginLeft  = '640px';
+			resultDiv.innerHTML = "나의 (신체질량지수)BMI  " + bmi.toFixed(2) + " <strong>심한 고도비만</strong> 입니다.<br>다이어드 식단🥗 <a href='/nutritional/diet'>추천</a></div>";
+		}	
+		// 패딩 크기 조정 -6px이 최소 640px가 최대
+		mark.style.display  = 'block';
+	}
+	function clearBMI() {
+		document.getElementById("male").checked = false;
+		document.getElementById("female").checked = false;
+		document.getElementById("height").value = "";
+		document.getElementById("weight").value = "";
+		document.getElementById("age").value = "";
+	}
+
 	
 	</script>
 
 
 <!-- 개발 영역 끝 -->
-
-
-
-
-
-
-
 
 </th:block>
 </html>
