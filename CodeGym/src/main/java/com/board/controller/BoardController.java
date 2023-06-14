@@ -39,6 +39,7 @@ public class BoardController {
 	public String index(Model model) throws Exception {
 		model.addAttribute("todayWorkout", service.hotBoard("todayWorkout"));
 		model.addAttribute("freeHotBoard", service.hotBoard("free"));
+		model.addAttribute("notice", service.hotBoard("notice"));
 		return "index";
 	}
 	
