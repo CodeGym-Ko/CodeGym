@@ -4,82 +4,266 @@
   
 <!-- 개발 영역 시작 -->
 
+<title>다이어트 식단</title>
+
+<!-- Custom styles for this template -->
+<link href="/assets/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+<link href="/assets/css/responsive.css" rel="stylesheet" />
+<!-- jQery -->
+<script src="/assets/js/jquery-3.4.1.min.js"></script>
+<!-- isotope js -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+
 <script>
 
-	function offNormal() {
-		document.getElementById("normalDiv").style.display = "none";
-	}
-	
-	function onNormal() {
-		document.getElementById("normalDiv").style.display = "block";
-	}
-	
+$(window).on('load', function () {
+    $('.filters_menu li').click(function () {
+        $('.filters_menu li').removeClass('active');
+        $(this).addClass('active');
+
+        var data = $(this).attr('data-filter');
+        $grid.isotope({
+            filter: data
+        })
+    });
+
+    var $grid = $(".grid").isotope({
+        itemSelector: ".all",
+        percentPosition: false,
+        masonry: {
+            columnWidth: ".all"
+        }
+    })
+});
+
 </script>
 
-<ul class="nav nav-tabs" role="tablist">
+ <!-- food section -->
 
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#normal" onclick="onNormal()" aria-selected="true" role="tab" tabindex="-1">일반식</a>
-  </li>
-  
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#vegan" onclick="offNormal()" aria-selected="true" role="tab" tabindex="-1">비건</a>
-  </li>
-  
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#vegetarian" onclick="offNormal()" aria-selected="true" role="tab" tabindex="-1">채식주의</a>
-  </li>
-  
-</ul>
+  <section class="food_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          다이어트 식단 구성
+        </h2>
+      </div>
 
-<div id="myTabContent" class="tab-content">
-	
-	  <div class="tab-pane fade active show" id="normal" role="tabpanel">
-	  	
-	  	<div class="card border-primary mb-3" id="normalDiv" style="max-width: 40rem;">
-			  <div class="card-header">일반식</div>
-			  <div class="card-body">
-			  	아침
-			    <ul>
-			    	<li>아침: 곡물 시리얼과 우유</li>
-     		 		<li>점심: 샐러드와 그릴 치킨</li>
-      				<li>저녁: 국수 요리</li>
-			    </ul>
-			  </div>
-		</div>
-		   
-		
-	  </div>
- 
-	  <div class="tab-pane fade" id="vegan" role="tabpanel">
-			<div class="card border-primary mb-3" style="max-width: 40rem;">
-				<div class="card-header">비건</div>
-				<div class="card-body">
-						<ul>
-						  	<li>아침: 스프루트 샐러드와 콩 치킨</li>
-  							<li>점심: 베이스로 사용할 수 있는 채소와 곡물</li>
-   							<li>저녁: 퀴노아와 채소 볶음</li>
-						</ul>
-				</div>
-			</div>
-	 </div>
-	 
-	 <div class="tab-pane fade" id="vegetarian" role="tabpanel">
-			<div class="card border-primary mb-3" style="max-width: 40rem;">
-					<div class="card-header">채식주의</div>
-					<div class="card-body">
-							<ul>
-								<li>아침: 요거트와 과일 그래놀라</li>
-      							<li>점심: 채소 스튜와 토프</li>
-      							<li>저녁: 허니소이긴 채소 볶음</li>
-							</ul>
-					</div>
-			</div>
+      <ul class="filters_menu">
+        <li class="active" data-filter="*">전체보기</li>
+        <li data-filter=".breakfast">아침</li>
+        <li data-filter=".lunch">점심</li>
+        <li data-filter=".dinner">저녁</li>
+        <li data-filter=".snack">간식</li>
+      </ul>
 
-	
-	 </div>
-  
-</div>
+      <div class="filters-content">
+        <div class="row grid">
+          <div class="col-sm-6 col-lg-4 all lunch">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f1.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    영양 만점 고단백 피자
+                  </h3>
+                  <p>
+                    당신의 득근득근한 근성장을 도와줄 베스트 프렌드!
+                  </p>
+                  <div class="options">
+                    <span>
+                      - 100g당 단백질 함량 : 10g
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all breakfast">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f2.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    Delicious Burger
+                  </h3>
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  </p>
+                  <div class="options">
+                    <span>
+                      $15
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all lunch">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f3.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    Delicious Pizza
+                  </h3>
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  </p>
+                  <div class="options">
+                    <span>
+                      $17
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all dinner">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f4.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    Delicious Pasta
+                  </h3>
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  </p>
+                  <div class="options">
+                    <span>
+                      $18
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all snack">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f5.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    French Fries
+                  </h3>
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  </p>
+                  <div class="options">
+                    <span>
+                      $10
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all lunch">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f6.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    Delicious Pizza
+                  </h3>
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  </p>
+                  <div class="options">
+                    <span>
+                      $15
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all breakfast">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f7.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    Tasty Burger
+                  </h3>
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  </p>
+                  <div class="options">
+                    <span>
+                      $12
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all breakfast">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f8.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    Tasty Burger
+                  </h3>
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  </p>
+                  <div class="options">
+                    <span>
+                      $14
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-4 all dinner">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/images/f9.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h3>
+                    Delicious Pasta
+                  </h3>
+                  <p>
+                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  </p>
+                  <div class="options">
+                    <span>
+                      $10
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end food section -->
+
 
 <!-- 개발 영역 끝 -->
 </th:block>
