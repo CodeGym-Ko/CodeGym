@@ -46,16 +46,17 @@ public class WebSecurityConfig {
 		// 폼 로그인
 		http.formLogin(login -> login
                 .usernameParameter("userid")   
-                //.loginPage("/user/login") // post 요청을 해야 한다고 뜨는데 뭔소리징
+                //.loginPage("/user/login") // 인증이 필요한 URL에 접근하면 가는 페이지
                 .loginPage("/") 
                 .successHandler(authSuccessHandler)  
-                .failureHandler(authFailureHandler));
+                .failureHandler(authFailureHandler)
+                .failureUrl("/user/login")	); // 실패시 이동할 페이지
 		
 		// auth2 로그인
 		http
     	.oauth2Login(login -> login
-            //.loginPage("/user/login")
-            .loginPage("/")
+            .loginPage("/")// 인증이 필요한 URL에 접근하면 가는 페이지
+            .failureUrl("/user/login")	// 실패시 이동할 페이지
             .successHandler(oauth2SucessHandler)
             .failureHandler(oauth2FailureHandler));
 		

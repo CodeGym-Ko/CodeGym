@@ -19,7 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+		// From 로그인 으로 
 		UserVO userInfo = service.userinfo(username); //username --> 아이디
 		if(userInfo == null) {
 			throw new UsernameNotFoundException("아이디가 존재하지 않습니다.");
