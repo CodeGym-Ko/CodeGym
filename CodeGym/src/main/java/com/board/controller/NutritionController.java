@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class NutritionController {
 
-	@GetMapping("/nutritional/bulkup")
+	@GetMapping("/nutritional/bulkupTest")
 	public void getBulkup() {
 		
 	}
