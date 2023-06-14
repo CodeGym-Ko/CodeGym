@@ -19,19 +19,19 @@
 	<script th:inline="javascript">
 		window.onload = () => {
 			const freeHotBoard = /*[[${freeHotBoard}]]*/ [];
-			document.querySelector("#freeHotTitle").innerText = freeHotBoard.title;
+			document.querySelector("#freeHotTitle").innerText = "‍‍[👨‍👩‍👧‍👦자유게시판] "+freeHotBoard.title;
 			document.querySelector("#freeHotContent").innerText = freeHotBoard.content;
 			const freeHotBoardSeqno = freeHotBoard.seqno;
 			document.querySelector("#freeHotBoard").href = "/board/view?seqno="+freeHotBoardSeqno+"&page=1&keyword=";
 
 			const todayWorkout = /*[[${todayWorkout}]]*/ [];
-			document.querySelector("#todayWorkoutHotTitle").innerText = todayWorkout.title;
+			document.querySelector("#todayWorkoutHotTitle").innerText = "[🏋️오운완] "+todayWorkout.title;
 			document.querySelector("#todayWorkoutHotContent").innerText = todayWorkout.content;
 			const todayWorkoutSeqno = todayWorkout.seqno;
 			document.querySelector("#todayWorkoutHotBoard").href = "/todayWorkout/view?seqno="+todayWorkoutSeqno+"&page=1&keyword=";
 
 			const notice = /*[[${notice}]]*/ [];
-			document.querySelector("#noticeHotTitle").innerText = notice.title;
+			document.querySelector("#noticeHotTitle").innerText = "[📢공지사항] "+notice.title;
 			document.querySelector("#noticeHotContent").innerText = notice.content;
 			const noticeSeqno = notice.seqno;
 			document.querySelector("#noticeHotBoard").href = "/customerCenter/noticeView?seqno="+noticeSeqno+"&page=1&keyword=";
@@ -124,7 +124,7 @@
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="card-header">
-								<a id="freeHotBoard" href="" class="h2 text-decoration-none text-dark"><span id="freeHotTitle"></span></a>
+								<a id="freeHotBoard" href="" class="h3 text-decoration-none text-dark"><span id="freeHotTitle"></span></a>
 							</div>
 							<p class="card-text" id="freeHotContent" style="margin:5%;">
 							</p>
@@ -135,7 +135,7 @@
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="card-header">
-								<a id="todayWorkoutHotBoard" href="" class="h2 text-decoration-none text-dark"><span id="todayWorkoutHotTitle"></span></a>
+								<a id="todayWorkoutHotBoard" href="" class="h3 text-decoration-none text-dark"><span id="todayWorkoutHotTitle"></span></a>
 							</div>
 							<p class="card-text" id="todayWorkoutHotContent" style="margin:5%;">
 							</p>
@@ -146,7 +146,7 @@
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="card-header">
-								<a id="noticeHotBoard" href="" class="h2 text-decoration-none text-dark"><span id="noticeHotTitle"></span></a>
+								<a id="noticeHotBoard" href="" class="h3 text-decoration-none text-dark"><span id="noticeHotTitle"></span></a>
 							</div>
 							<p class="card-text" id="noticeHotContent" style="margin:5%;">
 							</p>
