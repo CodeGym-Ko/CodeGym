@@ -47,7 +47,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 인덱스 페이지 hot 게시물 뽑기
 	@Override
-	public BoardVO hotBoard(String boardType) {
+	public List<BoardVO> hotBoard(String boardType) {
 		return mapper.hotBoard(boardType);
 	}
 	
