@@ -24,6 +24,7 @@ public class UserVO {
 	private String role;
 	private String org_filename;
 	private String stored_filename;
+	private String regdate;
 	private long filesize;
 	
 	private String fromsocial;

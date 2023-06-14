@@ -55,8 +55,7 @@ body {
 			<div class="field">이메일 : [[${user.email}]]</div>
 			
 			<!-- regdate가 없어서 안됨(테이블에도 없음) 필요하면 넣고 아님 말고 -->
-			<div class="field">서비스 가입일: ${#dates.format(user.regdate, 'yyyy-MM-dd')}<p>☝테이블에 컬럼이 없음 필요하면 만들고 아님 말고</p></div>
-			
+			<div class="field">서비스 가입일: [[${user.regdate}]]</div>			
 		</div>
 	
 		<br>

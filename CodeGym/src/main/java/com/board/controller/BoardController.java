@@ -37,7 +37,7 @@ public class BoardController {
 	
 	@GetMapping("/")
 	public String index(Model model) throws Exception {
-		
+		model.addAttribute("todayWorkout", service.hotBoard("todayWorkout"));
 		model.addAttribute("freeHotBoard", service.hotBoard("free"));
 		return "index";
 	}
@@ -52,10 +52,9 @@ public class BoardController {
 			int pageListCount = 10; // 화면 하단에 보여지는 페이지 리스트 내의 페이지 개수
 			int startPoint = (pageNum - 1) * postNum;
 			int endPoint = pageNum * postNum;
-			int totalCount = service.getTotalCount(keyword);
+			int totalCount = service.getTotalCount(keyword, "free");
 
 			Page page = new Page();
-
 			model.addAttribute("list", service.list(startPoint, endPoint, keyword));
 			model.addAttribute("page", pageNum);
 			model.addAttribute("keyword", keyword);
@@ -312,7 +311,7 @@ public class BoardController {
 		data.put("seqno", seqno);
 		service.deleteFileList(data);
 		service.delete(seqno);
-		return "redirect:/";
+		return "redirect:/board/list?page=1";
 
 	}
 
@@ -358,7 +357,7 @@ public class BoardController {
 
 	// 공지사항
 	@GetMapping("/customerCenter/notice")
-	public void getNotice(@RequestParam("page") int pageNum,
+	public String getNotice(@RequestParam("page") int pageNum,
 			@RequestParam(name = "keyword", defaultValue = "", required = false) String keyword, Model model)
 			throws Exception {
 		// 목록 보기
@@ -366,13 +365,14 @@ public class BoardController {
 		int pageListCount = 10; // 화면 하단에 보여지는 페이지리스트 내의 페이지 갯수
 		int startPoint = (pageNum - 1) * postNum + 1;
 		int endPoint = pageNum * postNum;
+		int totalCount = service.getTotalCount(keyword, "notice");
 
 		Page page = new Page();
-
 		model.addAttribute("list", service.notice(startPoint, endPoint, keyword));
 		model.addAttribute("page", pageNum);
 		model.addAttribute("keyword", keyword);
-		model.addAttribute("pageList", page.getPageList(pageNum, postNum, pageListCount, service.getTotalCount(keyword), keyword));
+		model.addAttribute("pageList", page.getPageList(pageNum, postNum, pageListCount, totalCount, keyword));
+		return "/customerCenter/notice";
 	}
 	
 	// 공지사항 작성 화면
@@ -559,4 +559,197 @@ public class BoardController {
 		return "redirect:/customerCenter/notice?page=1";
 	}
 	
+	
+	// 오운완 게시물 목록 보기
+	@GetMapping("/todayWorkout/list")
+	public String getTodayWorkout(@RequestParam("page") int pageNum,
+			@RequestParam(name = "keyword", defaultValue = "", required = false) String keyword, Model model,
+			HttpSession session) {
+		int postNum = 10; // 한 화면에 보여지는 게시물 행의 개수
+		int pageListCount = 10; // 화면 하단에 보여지는 페이지 리스트 내의 페이지 개수
+		int startPoint = (pageNum - 1) * postNum;
+		int endPoint = pageNum * postNum;
+		int totalCount = service.getTotalCount(keyword, "todayWorkout");
+		
+		Page page = new Page();
+		model.addAttribute("list", service.todayWorkoutList(startPoint, endPoint, keyword));
+		model.addAttribute("page", pageNum);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("pageList", page.getPageList(pageNum, postNum, pageListCount, totalCount, keyword));
+		return "/todayWorkout/list";
+		
+	}
+	
+	// 게시물 작성 화면보기
+	@GetMapping("/todayWorkout/write")
+	public String getTodayWorkoutWrite(Model model, HttpSession session) {
+		return "/todayWorkout/write";
+	}
+
+	// 첨부 파일 없는 게시물 등록
+	@ResponseBody
+	@PostMapping("/todayWorkout/write")
+	public String postTodayWorkoutWrite(BoardVO board) throws Exception {
+		int seqno = service.getSeqnoWithNextval();
+		board.setSeqno(seqno);
+		board.setBoardType("todayWorkout");
+		service.write(board);
+		return "{\"message\":\"good\"}";
+
+	}
+
+	// 파일 업로드
+	@ResponseBody
+	@PostMapping("/todayWorkout/fileUpload")
+	public String postTodayWorkoutFileUpload(BoardVO board, @RequestParam("SendToFileList") List<MultipartFile> multipartFile,
+			@RequestParam("kind") String kind,
+			@RequestParam(name = "deleteFileList", required = false) int[] deleteFileList) throws Exception {
+
+		String path = "c:\\Repository\\file\\";
+		int seqno = 0;
+		if (kind.equals("I")) { // 게시물 등록
+			seqno = service.getSeqnoWithNextval();
+			board.setSeqno(seqno);
+			board.setBoardType("todayWorkout");
+			service.write(board);
+		}
+		if (kind.equals("U")) { // 게시물 수정 시 파일 수정
+			seqno = board.getSeqno();
+			service.modify(board);
+
+			if (deleteFileList != null) {
+
+				for (int i = 0; i < deleteFileList.length; i++) {
+
+					// 파일 삭제
+					FileVO fileInfo = new FileVO();
+					fileInfo = service.fileInfo(deleteFileList[i]);
+//						File file = new File(path + fileInfo.getStored_filename());
+//						file.delete();
+
+					// 파일 테이블에서 파일 정보 삭제
+					Map<String, Object> data = new HashMap<>();
+					data.put("kind", "F"); // 게시물 수정에서 삭제할 파일 목록이 전송되면 이 값을 받아서 tbl_file내에 있는 파일 정보를 하나씩 삭제하는
+											// deleteFileList 실행
+					data.put("fileseqno", deleteFileList[i]);
+					service.deleteFileList(data); // deleteFileList는 Map 타입의 인자값을 받도록 설정
+
+				}
+			}
+		}
+
+		if (!multipartFile.isEmpty()) { // 파일 등록 및 수정 시 파일 업로드
+			File targetFile = null;
+			Map<String, Object> fileInfo = null;
+
+			for (MultipartFile mpr : multipartFile) {
+
+				String org_filename = mpr.getOriginalFilename();
+				String org_fileExtension = org_filename.substring(org_filename.lastIndexOf("."));
+				String stored_filename = UUID.randomUUID().toString().replaceAll("-", "") + org_fileExtension;
+				long filesize = mpr.getSize();
+
+				targetFile = new File(path + stored_filename);
+				mpr.transferTo(targetFile);
+
+				fileInfo = new HashMap<>();
+				fileInfo.put("org_filename", org_filename);
+				fileInfo.put("stored_filename", stored_filename);
+				fileInfo.put("filesize", filesize);
+				fileInfo.put("seqno", seqno);
+				fileInfo.put("userid", board.getUserid());
+				fileInfo.put("kind", kind);
+				service.fileInfoRegistry(fileInfo);
+
+			}
+		}
+
+
+		return "{\"message\":\"good\"}";
+	}
+
+	// 게시물 상세보기
+		@GetMapping("/todayWorkout/view")
+		public String getTodayWorkoutView(Model model,
+				@RequestParam(name = "keyword", defaultValue = "", required = false) String keyword,
+				@RequestParam("seqno") int seqno, @RequestParam("page") int pageNum, HttpSession session) throws Exception {
+
+			String sessionUserId = (String) session.getAttribute("userid");
+			BoardVO board = service.view(seqno);
+			if(sessionUserId == null) {
+				sessionUserId = "tmp";
+			}
+			// 조회수 증가처리
+			if (!board.getUserid().equals(sessionUserId)) {
+				service.hitno(board);
+			}
+
+			// 좋아요, 싫어요 처리
+			LikeVO likeCheckView = service.likeCheckView(seqno, sessionUserId);
+			// 초기에 좋아요, 싫어요 등록이 안되어져 있을 경우 "N"으로 초기화
+			if (likeCheckView == null) {
+				model.addAttribute("myLikeCheck", "N");
+				model.addAttribute("myDislikeCheck", "N");
+			} else if (likeCheckView != null) {
+				model.addAttribute("myLikeCheck", likeCheckView.getMylikecheck());
+				model.addAttribute("myDislikeCheck", likeCheckView.getMydislikecheck());
+			}
+
+			model.addAttribute("view", service.view(seqno));
+			model.addAttribute("page", pageNum);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("pre_seqno", service.pre_seqno(seqno, keyword));
+			model.addAttribute("next_seqno", service.next_seqno(seqno, keyword));
+			model.addAttribute("likeCheckView", likeCheckView);
+			model.addAttribute("fileListView", service.fileListView(seqno));
+			return "/todayWorkout/view";
+		}
+		
+		// 게시물 삭제
+		@GetMapping("/todayWorkout/delete")
+		public String getTodayWorkoutDelete(@RequestParam("seqno") int seqno, HttpSession session, Model model) throws Exception {
+			Map<String, Object> data = new HashMap<>();
+			data.put("kind", "B");
+			data.put("seqno", seqno);
+			service.deleteFileList(data);
+			service.delete(seqno);
+			return "redirect:/todayWorkout/list?page=1";
+
+		}
+		
+		
+		// 게시물 수정 화면 보기
+		@GetMapping("/todayWorkout/modify")
+		public String getTodayWorkoutModify(Model model, @RequestParam("seqno") int seqno, @RequestParam("page") int pageNum,
+				@RequestParam(name = "keyword", defaultValue = "", required = false) String keyword, HttpSession session)
+				throws Exception {
+
+			model.addAttribute("view", service.view(seqno));
+			model.addAttribute("page", pageNum);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("fileListView", service.fileListView(seqno));
+			return "/todayWorkout/modify";
+		}
+		
+		// 게시물 수정하기
+		@ResponseBody
+		@PostMapping("/todayWorkout/modify")
+		public String postTodayWorkoutModify(BoardVO board, @RequestParam("page") int pageNum,
+				@RequestParam(name = "keyword", defaultValue = "", required = false) String keyword,
+				@RequestParam(name = "deleteFileList", required = false) int[] deleteFileList) throws Exception {
+
+			service.modify(board);
+			if (deleteFileList != null) {
+
+				for (int i = 0; i < deleteFileList.length; i++) {
+					// 파일 테이블에서 파일 정보 삭제
+					Map<String, Object> data = new HashMap<>();
+					data.put("kind", "F"); // 게시물 수정에서 삭제할 파일 목록이 전송되면 이 값을 받아서 tbl_file내에 있는 파일 정보를 하나씩 삭제하는
+											// deleteFileList 실행
+					data.put("fileseqno", deleteFileList[i]);
+					service.deleteFileList(data); // deleteFileList는 Map 타입의 인자값을 받도록 설정
+				}
+			}
+			return "{\"message\":\"good\"}";
+		}
 }

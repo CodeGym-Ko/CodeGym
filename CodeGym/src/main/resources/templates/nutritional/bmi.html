@@ -7,27 +7,120 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 <style>
-.image-container {
-      width: 50%;
-      height: auto;
-      display: inline-block;
-      margin: 20px auto;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+.bmiRadius {
+	padding: 50px;
+	text-align: center;
+	border: 3px solid;
+	width: 800px;
+	border-radius: 8px 8px 0 0;
 }
+ul>li {
+	list-style-type: none;
+}
+
+li.lv1 {
+    width: 173px;
+    border: 1px solid #719bb6;
+    background: #7da4bd;
+    color: #e5edf2;
+	float: left;
+}
+
+li.lv2 {
+    width: 114px;
+    border: 1px solid #4d74cd;
+    background: #557cd5;
+    color: #dde5f7;
+	float: left;
+}
+
+li.lv3 {
+    width: 118px;
+    border: 1px solid #6c6ec6;
+    background: #787ad6;
+    color: #e4e4f7;
+	float: left;
+}
+
+li.lv4 {
+    width: 117px;
+    border: 1px solid #ac6dc9;
+    background: #ba78d9;
+    color: #f1e4f7;
+	float: left;
+}
+
+li.lv5 {
+    width: 126px;
+    border: 1px solid #ec4d5e;
+    background: #f85264;
+    color: #fedce0;
+	float: left;
+}
+.obesity_bar {
+	margin: 30px;
+	position: relative;
+    height: 32px; 
+	overflow: visible;
+}
+.step5 {
+	list-style: none;
+	position: absolute;
+	left: 50%;
+	display: flex; /* Flexbox 레이아웃 사용 */
+  	flex-wrap: nowrap; /* 요소들을 한 줄에 표시 */
+	transform: translate(-50%,0);
+	height: 32px;
+}
+.step5 li {
+  display: inline-block;
+}
+
+.box {
+	position: relative;
+	left: 0%;
+	overflow: hidden;
+}
+
+.spanLine {
+	position: absolute;
+    top: 0;
+    left: 0;
+	z-index: 99;
+	width: 10px;
+    height: 22px;
+	color: greenyellow;
+}
+
+li span,
+li label {
+  font-size: 20px; /* 원하는 크기로 조정 */
+  /* padding: 5px;  */
+}
+
+ul{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+
 </style>
 
-<div class="cs_box">
-	<h3>BMI 계산기</h3>
-	<div class="cal"> 
-		<ul>
-			<li class="style3"> 
+<div class="cs_box main bmiRadius">
+	<h1>BMI 계산기</h1>
+	
+	<div class="box"> 
+		<ul >
+			<li style="position: relative; left: -200px;"> 
+				<span>성별 : </span>
 				<input type="radio" id="male" name="gender" value="male"> 
-				<label for="male">남자</label> 
+				<label for="male">남자 <i class="bi bi-gender-male" style="color: blue;"></i></label>
+				&nbsp;&nbsp;
 				<input type="radio" id="female" name="gender" value="female"> 
-				<label for="female">여자</label> 
+				<label for="female">여자 <i class="bi bi-gender-female" style="color: red;"></i></label> 
+				<br><br>
 			</li> 
-			<li class="style4"> 
+			<li > 
 				<label for="height">신장 :</label>
 				<input type="text" id="height" name="height" maxlength="6" style="width:104px;ime-mode:disabled;">cm
 				&nbsp;
@@ -36,12 +129,30 @@
 	   			&nbsp;
 	   			<label for="age">나이 (세):</label>
     			<input type="text" id="age" name="age" maxlength="6" style="width:104px;ime-mode:disabled;">세(만)
-	   			&nbsp;&nbsp;
-				<button onclick="calculateBMI()">계산</button>
+	   			<br>
+				<button class="btn btn-success" style="margin: 20px auto;" onclick="calculateBMI()">계산</button>
+				<button class="btn btn-dark" style="margin: 20px auto;" onclick="calculateBMI()">초기화</button>
 				
     			<div class="result" id="result"><br></div>
 			</li> 
 		</ul> 
+		<span></span>
+		<div class="obesity_bar">
+			
+			<div id="mark" style="background-color:black; width: 3px; text-align: left; height: 20px;"> </div>
+			<ul class="step5">
+				<li class="lv1">저체중(<18.5)</li>
+				<li class="lv2">정상(<23)</li>
+				<li class="lv3">과체중(<25)</li>
+				<li class="lv4">비만(<30)</li>
+				<li class="lv5">고도비만(30↑)</li>
+			</ul>
+		</div>
+		<p class="smallInfo">만 19세 이상 기준 | 소아청소년일 경우 👉🏽<a href="https://www.kdca.go.kr/board/board.es?mid=a20507020000&bid=0019&act=view&list_no=138467">
+			여기</a>를 참조 하세요</p>
+		
+
+		<br><hr><br>
 		<div class="desc desc2">
 			<div class="obesity" style="display:none;"> 
 				<h3>나의 신체질량지수(BMI) <strong></strong></h3> 
@@ -53,10 +164,9 @@
 				<ul class="lst_about"> </ul>
 				</div> 
 			</div> <p style="display:block;">남/녀, 연령 구분에 따른 신체질량지수 BMI(Body Mass Index)와 비만도를 측정해 보세요.</p> 
-		</div> 
+		</div><p class="info">간단한 계산을 할 수 있는 웹 계산기 입니다.</p> 
 	</div> 
 </div>
-<p class="info">간단한 계산을 할 수 있는 웹 계산기 입니다.</p>
 
 
 <script>
@@ -67,6 +177,9 @@
 	    var genderInputs = document.getElementsByName("gender");
 	    var ageInput = document.getElementById("age");
 	    var resultDiv = document.getElementById("result");
+		
+		let mark = document.querySelector('#mark');
+
 	
 	    var weight = parseFloat(weightInput.value);
 	    var height = parseFloat(heightInput.value) / 100; // Convert height to meters
@@ -92,6 +205,8 @@
 	
 	    var bmi = weight / (height * height);
 	    resultDiv.innerText = "나의 (신체질량지수)BMI  " + bmi.toFixed(2);
+		if(bmi.toFixed(2))
+		mark.style.marginLeft  = '100px'; // 패딩 크기 조정
 	  }
 	
 	</script>

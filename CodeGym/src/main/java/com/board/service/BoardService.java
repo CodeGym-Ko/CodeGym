@@ -16,11 +16,14 @@ public interface BoardService {
 	//게시물 목록 보기
 	public List<BoardVO> notice(int startPoint,int postNum, String keyword);
 
+	//오운완 목록 보기
+	public List<BoardVO> todayWorkoutList(int startPoint,int postNum, String keyword);
+
 	// 인덱스 페이지 hot 게시물 뽑기
 	public BoardVO hotBoard(String boardType);
 	
 	//게시물 전체 갯수 계산
-	public int getTotalCount(String keyword);
+	public int getTotalCount(String keyword, String boardType);
 	
 	//게시물 번호 구하기
 	public int getSeqnoWithNextval();	

@@ -58,7 +58,7 @@
 								aria-expanded="false">커뮤니티</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="/board/list?page=1">자유게시판</a>
-								<a class="dropdown-item" href="#">오운완</a>
+								<a class="dropdown-item" href="/todayWorkout/list?page=1">오운완</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
@@ -86,8 +86,8 @@
 							회원정보</a>
 						</li>
 					</ul>
-					<div th:if="${session.userid != null}">
-						<span style="color:gray;float:right;margin-right: 16%;">[[${session.username}]] 님 환영💪🏽</span>
+					<div th:if="${session.userid != null}" style="margin:1%;">
+						<pre style="color:gray;float:right;margin-right: 17%;">[[${session.username}]] 님 환영💪🏽</pre>
 					</div>
 				</div>
 			</div>
