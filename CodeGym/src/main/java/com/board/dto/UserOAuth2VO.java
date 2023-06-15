@@ -17,6 +17,7 @@ public class UserOAuth2VO extends User implements OAuth2User {
 	private Map<String,Object> attribute;
 	private Collection<GrantedAuthority> authoroties;
 	private String name;
+	private String email;
 
 	public UserOAuth2VO(String username, String password, Collection<GrantedAuthority> authorities) {
 		super(username, password, authorities);
@@ -31,6 +32,7 @@ public class UserOAuth2VO extends User implements OAuth2User {
 	public String getName() {
         return name;
 	}
+	
 
 	@Override
 	public Collection<GrantedAuthority> getAuthorities() {
