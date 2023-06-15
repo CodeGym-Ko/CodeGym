@@ -10,8 +10,8 @@ body { font-family: "나눔고딕", "맑은고딕" }
 h1 { font-family: "HY견고딕" }
 
 
-.userid, .username, .userpasswd, .userpasswd1, .telno, .email, .zip, .addr1, .addr2 {
-  width: 80%;
+.userid, .username, .userpasswd, .userpasswd1, .telno, .email {
+  width: 100%;
   border:none;
   border-bottom: 2px solid #adadad;
   margin: 5px;
@@ -75,36 +75,47 @@ h1 { font-family: "HY견고딕" }
 .btn_addrSearch {
 	color: white;
 }
+
+.imageZone {
+	border: 2px solid rgb(58, 160, 64);
+	width: auto;
+	height: auto;
+	color: #92AAB0;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+	padding: auto;
+	font-size: 200%;
+}
  </style>
  </head> 
 <!-- 개발 영역 시작 -->
 
-<div class="main boxradius">
+<div class="card border-dark mb-3" style="margin: auto; max-width: 30%; max-height: auto;">
   <div class="registerForm">
 	      
-    <h1>사용자 정보 수정</h1>
+    <div style="text-align:center"><h1>사용자 정보 수정</h1></div>
  
     <form name="registerForm" id="registerForm" method="post" enctype="multipart/form-data"> 
        	<input type="file" name="fileUpload" id="fileUpload" style="display:none;" />
        	<span style="color:red;">※ 사진 편집을 원하시면 이미지를 클릭해 주세요</span>
-    	<div id="ImageRegistration" class="">
+    	<div id="ImageRegistration" class="imageZone">
+    	
     		
-		  <img th:src="@{'/profile/' + ${user.stored_filename}}" style="width:300px; height:auto;">
+		  <img th:src="@{'/profile/' + ${user.stored_filename}}" style="width:auto; height:auto; padding: auto">
 		</div>
 	    <input type="hidden" name="org_filename" th:value="${session.userid}">
 	    <input type="hidden" name="stored_filename" th:value="${user.stored_filename}">
-	    <input type="hidden" id="filesizeInput" name="filesize" th:value="${user.filesize}">
+	    <input type="hidden" id="filesizeInput" name="filesize" th:value="${user.filesize}"><br>
+	     <div class="" align="center">
 	    <input type="hidden" name="userid" th:value="${user.userid}">
-	    <input type="text" id="username" name="username" class="username" th:value="${user.username}">
-
-        
-        
-        
-        
-        <input type="text" id="telno" name="telno" class="telno" th:value="${user.telno}">
-        <input type="text" id="email" name="email" class="email" th:value="${user.email}">
+	    <input type="text" id="username" name="username" class="username" th:value="${user.username}" placeholder="닉네임">
+       
+        <input type="text" id="telno" name="telno" class="telno" th:value="${user.telno}" placeholder="전화번호">
+        <input type="text" id="email" name="email" class="email" th:value="${user.email}" placeholder="이메일">
         <input type="button" id="btn_modify" class="btn_modify" value="사용자 정보 수정">
         <input type="button" id="btn_cancel" class="btn_cancel" value="취소" onclick="history.back()">
+	 	</div>
 	  </form>
 
   </div>

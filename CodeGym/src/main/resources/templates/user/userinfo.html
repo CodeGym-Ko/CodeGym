@@ -26,6 +26,33 @@ body {
 	background-color: #1E90FF;
 	text-decoration : none; 
 }
+
+.imageZone {
+	border: 2px solid rgb(58, 160, 64);
+	width: auto;
+	height: auto;
+	color: #92AAB0;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+	padding: auto;
+	font-size: 200%;
+}
+
+.userid, .username, .userpasswd, .userpasswd1, .telno, .email, .regdate {
+  width: auto;
+  border:none;
+  border-bottom: 2px solid #adadad;
+  margin: 5px;
+  padding: 30px;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+
 </style>
 
 <script>
@@ -39,25 +66,23 @@ body {
 			 	{ alert("사용자 정보가 삭제 되었습니다."); document.location.href='/user/userInfoDelete';  } 	
 		}
 </script>
-	
-	<div class="main boxradius">
+	<br><br><div class="card border-dark mb-3" style="margin: auto; max-width: 30%; max-height: auto;">
 		<h1>회원 정보 보기</h1>
 		<br>
-		<div class="boardView">
-			<div class=imgView style="width:80%;height:auto;margin: auto; padding: 20px; border: none;">
+		<div class="imageZone">
+			<div class=imgView style="width:auto; height:auto;  padding: auto; border: none;">
 				<img th:if="${user.stored_filename != null}" th:src="@{'/profile/' + ${user.stored_filename}}" style="display:block;width:500px;height:auto;margin:auto">
 				<img th:if="${user.stored_filename == null}" th:src="${user.org_filename}" style="display:block;width:500px;height:auto;margin:auto">
 				
 			</div>
-			<div class="field">아이디 : [[${user.userid}]]</div>
-			<div class="field">이름 : [[${user.username}]]</div>
-			<div class="field">전화번호 : [[${user.telno}]]</div>
-			<div class="field">이메일 : [[${user.email}]]</div>
-			
+			</div>
+			<br>
+			<div class="userid">아이디 : [[${user.userid}]]</div>
+			<div class="username">이름 : [[${user.username}]]</div>
+			<div class="telno">전화번호 : [[${user.telno}]]</div>
+			<div class="email">이메일 : [[${user.email}]]</div>
 			<!-- regdate가 없어서 안됨(테이블에도 없음) 필요하면 넣고 아님 말고 -->
-			<div class="field">서비스 가입일: [[${user.regdate}]]</div>			
-		</div>
-	
+			<div class="regdate">서비스 가입일: [[${user.regdate}]]</div>
 		<br>
 	    <div class="" align="center">
 	        &nbsp;&nbsp;
@@ -68,7 +93,7 @@ body {
 		<br><br>
 	
 	
-	</div>
+	</div><br><br>
 <!-- 개발 영역 끝 -->
 </th:block>
 </html>
