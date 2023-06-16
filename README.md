@@ -1,5 +1,5 @@
 #  Team name: CodeGym
-<p align="center"><img src="https://user-images.githubusercontent.com/55028104/101987654-e3f4b600-3cd8-11eb-8a66-434f1d07e1d4.jpeg" alt="drive" width="400"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/db128dca-951a-415e-afe3-598f45a63f50" alt="logo" width="600"/></p>
 <br/>
 
 ## 🖥️ 프로젝트 소개
