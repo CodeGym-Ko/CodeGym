@@ -1,4 +1,6 @@
 #  Team name: CodeGym
+<p align="center"><img src="https://user-images.githubusercontent.com/55028104/101987654-e3f4b600-3cd8-11eb-8a66-434f1d07e1d4.jpeg" alt="drive" width="400"/></p>
+<br/>
 
 ## 🖥️ 프로젝트 소개
 부위 별 운동 방법과 식단을 알려주고, 커뮤니티 기능을 제공하는 사이트입니다.
