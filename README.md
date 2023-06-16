@@ -26,7 +26,7 @@
                  <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 - **Server** : <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">               
 - **Database** : <img src="https://img.shields.io/badge/oracleDB-F80000?style=for-the-badge&logo=bootstrap&logoColor=white">            
-
+- **Deployment** : <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"> 
 ## 📌 주요 기능(운동)
 
 <p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="exercise" width="600"/></p>
@@ -35,4 +35,7 @@
 ## 📌 주요 기능(식단추천,BMI계산 기능)
 
 <p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/801dd454-57d2-4aaa-aa7b-198913c46076" alt="diet" width="600"/></p>
+
+## 📌 주요 기능(커뮤니티 게시판 기능, 실시간 최다 조회 게시글 표시)
+
 
