@@ -29,7 +29,10 @@
 
 ## 📌 주요 기능(운동)
 
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="logo" width="600"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="exercise" width="600"/></p>
 <br/>
 
 ## 📌 주요 기능(식단추천,BMI계산 기능)
+
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/801dd454-57d2-4aaa-aa7b-198913c46076" alt="diet" width="600"/></p>
+
