@@ -27,7 +27,7 @@
 - **Server** : <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">               
 - **Database** : <img src="https://img.shields.io/badge/oracleDB-F80000?style=for-the-badge&logo=bootstrap&logoColor=white">            
 - **Deployment** : <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"> 
-## 📌 주요 기능(운동)
+## 📌 주요 기능(운동 방법 추천)
 
 <p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="exercise" width="600"/></p>
 <br/>
