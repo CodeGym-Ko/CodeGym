@@ -38,4 +38,6 @@
 
 ## 📌 주요 기능(커뮤니티 게시판 기능, 실시간 최다 조회 게시글 표시)
 
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/90a43991-4afd-4625-9579-090aaea028cc" alt="board" width="600"/></p>
+
 
