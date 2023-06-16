@@ -27,7 +27,9 @@
 - **Server** : <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">               
 - **Database** : <img src="https://img.shields.io/badge/oracleDB-F80000?style=for-the-badge&logo=bootstrap&logoColor=white">            
 
-## 📌 주요 기능
+## 📌 주요 기능(운동)
 
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/db128dca-951a-415e-afe3-598f45a63f50" alt="logo" width="600"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="logo" width="600"/></p>
 <br/>
+
+## 📌 주요 기능(식단추천,BMI계산 기능)
