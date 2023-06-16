@@ -17,16 +17,16 @@
  - 팀원5 : 최대훈 - 1대1 문의 게시판(CRUD), 공지사항 게시판(CRUD)
 
 ## ⚙️ 개발 환경
-- **BackEnd** :  <img src="https://img.shields.io/badge/JAVA-FF7800?style=for-the-badge&logo=JAVA&logoColor=white">
-                 <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white">
-                 <img src="https://img.shields.io/badge/SpringSecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
-- **FrontEnd** : <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
-                 <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
-                 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
-                 <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
-- **Server** : <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">               
-- **Database** : <img src="https://img.shields.io/badge/oracleDB-F80000?style=for-the-badge&logo=bootstrap&logoColor=white">            
-- **Deployment** : <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"> 
+- **BackEnd** :  <img src="https://img.shields.io/badge/JAVA-FF7800?style=plastic&logo=JAVA&logoColor=white">
+                 <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=plastic&logo=SpringBoot&logoColor=white">
+                 <img src="https://img.shields.io/badge/SpringSecurity-6DB33F?style=plastic&logo=springsecurity&logoColor=white">
+- **FrontEnd** : <img src="https://img.shields.io/badge/HTML-E34F26?style=plastic&logo=HTML5&logoColor=white">
+                 <img src="https://img.shields.io/badge/CSS-1572B6?style=plastic&logo=CSS3&logoColor=white">
+                 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=plastic&logo=javascript&logoColor=white">
+                 <img src="https://img.shields.io/badge/bootstrap-7952B3?style=plastic&logo=bootstrap&logoColor=white">
+- **Server** : <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=plastic&logo=apachetomcat&logoColor=white">               
+- **Database** : <img src="https://img.shields.io/badge/oracleDB-F80000?style=plastic&logo=bootstrap&logoColor=white">            
+- **Deployment** : <img src="https://img.shields.io/badge/Docker-2496ED?style=plastic&logo=docker&logoColor=white"> 
 ## 📌 주요 기능(운동 방법 추천)
 
 <p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="exercise" width="600"/></p>
