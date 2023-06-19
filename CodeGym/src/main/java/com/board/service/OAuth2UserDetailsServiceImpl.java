@@ -33,8 +33,11 @@ public class OAuth2UserDetailsServiceImpl extends DefaultOAuth2UserService{
 		
 		OAuth2User oAuth2User = super.loadUser(userRequest);
 		
+		//OAuth2UserInfo oAuth2UserInfo = null;
 		//구글에서 인증 후에 보내주는 데이터를 가져 옴. 데이터는 key,value 구조 되어 있음
 		String provider = userRequest.getClientRegistration().getRegistrationId(); //구글 네이버 카카오 다
+		
+		
 		// 구글은 sub 
 		String providerId = oAuth2User.getAttribute("sub");
 		
@@ -47,11 +50,12 @@ public class OAuth2UserDetailsServiceImpl extends DefaultOAuth2UserService{
 		//String name = oAuth2User.getAttribute("name");
 		String name = oAuth2User.getAttribute("name");
 		String picture = oAuth2User.getAttribute("picture");
-		
+		String message = oAuth2User.getAttribute("response");
+//		String gender = 
 		System.out.println("**************** provider =" + provider);
 		System.out.println("**************** providerId =" + providerId);
 		System.out.println("**************** email =" + email);
-		System.out.println("**************** name =" + name);
+		System.out.println("**************** message =" + message);
 		
 		
 		
