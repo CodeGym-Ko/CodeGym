@@ -14,14 +14,20 @@ import lombok.*;
 public class UserOAuth2VO extends User implements OAuth2User {
 
 	private static final long serialVersionUID = 1L;
-	private Map<String,Object> attribute;
+	private Map<String,Object> attribute;//OAuth2User.getAttributes();
 	private Collection<GrantedAuthority> authoroties;
 	private String name;
+	private String email;
 
-	public UserOAuth2VO(String username, String password, Collection<GrantedAuthority> authorities) {
+	public UserOAuth2VO(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 	}	
-	
+	 public UserOAuth2VO(String username, String password, Collection<? extends GrantedAuthority> authorities, Map<String, Object> attributes) {
+	        super(username, password, authorities);
+	        //this.attributes = attributes;
+	        this.name = (String) attributes.get("name");
+	        this.email = (String) attributes.get("email");
+	    }
 	@Override
 	public Map<String, Object> getAttributes() {
 		return attribute;
@@ -31,6 +37,7 @@ public class UserOAuth2VO extends User implements OAuth2User {
 	public String getName() {
         return name;
 	}
+	
 
 	@Override
 	public Collection<GrantedAuthority> getAuthorities() {

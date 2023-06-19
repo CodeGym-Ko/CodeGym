@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			throw new UsernameNotFoundException("아이디가 존재하지 않습니다.");
 		}
 		
-		//SimpleGrantedAuthority : 여러개의 사용자 Roll값을 받아서 권한을 인식하는 역할을 함
+		//SimpleGrantedAuthority : 여러개의 사용자 Role값을 받아서 권한을 인식하는 역할을 함
 		List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();		
 		SimpleGrantedAuthority grantedAuthority 
 			= new SimpleGrantedAuthority(userInfo.getRole());

@@ -2,11 +2,11 @@ package com.board;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.board.service.UserDetailsServiceImpl;
@@ -16,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true) // 특정 주소로 접근하면 권한 및 인증을 미리 체크
 public class WebSecurityConfig {
 
 	private final AuthSuccessHandler authSuccessHandler; //의존성 주입
@@ -24,7 +23,7 @@ public class WebSecurityConfig {
 	private final UserDetailsServiceImpl userDetailsService;
 	private final OAuth2SucessHandler oauth2SucessHandler;
     private final OAuth2FailureHandler oauth2FailureHandler;
-	
+//    private final ClientRegistrationRepository clientRegistrationRepository;
 	
 	//스프링시큐리티에서 암호화 관련 객체를 가져다가 스프링빈으로 등록 
 	@Bean
@@ -69,14 +68,17 @@ public class WebSecurityConfig {
                 .userDetailsService(userDetailsService)
                 .authenticationSuccessHandler(authSuccessHandler));
 		
-//		//접근권한 설정(권한 부여 : Authorization) -> 접근 권한 줄거면 사용
+		//접근권한 설정(권한 부여 : Authorization) -> 접근 권한 줄거면 사용
 //				http
 //					.authorizeHttpRequests()
-//					.requestMatchers("/user/**").permitAll()
-//					.requestMatchers("/board/**").hasAnyAuthority("USER","MASTER")
-//					.requestMatchers("/master/**").hasAnyAuthority("MASTER")
-//					.anyRequest().authenticated();
-		
+//					.requestMatchers("/").permitAll();
+////					.requestMatchers("/board/**").hasAnyAuthority("USER","MASTER")
+////					.requestMatchers("/master/**").hasAnyAuthority("MASTER")
+////					.anyRequest().authenticated(); // 모든 요청에 인증된 사용자만 접근 허용한다 -> 인증 x 리다이렉트
+//				 
+//				web
+//			        .ignoring()
+//			        .requestMatchers("/static/**");
 		//세션 설정
         http
             .sessionManagement(management -> management

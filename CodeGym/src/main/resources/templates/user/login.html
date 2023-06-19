@@ -20,7 +20,7 @@
 		position:relative;
 		left:40%;
 		transform: translateX(-50%);
-		margin-bottom: 40px;
+		margin: 40px 0;
 		width:80%;
 		height:40px;
 		background: linear-gradient(125deg,#2fb380,#238660,#81ecec);
@@ -65,8 +65,7 @@
 		<input type="checkbox" id="rememberUserid" onclick="checkRememberUserid()">아이디 기억
 		<input type="checkbox" id="rememberPassword" onclick="checkRememberPassword()">패스워드 기억
 		<input type="checkbox" id="rememberMe" onclick="checkRememberMe()">자동 로그인
-		<br><br>
-		
+		<input type="button" id="btn_login" class="login_btn" value="로그인" onclick="loginCheck()"><hr>
 		<div>다른 계정으로 로그인 하기</div>
 		<div class="authBox">		
 			<a href="/oauth2/authorization/google">
@@ -77,12 +76,12 @@
 				<img src="https://d1nuzc1w51n1es.cloudfront.net/7edcff9c01ccc20d1ef6.png" style="width:50px;">
 				<div class="">Kakao</div>
 			</a>
-			<a href="#">
+			<a href="/oauth2/authorization/naver">
 				<img src="https://phinf.pstatic.net/contact/78/2015/7/15/naveridlogin_1436952514384.png" style="width:50px;">
 				<div class="">Naver</div>
 			</a>
 		</div>
-		<input type="button" id="btn_login" class="login_btn" value="로그인" onclick="loginCheck()"><hr>
+		
 	</form>
 	
 	<div class="bottomText"><a href="/user/findId">아이디 찾기</a>  |  <a href="/user/tempPw">임시비밀번호 발급</a><br><br></div>
@@ -173,8 +172,12 @@
 	//패스워드 체크 관리
 	const checkRememberPassword = () => {
 		
-		if(document.querySelector('#rememberPassword').checked)
+		if(document.querySelector('#rememberPassword').checked){
 			document.querySelector('#rememberMe').checked = false;
+			let rememberPwCheck = confirm("공용PC 라면 패스워드 기억 시 보안 위험이 있습니다.\n개인용 PC가 맞습니까?");
+			if(!rememberPwCheck)
+				document.querySelector('#rememberPassword').checked = false;
+		}
 	}	
 	
 	//로그인 처리

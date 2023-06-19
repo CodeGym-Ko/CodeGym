@@ -33,32 +33,45 @@ public class OAuth2UserDetailsServiceImpl extends DefaultOAuth2UserService{
 		
 		OAuth2User oAuth2User = super.loadUser(userRequest);
 		
+		//OAuth2UserInfo oAuth2UserInfo = null;
 		//구글에서 인증 후에 보내주는 데이터를 가져 옴. 데이터는 key,value 구조 되어 있음
-		String provider = userRequest.getClientRegistration().getRegistrationId();
+		String provider = userRequest.getClientRegistration().getRegistrationId(); //구글 네이버 카카오 다
+		
+		
+		// 구글은 sub 
 		String providerId = oAuth2User.getAttribute("sub");
+		
+		// 네이버는 response
+		//String providerId = oAuth2User.getAttribute("response");
+		//String providerId = oAuth2User.getAttributes().get("response").get("id").toString();
+		
 		String email = oAuth2User.getAttribute("email");
+		
+		//String name = oAuth2User.getAttribute("name");
 		String name = oAuth2User.getAttribute("name");
 		String picture = oAuth2User.getAttribute("picture");
-		
+		String message = oAuth2User.getAttribute("response");
+//		String gender = 
 		System.out.println("**************** provider =" + provider);
 		System.out.println("**************** providerId =" + providerId);
 		System.out.println("**************** email =" + email);
-		System.out.println("**************** name =" + name);
-		System.out.println("**************** picture =" + picture);
+		System.out.println("**************** message =" + message);
+		
+		
 		
 		oAuth2User.getAttributes().forEach((k,v) -> 
-			{System.out.println("구글로그인 주는거 forEach ==== " + k + " : " + v );});
+			{System.out.println(provider+" 로그인 주는거 forEach ==== " + k + " : " + v );});
 		
 		
 		UserVO user = new UserVO();
 		
-		//구글에서 받은 승인된 이메일로 사용자 정보 등록
+		// DB에 없는 사용자라면 회원 가입 (이메일 기준 -> 이메일이 아이디이기 떄문)
 		if(service.idCheck(email) == 0) {
 			user.setUserid(email);
 			user.setEmail(email);
 			user.setUsername(name);
 			user.setOrg_filename(picture);
-			user.setPassword(pwdEncoder.encode("12345"));
+			user.setPassword(pwdEncoder.encode("tmeppw"));
 			user.setRole("USER");
 			user.setFromsocial("G"); // 구글이라 G			
 			service.googleSignup(user);
@@ -72,8 +85,8 @@ public class OAuth2UserDetailsServiceImpl extends DefaultOAuth2UserService{
 		GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(googleUser.getRole());
 		grantedAuthorities.add(grantedAuthority);
 
-		UserOAuth2VO userOAuth2VO = 
-				new UserOAuth2VO(email, googleUser.getPassword(), grantedAuthorities);
+		// 사용자 정보를 VO에 넣음
+		UserOAuth2VO userOAuth2VO = new UserOAuth2VO(email, googleUser.getPassword(), grantedAuthorities);
 
 		userOAuth2VO.setAttribute(oAuth2User.getAttributes());
 		userOAuth2VO.setAuthoroties(grantedAuthorities);
