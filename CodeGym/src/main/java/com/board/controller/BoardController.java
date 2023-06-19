@@ -37,9 +37,27 @@ public class BoardController {
 	
 	@GetMapping("/")
 	public String index(Model model) throws Exception {
-		model.addAttribute("todayWorkout", service.hotBoard("todayWorkout"));
-		model.addAttribute("freeHotBoard", service.hotBoard("free"));
-		model.addAttribute("notice", service.hotBoard("notice"));
+		List<BoardVO> todayWorkoutList = service.hotBoard("todayWorkout");
+		if (!todayWorkoutList.isEmpty()) {
+		    model.addAttribute("todayWorkout", todayWorkoutList.get(0));
+		} else {
+		    model.addAttribute("todayWorkout", null);
+		}
+
+		List<BoardVO> freeHotBoardList = service.hotBoard("free");
+		if (!freeHotBoardList.isEmpty()) {
+		    model.addAttribute("freeHotBoard", freeHotBoardList.get(0));
+		} else {
+		    model.addAttribute("freeHotBoard", null);
+		}
+
+		List<BoardVO> noticeList = service.hotBoard("notice");
+		if (!noticeList.isEmpty()) {
+		    model.addAttribute("notice", noticeList.get(0));
+		} else {
+		    model.addAttribute("notice", null);
+		}
+
 		return "index";
 	}
 	

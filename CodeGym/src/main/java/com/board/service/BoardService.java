@@ -20,7 +20,7 @@ public interface BoardService {
 	public List<BoardVO> todayWorkoutList(int startPoint,int postNum, String keyword);
 
 	// 인덱스 페이지 hot 게시물 뽑기
-	public BoardVO hotBoard(String boardType);
+	public List<BoardVO> hotBoard(String boardType);
 	
 	//게시물 전체 갯수 계산
 	public int getTotalCount(String keyword, String boardType);

@@ -45,7 +45,8 @@ where seq between #{startPoint} and #{endPoint}
 </select>
 
 <select id="hotBoard" parameterType="com.board.dto.BoardVO" resultType="com.board.dto.BoardVO">
-	SELECT * FROM tbl_board WHERE hitno = (SELECT max(hitno) FROM tbl_board where boardtype = #{boardType})
+	SELECT * FROM tbl_board WHERE hitno = (SELECT max(hitno) FROM tbl_board where boardtype = #{boardType}) 
+	   AND boardType=#{boardType}
 </select>
 
 <!-- 전체 게시물 갯수 계산 -->

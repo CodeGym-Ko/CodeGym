@@ -18,23 +18,31 @@
 
 	<script th:inline="javascript">
 		window.onload = () => {
-			const freeHotBoard = /*[[${freeHotBoard}]]*/ [];
-			document.querySelector("#freeHotTitle").innerText = "‍‍[👨‍👩‍👧‍👦자유게시판] "+freeHotBoard.title;
-			document.querySelector("#freeHotContent").innerText = freeHotBoard.content;
-			const freeHotBoardSeqno = freeHotBoard.seqno;
-			document.querySelector("#freeHotBoard").href = "/board/view?seqno="+freeHotBoardSeqno+"&page=1&keyword=";
+			
+			const freeHotBoard = /*[[${freeHotBoard}]]*/ []
+			if(freeHotBoard != null) {
+				document.querySelector("#freeHotTitle").innerText = "‍‍[👨‍👩‍👧‍👦자유게시판] "+freeHotBoard.title;
+				document.querySelector("#freeHotContent").innerText = freeHotBoard.content;
+				const freeHotBoardSeqno = freeHotBoard.seqno;
+				document.querySelector("#freeHotBoard").href = "/board/view?seqno="+freeHotBoardSeqno+"&page=1&keyword=";
+			}
 
+			
 			const todayWorkout = /*[[${todayWorkout}]]*/ [];
-			document.querySelector("#todayWorkoutHotTitle").innerText = "[🏋️오운완] "+todayWorkout.title;
-			document.querySelector("#todayWorkoutHotContent").innerText = todayWorkout.content;
-			const todayWorkoutSeqno = todayWorkout.seqno;
-			document.querySelector("#todayWorkoutHotBoard").href = "/todayWorkout/view?seqno="+todayWorkoutSeqno+"&page=1&keyword=";
+			if(todayWorkout != null) {
+				document.querySelector("#todayWorkoutHotTitle").innerText = "[🏋️오운완] "+todayWorkout.title;
+				document.querySelector("#todayWorkoutHotContent").innerText = todayWorkout.content;
+				const todayWorkoutSeqno = todayWorkout.seqno;
+				document.querySelector("#todayWorkoutHotBoard").href = "/todayWorkout/view?seqno="+todayWorkoutSeqno+"&page=1&keyword=";
+			}
 
 			const notice = /*[[${notice}]]*/ [];
-			document.querySelector("#noticeHotTitle").innerText = "[📢공지사항] "+notice.title;
-			document.querySelector("#noticeHotContent").innerText = notice.content;
-			const noticeSeqno = notice.seqno;
-			document.querySelector("#noticeHotBoard").href = "/customerCenter/noticeView?seqno="+noticeSeqno+"&page=1&keyword=";
+			if(notice != null) {
+				document.querySelector("#noticeHotTitle").innerText = "[📢공지사항] "+notice.title;
+				document.querySelector("#noticeHotContent").innerText = notice.content;
+				const noticeSeqno = notice.seqno;
+				document.querySelector("#noticeHotBoard").href = "/customerCenter/noticeView?seqno="+noticeSeqno+"&page=1&keyword=";
+			}
 		}
 		
 		
