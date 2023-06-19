@@ -3,7 +3,7 @@
 <th:block layout:fragment="content">
   
 <!-- 개발 영역 시작 -->
-<title>상세보기</title>
+<title>[[${view.title}]]</title>
 
 <script>
 	var likeCnt; 
@@ -350,7 +350,8 @@
     		<li class="list-group-item">이름 : [[${view.writer}]]</li>
     		<li class="list-group-item">제목 : [[${view.title}]]</li>
     		<li class="list-group-item">날짜 : [[${view.regdate}]]</li>
-    		<li class="list-group-item">[[${view.content}]]</li>
+    		<li class="list-group-item" style="padding: 50px;">[[${view.content}]]</li>
+			
   		</ul>
 		<div class="likeForm" style="padding:2%;width:50%; margin: auto; display: block;">
          	<span id='like' style="font-weight: bolder; color: red;"></span>&nbsp;<a href='javascript:likeView()' id="likeClick" class="likeClick" style="display:none;">좋아요</a>
@@ -364,7 +365,7 @@
         	
 	        <th:block th:if="${fileListView != 'null'}">
 		       	<div th:each="fileView : ${fileListView}">
-					<div class="form-control is-valid" style="width:50%; margin: auto; display: block;">파일명 : <a href="#" th:attr="onclick='fileDownload(\'' + ${fileView.fileseqno} + '\')'">[[${fileView.org_filename}]]</a> ( [[${fileView.filesize}]] Byte )</div>
+					<div class="form-control is-valid" style="width:80%; margin: auto; display: block;">파일명 : <a href="#" th:attr="onclick='fileDownload(\'' + ${fileView.fileseqno} + '\')'">[[${fileView.org_filename}]]</a> ( [[${fileView.filesize}]] Byte )</div>
 				</div>
 			</th:block>
 			<th:block th:if="${#lists.isEmpty(fileListView)}">

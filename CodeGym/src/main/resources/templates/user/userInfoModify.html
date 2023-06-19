@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
 <th:block layout:fragment="content">
  <head>
- <title>CodeGym 사용자 정보 수정</title>
+ <title>사용자 정보 수정</title>
  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <style>
 	
@@ -15,7 +15,7 @@ h1 { font-family: "HY견고딕" }
   border:none;
   border-bottom: 2px solid #adadad;
   margin: 5px;
-  padding: 10px 10px;
+  
   outline:none;
   color: #636e72;
   font-size:16px;
@@ -91,30 +91,36 @@ h1 { font-family: "HY견고딕" }
  </head> 
 <!-- 개발 영역 시작 -->
 
-<div class="card border-dark mb-3" style="margin: auto; max-width: 30%; max-height: auto;">
+<div class="boxradius main" >
   <div class="registerForm">
 	      
     <div style="text-align:center"><h1>사용자 정보 수정</h1></div>
  
     <form name="registerForm" id="registerForm" method="post" enctype="multipart/form-data"> 
        	<input type="file" name="fileUpload" id="fileUpload" style="display:none;" />
-       	<span style="color:red;">※ 사진 편집을 원하시면 이미지를 클릭해 주세요</span>
-    	<div id="ImageRegistration" class="imageZone">
-    	
-    		
-		  <img th:src="@{'/profile/' + ${user.stored_filename}}" style="width:auto; height:auto; padding: auto">
+       	<span style="color:red;">※ 프로필 사진 편집을 원하시면 이미지를 클릭해 주세요</span>
+    	<div id="ImageRegistration" class="imgView cursorPointer">
+    		<div class=imgView>
+				<img th:if="${user.stored_filename != null}" th:src="@{'/profile/' + ${user.stored_filename}}" style="display:block;width:500px;height:auto;margin:auto">
+				<img th:if="${user.stored_filename == null}" th:src="${user.org_filename}" style="display:block;width:500px;height:auto;margin:auto" onerror="this.onerror=null;this.src='https://media.istockphoto.com/id/1399859917/ko/%EB%B2%A1%ED%84%B0/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B2%A1%ED%84%B0-%EA%B8%B0%ED%98%B8%EA%B0%80-%EC%97%86%EC%9C%BC%EB%A9%B0-%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9D%B4-%EC%97%86%EC%8A%B5%EB%8B%88%EB%8B%A4-%EC%9D%B4-%EC%88%9C%EA%B0%84-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90%EB%A5%BC%EC%9C%84%ED%95%9C-%EA%B0%A4%EB%9F%AC%EB%A6%AC%EA%B0%80-%EC%97%86%EC%8A%B5%EB%8B%88%EB%8B%A4.jpg?s=170667a&w=0&k=20&c=hFf7ccLdRkyVpPbHA5S_aAcB805YyXWDL9Oyn6Ff_8c=';">
+			</div>
 		</div>
 	    <input type="hidden" name="org_filename" th:value="${session.userid}">
 	    <input type="hidden" name="stored_filename" th:value="${user.stored_filename}">
 	    <input type="hidden" id="filesizeInput" name="filesize" th:value="${user.filesize}"><br>
 	     <div class="" align="center">
 	    <input type="hidden" name="userid" th:value="${user.userid}">
-	    <input type="text" id="username" name="username" class="username" th:value="${user.username}" placeholder="닉네임">
-       
-        <input type="text" id="telno" name="telno" class="telno" th:value="${user.telno}" placeholder="전화번호">
-        <input type="text" id="email" name="email" class="email" th:value="${user.email}" placeholder="이메일">
-        <input type="button" id="btn_modify" class="btn_modify" value="사용자 정보 수정">
-        <input type="button" id="btn_cancel" class="btn_cancel" value="취소" onclick="history.back()">
+	    <span class="modifyLine"><h4>이름 : </h4><input type="text" id="username" name="username" class="username" th:value="${user.username}" placeholder="닉네임 입력란">
+		</span><br>
+        <span class="modifyLine"><h4>전화번호 : </h4><input type="text" id="telno" name="telno" class="telno" th:value="${user.telno}" placeholder="전화번호 입력란">
+		</span><br>
+        <span class="modifyLine"><h4>이메일 : </h4><input type="text" id="email" name="email" class="email" th:value="${user.email}" placeholder="이메일 입력란">
+		</span>
+
+        <div class="btn_group">
+	        <input type="button" id="btn_modify" class="btn_modify" value="사용자 정보 수정">
+	        <input type="button" id="btn_cancel" class="btn_cancel" value="취소" onclick="history.back()">
+        </div>
 	 	</div>
 	  </form>
 

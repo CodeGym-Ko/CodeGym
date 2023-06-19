@@ -33,3 +33,26 @@ h1 {
 .noDot {
 	list-style-type: none;
   }
+  
+  
+.btn_group {
+	margin-top:30px
+}
+
+.modifyLine {
+	display: inline-flex;
+	width: 70%;
+	flex-wrap: wrap;
+	margin: 10px 0;
+}
+.imgView {
+	width:70%;
+	margin:auto;
+	height:auto; 
+	padding: auto;
+	border: none;
+	
+}
+.cursorPointer {
+	cursor: pointer;;
+}
