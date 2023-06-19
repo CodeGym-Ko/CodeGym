@@ -46,8 +46,10 @@ public interface UserMapper {
 	
 	//구글 사용자 등록
 	public void googleSignup(UserVO user);
+	
 	//카카오 사용자 등록
 	public void kakaoSignup(UserVO user);
+	
 	//네이버 사용자 등록
 	public void naverSignup(UserVO user);
 }
