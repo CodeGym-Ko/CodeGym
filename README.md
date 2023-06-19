@@ -26,19 +26,7 @@
                  <img src="https://img.shields.io/badge/bootstrap-7952B3?style=plastic&logo=bootstrap&logoColor=white">
 - **Server** : <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=plastic&logo=apachetomcat&logoColor=white">               
 - **Database** : <img src="https://img.shields.io/badge/oracleDB-F80000?style=plastic&logo=bootstrap&logoColor=white">            
-- **Deployment** : <img src="https://img.shields.io/badge/Docker-2496ED?style=plastic&logo=docker&logoColor=white"> 
-## 🚴 주요 기능(운동 방법 추천)
-
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="exercise" width="2000"/></p>
-<br/>
-
-## 🍖 주요 기능(식단추천,BMI계산 기능)
-
-<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/26914dd7-16a1-4023-b819-8064c9317133" alt="diet" width="2000"/></p>
-
-## :clipboard: 주요 기능(커뮤니티 게시판 기능, 실시간 최다 조회 게시글 표시)
-
-<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/ef67f5fb-891c-469e-bf3a-c66fcbc77131" alt="board" width="2000"/></p>
+- **Deployment** : <img src="https://img.shields.io/badge/Docker-2496ED?style=plastic&logo=docker&logoColor=white">
 
 ## 📃 요구사항 정의서
 
@@ -59,6 +47,19 @@
 ## 📃 데이터플로우
 
 <p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/8115ea81-018b-437b-b00b-1900aab9e898" alt="board" width="2000"/></p>
+
+## 🚴 주요 기능(운동 방법 추천)
+
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="exercise" width="2000"/></p>
+<br/>
+
+## 🍖 주요 기능(식단추천,BMI계산 기능)
+
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/26914dd7-16a1-4023-b819-8064c9317133" alt="diet" width="2000"/></p>
+
+## :clipboard: 주요 기능(커뮤니티 게시판 기능, 실시간 최다 조회 게시글 표시)
+
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/ef67f5fb-891c-469e-bf3a-c66fcbc77131" alt="board" width="2000"/></p>
 
 <br>
 <h1 align="center">😄감사합니다😄</h1>
