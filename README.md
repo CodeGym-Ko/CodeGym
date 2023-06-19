@@ -48,9 +48,9 @@
 
 <p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/28264735-a6c5-47c9-82f1-9eafbbbe3635" alt="board" width="2000"/></p>
 
-## 📃 ER다이어그램
+## 📃 ERD
 
-<p align="center"><img src="" alt="board" width="2000"/></p>
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/47cca024-42fc-4dcf-8dac-b1b57aeb5bb7" alt="board" width="2000"/></p>
 
 ## 📃 메뉴구조도
 
