@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
 	//카카오 사용자 등록
 	@Override
 	public void kakaoSignup(UserVO user) {
-		mapper.googleSignup(user);
+		mapper.kakaoSignup(user);
 	}
 	
 	//네이버 사용자 등록
