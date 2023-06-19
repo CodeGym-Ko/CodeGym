@@ -1,4 +1,4 @@
-#  Team name: CodeGym
+#  Team Name: CodeGym
 <p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/db128dca-951a-415e-afe3-598f45a63f50" alt="logo" width="500"/></p>
 <br/>
 
@@ -59,3 +59,6 @@
 ## 📃 데이터플로우
 
 <p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/8115ea81-018b-437b-b00b-1900aab9e898" alt="board" width="2000"/></p>
+
+<br>
+<h1 align="center">😄감사합니다😄</h1>
