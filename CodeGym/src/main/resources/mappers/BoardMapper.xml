@@ -79,7 +79,7 @@ where seq between #{startPoint} and #{endPoint}
 
 <!-- 게시물 내용 보기에서 업로드된 파일 목록 보기 -->
 <select id="fileListView" parameterType="int" resultType="com.board.dto.FileVO">
-	select fileseqno, org_filename, filesize from tbl_file where seqno = #{seqno} and checkfile='Y'
+	select fileseqno, org_filename, filesize, stored_filename from tbl_file where seqno = #{seqno} and checkfile='Y'
 </select>
 
 <!-- 게시물 수정에서 파일 정보 삭제  -->

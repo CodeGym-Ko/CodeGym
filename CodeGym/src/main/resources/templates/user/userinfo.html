@@ -27,27 +27,17 @@ body {
 	text-decoration : none; 
 }
 
-.imageZone {
-	border: 2px solid rgb(58, 160, 64);
-	width: auto;
-	height: auto;
-	color: #92AAB0;
-	text-align: center;
-	vertical-align: middle;
-	margin: auto;
-	padding: auto;
-	font-size: 200%;
-}
 
-.userid, .username, .userpasswd, .userpasswd1, .telno, .email, .regdate {
-  width: auto;
+
+.userid, .username, .telno, .email, .regdate {
+  width: 80%;
   border:none;
   border-bottom: 2px solid #adadad;
   margin: 5px;
   padding: 30px;
   outline:none;
   color: #636e72;
-  font-size:16px;
+  font-size:40px;
   height:25px;
   background: none;
 }
@@ -66,25 +56,25 @@ body {
 			 	{ alert("사용자 정보가 삭제 되었습니다."); document.location.href='/user/userInfoDelete';  } 	
 		}
 </script>
-	<br><br><div class="card border-dark mb-3" style="margin: auto; max-width: 30%; max-height: auto;">
+	
+	<div class="card border-dark mb-3 boxradius main">
 		<h1>회원 정보 보기</h1>
 		<br>
 		<div class="imageZone">
-			<div class=imgView style="width:auto; height:auto;  padding: auto; border: none;">
+			<div class=imgView >
 				<img th:if="${user.stored_filename != null}" th:src="@{'/profile/' + ${user.stored_filename}}" style="display:block;width:500px;height:auto;margin:auto">
-				<img th:if="${user.stored_filename == null}" th:src="${user.org_filename}" style="display:block;width:500px;height:auto;margin:auto">
-				
+				<img th:if="${user.stored_filename == null}" th:src="${user.org_filename}" style="display:block;width:500px;height:auto;margin:auto" onerror="this.onerror=null;this.src='https://media.istockphoto.com/id/1399859917/ko/%EB%B2%A1%ED%84%B0/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B2%A1%ED%84%B0-%EA%B8%B0%ED%98%B8%EA%B0%80-%EC%97%86%EC%9C%BC%EB%A9%B0-%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EC%95%84%EC%9D%B4%EC%BD%98%EC%9D%B4-%EC%97%86%EC%8A%B5%EB%8B%88%EB%8B%A4-%EC%9D%B4-%EC%88%9C%EA%B0%84-%EC%9E%90%EB%A6%AC-%ED%91%9C%EC%8B%9C%EC%9E%90%EB%A5%BC%EC%9C%84%ED%95%9C-%EA%B0%A4%EB%9F%AC%EB%A6%AC%EA%B0%80-%EC%97%86%EC%8A%B5%EB%8B%88%EB%8B%A4.jpg?s=170667a&w=0&k=20&c=hFf7ccLdRkyVpPbHA5S_aAcB805YyXWDL9Oyn6Ff_8c=';">
+
 			</div>
-			</div>
-			<br>
+		</div>
+		<div align="center">
 			<div class="userid">아이디 : [[${user.userid}]]</div>
-			<div class="username">이름 : [[${user.username}]]</div>
-			<div class="telno">전화번호 : [[${user.telno}]]</div>
-			<div class="email">이메일 : [[${user.email}]]</div>
-			<!-- regdate가 없어서 안됨(테이블에도 없음) 필요하면 넣고 아님 말고 -->
-			<div class="regdate">서비스 가입일: [[${user.regdate}]]</div>
-		<br>
-	    <div class="" align="center">
+			<div class="username">이름 : [[${user.username}]]<span th:if="${user.username==null}">입력 값이 없습니다.</span></div>
+			<div class="telno">전화번호 : [[${user.telno}]] <span th:if="${user.telno==null}">입력 값이 없습니다.</span></div>
+			<div class="email">이메일 : [[${user.email}]]<span th:if="${user.email==null}">입력 값이 없습니다.</span></div>
+			<div class="regdate">서비스 가입일: [[${user.regdate}]]<span th:if="${user.regdate==null}">입력 값이 없습니다.</span></div>
+	    </div>
+	    <div class="btn_group" align="center">
 	        &nbsp;&nbsp;
 	        <a class="btn btn-success" href="/user/userInfoModify">기본정보 변경</a> &nbsp;&nbsp;
 	        <a class="btn btn-success" href="/user/userPasswordModify">패스워드 변경</a> &nbsp;&nbsp;
@@ -93,7 +83,7 @@ body {
 		<br><br>
 	
 	
-	</div><br><br>
+	</div>
 <!-- 개발 영역 끝 -->
 </th:block>
 </html>
