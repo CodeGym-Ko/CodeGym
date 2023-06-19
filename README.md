@@ -6,10 +6,10 @@
 부위 별 운동 방법과 식단을 알려주고, 커뮤니티 기능을 제공하는 사이트입니다.
 <br>
 
-## 🕰️ 개발 기간
+## 🕰️ 프로젝트 기간
 * 22.05.22일 - 22.06.19일
 
-## 🧑‍🤝‍🧑 멤버구성 (예시 임시 작성이므로 나중에 나눠서 작성해봐요.)
+## 🧑‍🤝‍🧑 멤버구성
  - 팀원1 : 김남덕 
  - 팀원2 : 김상경 
  - 팀원3 : 배기한 
@@ -34,11 +34,11 @@
 
 ## 🍖 주요 기능(식단추천,BMI계산 기능)
 
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/801dd454-57d2-4aaa-aa7b-198913c46076" alt="diet" width="2000"/></p>
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/26914dd7-16a1-4023-b819-8064c9317133" alt="diet" width="2000"/></p>
 
 ## :clipboard: 주요 기능(커뮤니티 게시판 기능, 실시간 최다 조회 게시글 표시)
 
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/90a43991-4afd-4625-9579-090aaea028cc" alt="board" width="2000"/></p>
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/ef67f5fb-891c-469e-bf3a-c66fcbc77131" alt="board" width="2000"/></p>
 
 ## 📃 요구사항 정의서
 
