@@ -48,6 +48,10 @@
 
 <p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/28264735-a6c5-47c9-82f1-9eafbbbe3635" alt="board" width="2000"/></p>
 
+## 📃 ER다이어그램
+
+<p align="center"><img src="" alt="board" width="2000"/></p>
+
 ## 📃 메뉴구조도
 
 <p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/518aeb2b-594f-4cb0-b72a-741334a7e5fa" alt="board" width="2000"/></p>
