@@ -98,6 +98,6 @@ public class UserServiceImpl implements UserService {
 	//네이버 사용자 등록
 	@Override
 	public void naverSignup(UserVO user) {
-		mapper.googleSignup(user);
+		mapper.naverSignup(user);
 	}
 }
