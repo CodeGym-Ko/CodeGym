@@ -40,8 +40,18 @@
 
 <p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/90a43991-4afd-4625-9579-090aaea028cc" alt="board" width="2000"/></p>
 
-## 📃 프로젝트 데이터플로우
+## 📃 요구사항 정의서
+
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/ac448a00-b17d-4b64-b4d3-a95f8401f6c8" alt="board" width="2000"/></p>
+
+## 📃 테이블 명세서
+
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/28264735-a6c5-47c9-82f1-9eafbbbe3635" alt="board" width="2000"/></p>
+
+## 📃 메뉴구조도
+
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/518aeb2b-594f-4cb0-b72a-741334a7e5fa" alt="board" width="2000"/></p>
+
+## 📃 데이터플로우
 
 <p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/8115ea81-018b-437b-b00b-1900aab9e898" alt="board" width="2000"/></p>
-
-
