@@ -29,19 +29,19 @@
 - **Deployment** : <img src="https://img.shields.io/badge/Docker-2496ED?style=plastic&logo=docker&logoColor=white"> 
 ## 🚴 주요 기능(운동 방법 추천)
 
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="exercise" width="600"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e97bace6-e07e-4d13-8811-52c3f427f6e3" alt="exercise" width="2000"/></p>
 <br/>
 
 ## 🍖 주요 기능(식단추천,BMI계산 기능)
 
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/801dd454-57d2-4aaa-aa7b-198913c46076" alt="diet" width="600"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/801dd454-57d2-4aaa-aa7b-198913c46076" alt="diet" width="2000"/></p>
 
 ## :clipboard: 주요 기능(커뮤니티 게시판 기능, 실시간 최다 조회 게시글 표시)
 
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/90a43991-4afd-4625-9579-090aaea028cc" alt="board" width="600"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/90a43991-4afd-4625-9579-090aaea028cc" alt="board" width="2000"/></p>
 
 ## 📃 프로젝트 데이터플로우
 
-<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/8115ea81-018b-437b-b00b-1900aab9e898" alt="board" width="1000"/></p>
+<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/8115ea81-018b-437b-b00b-1900aab9e898" alt="board" width="2000"/></p>
 
 
