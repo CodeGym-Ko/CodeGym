@@ -26,7 +26,7 @@
                  <img src="https://img.shields.io/badge/bootstrap-7952B3?style=plastic&logo=bootstrap&logoColor=white">
 - **Server** : <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=plastic&logo=apachetomcat&logoColor=white">               
 - **Database** : <img src="https://img.shields.io/badge/oracleDB-F80000?style=plastic&logo=bootstrap&logoColor=white">            
-- **Deployment** : <img src="https://img.shields.io/badge/Docker-2496ED?style=plastic&logo=docker&logoColor=white">
+
 
 ## 📃 요구사항 정의서
 
