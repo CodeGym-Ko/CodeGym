@@ -58,6 +58,11 @@
 <p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/58a878a1-95d8-4731-8869-8a9c14d5a797" alt="exercise" width="2000"/></p>
 <br/>
 
+## 🔐 로그인 기능 구현방식
+
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/58a878a1-95d8-4731-8869-8a9c14d5a797" alt="login" width="2000"/></p>
+<br/>
+
 ## 🍖 주요 기능(식단추천,BMI계산 기능)
 
 <p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/26914dd7-16a1-4023-b819-8064c9317133" alt="diet" width="2000"/></p>
