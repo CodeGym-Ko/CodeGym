@@ -42,7 +42,7 @@
 
 ## 📃 메뉴구조도
 
-<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/518aeb2b-594f-4cb0-b72a-741334a7e5fa" alt="board" width="2000"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e35cd123-417d-432f-afbd-97ba2c08b732" alt="board" width="2000"/></p>
 
 ## 📃 데이터플로우
 
