@@ -60,7 +60,7 @@
 
 ## 🔐 로그인 기능 구현방식
 
-<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/115196991/318461d7-7b92-4819-bc9d-a2db57b2d326" alt="login" width="2000"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/115196991/0ded05c5-24d5-469f-ae8b-581aa7ff7699" alt="login" width="2000"/></p>
 <br/>
 
 ## 🍖 주요 기능(식단추천,BMI계산 기능)
