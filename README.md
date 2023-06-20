@@ -38,7 +38,7 @@
 
 ## 📃 ERD
 
-<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/47cca024-42fc-4dcf-8dac-b1b57aeb5bb7" alt="board" width="2000"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e8363324-1075-4c8e-9d9d-3829325549b5" alt="board" width="2000"/></p>
 
 ## 📃 메뉴구조도
 
