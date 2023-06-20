@@ -78,7 +78,7 @@ public class BoardController {
 			model.addAttribute("page", pageNum);
 			model.addAttribute("keyword", keyword);
 			model.addAttribute("pageList", page.getPageList(pageNum, postNum, pageListCount, totalCount, keyword));
-			return "/board/list";
+			return "board/list";
 
 	}
 	
@@ -96,7 +96,7 @@ public class BoardController {
 	// 게시물 작성 화면보기
 	@GetMapping("/board/write")
 	public String getBoardWrite(Model model, HttpSession session) {
-		return "/board/write";
+		return "board/write";
 	}
 
 	// 첨부 파일 없는 게시물 등록
@@ -215,7 +215,7 @@ public class BoardController {
 		model.addAttribute("next_seqno", service.next_seqno(seqno, keyword));
 		model.addAttribute("likeCheckView", likeCheckView);
 		model.addAttribute("fileListView", service.fileListView(seqno));
-		return "/board/view";
+		return "board/view";
 	}
 
 	// 좋아요/싫어요 관리
@@ -296,7 +296,7 @@ public class BoardController {
 		model.addAttribute("page", pageNum);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("fileListView", service.fileListView(seqno));
-		return "/board/modify";
+		return "board/modify";
 	}
 
 	// 게시물 수정하기
@@ -391,7 +391,7 @@ public class BoardController {
 		model.addAttribute("page", pageNum);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageList", page.getPageList(pageNum, postNum, pageListCount, totalCount, keyword));
-		return "/customerCenter/notice";
+		return "customerCenter/notice";
 	}
 	
 	// 공지사항 작성 화면
@@ -595,14 +595,14 @@ public class BoardController {
 		model.addAttribute("page", pageNum);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageList", page.getPageList(pageNum, postNum, pageListCount, totalCount, keyword));
-		return "/todayWorkout/list";
+		return "todayWorkout/list";
 		
 	}
 	
 	// 게시물 작성 화면보기
 	@GetMapping("/todayWorkout/write")
 	public String getTodayWorkoutWrite(Model model, HttpSession session) {
-		return "/todayWorkout/write";
+		return "todayWorkout/write";
 	}
 
 	// 첨부 파일 없는 게시물 등록
@@ -721,7 +721,7 @@ public class BoardController {
 			model.addAttribute("next_seqno", service.next_seqno(seqno, keyword));
 			model.addAttribute("likeCheckView", likeCheckView);
 			model.addAttribute("fileListView", service.fileListView(seqno));
-			return "/todayWorkout/view";
+			return "todayWorkout/view";
 		}
 		
 		// 게시물 삭제
@@ -747,7 +747,7 @@ public class BoardController {
 			model.addAttribute("page", pageNum);
 			model.addAttribute("keyword", keyword);
 			model.addAttribute("fileListView", service.fileListView(seqno));
-			return "/todayWorkout/modify";
+			return "todayWorkout/modify";
 		}
 		
 		// 게시물 수정하기

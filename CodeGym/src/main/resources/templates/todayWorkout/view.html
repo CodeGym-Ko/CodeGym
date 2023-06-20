@@ -352,6 +352,12 @@
     		<li class="list-group-item">날짜 : [[${view.regdate}]]</li>
     		<li class="list-group-item">[[${view.content}]]</li>
   		</ul>
+  		
+	        <th:block th:if="${fileListView != 'null'}">
+		       	<div th:each="fileView : ${fileListView}">
+					<img th:src="|/file/${fileView.stored_filename}|" /> 
+				</div>
+			</th:block>
 		<div class="likeForm" style="padding:2%;width:50%; margin: auto; display: block;">
          	<span id='like' style="font-weight: bolder; color: red;"></span>&nbsp;<a href='javascript:likeView()' id="likeClick" class="likeClick" style="display:none;">좋아요</a>
          	<img src="/assets/img/good.png" onclick="likeView()" style="cursor:pointer;">
