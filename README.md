@@ -38,11 +38,11 @@
 
 ## 📃 ERD
 
-<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/47cca024-42fc-4dcf-8dac-b1b57aeb5bb7" alt="board" width="2000"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e8363324-1075-4c8e-9d9d-3829325549b5" alt="board" width="2000"/></p>
 
 ## 📃 메뉴구조도
 
-<p align="center"><img src="https://github.com/tkdudgns95/Image-processing-Mini-project/assets/71168409/518aeb2b-594f-4cb0-b72a-741334a7e5fa" alt="board" width="2000"/></p>
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/e35cd123-417d-432f-afbd-97ba2c08b732" alt="board" width="2000"/></p>
 
 ## 📃 데이터플로우
 
@@ -56,6 +56,11 @@
 ## 🚴 신체 구조 구현방식
 
 <p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/71168409/58a878a1-95d8-4731-8869-8a9c14d5a797" alt="exercise" width="2000"/></p>
+<br/>
+
+## 🔐 로그인 기능 구현방식
+
+<p align="center"><img src="https://github.com/CodeGym-Ko/CodeGym0530/assets/115196991/0ded05c5-24d5-469f-ae8b-581aa7ff7699" alt="login" width="2000"/></p>
 <br/>
 
 ## 🍖 주요 기능(식단추천,BMI계산 기능)
